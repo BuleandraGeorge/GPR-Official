@@ -1,0 +1,10 @@
+.wines-dropdown{
+    background-color: #000000;
+}
+.wine-color{
+    color: #fff;
+}
+.wine-color:hover{
+    background-color: #fff;
+    color: #000;
+}
