@@ -1,10 +1,31 @@
-.wines-dropdown{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap');
+body{
+    margin-top: 10rem;
+    background-color: #000;
+}
+.font-header{
+    font-family: 'Roboto', sans-serif;
+}
+.brand{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+}
+.bg-black{
     background-color: #000000;
 }
+
 .wine-color{
     color: #fff;
 }
 .wine-color:hover{
     background-color: #fff;
     color: #000;
+}
+@media (max-width: 768px){
+    body{
+            margin-top: 4rem;
+    }
+    .brand{
+    font-size: 1rem;
+}
 }
