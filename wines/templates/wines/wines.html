@@ -4,8 +4,7 @@
   <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
 {% endblock %}
 {% block content %}
-<div class="container-fluid">
-     <div class="wine-filter-menu fixed-top">
+<div class="wine-filter-menu fixed-top">
          <h4 class="text-center my-2">Ordoneaza dupa</h4>
          <div class="container">
                 <div class="row mb-1">
@@ -52,8 +51,8 @@
                         <div class="form-floating text-dark">
                             <select class="form-select" id="price" aria-label="Floating label select example">
                                 <option value="reset">Aleatoriu</option>
-                                <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ordoneaza Ascendent</option>
-                                <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Ordoneaza descendent</option>
+                                <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ascendent</option>
+                                <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Descendent</option>
 
                             </select>
                             <label for="price">Pret</label>
@@ -65,26 +64,34 @@
                         <div class="form-floating text-dark">
                             <select class="form-select" id="rating" aria-label="Floating label select example">
                                 <option value="reset" selected>Aleatoriu</option>
-                                <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ordoneaza Ascendent</option>
-                                <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>Ordoneaza descendent</option>
+                                <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ascendent</option>
+                                <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}> descendent</option>
 
                             </select>
                             <label for="rating">Rating</label>
                         </div>
                     </div>
                 </div>
-         </div>
-     </div>
-     <div class="wine-list">
+</div>
+<div class="wine-list fixed-top">
+    <div class="container">
         <div class="row">
             <h1 class="text-center">Vinuri</h1>
             {% for wine in wines%}
-            <div class="col-12">
-                {{wine}}
+            <div class="col-3 ">
+                <div class="card" style="width: 16rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">{{wine.name}}</h5>
+                        <p class="card-text text-dark"> {{wine.vinification}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                    </div>
+                
             </div>
             {% endfor %}
         </div>
-     </div>
+    </div>  
 </div>
 {% endblock%}
 {% block postload_js %}
@@ -93,11 +100,14 @@
         var selector = $(this).attr('id');
         var selectedVal = $(this).val();
         var currentUrl = new URL(window.location);
-
-        if (selectedVal !='reset'){
+        if (selectedVal!='reset'){
+            if (selector=='price'){
+                    currentUrl.searchParams.delete('rating');
+                }else if (selector=='rating'){
+                    currentUrl.searchParams.delete('price');
+                }
             currentUrl.searchParams.set(selector, selectedVal);
             window.location.replace(currentUrl);
-
         }else{
             currentUrl.searchParams.delete(selector);
             window.location.replace(currentUrl);

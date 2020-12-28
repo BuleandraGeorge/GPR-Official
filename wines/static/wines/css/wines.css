@@ -6,7 +6,6 @@
 }
 .wine-list{
     width:80vw;
-    position: absolute;
     top: 7rem;
-    right:0;
+    left:20vw;
 }

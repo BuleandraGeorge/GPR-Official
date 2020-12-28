@@ -38,7 +38,6 @@ def wines_view(request):
         else:
             wines = wines.order_by("rating")
         categories.append(value)
-    print(categories)
     context = {
         'wines': wines,
         'categories': categories,
