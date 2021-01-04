@@ -1,12 +1,32 @@
 from django.shortcuts import render
-from .models import wine, color, region, grape
+from .models import wine, color, region, grape, size_quantity_available, size_quantity_sold, size
 
 
 def wines_view(request):
     wines = wine.objects.all()
     regions = region.objects.all()
     grapes = grape.objects.all()
-
+    # template array which stores every product with sizes and quantities available or sold
+    wines_sizes = []
+    i=0
+    for product in wines:
+        product_sizes = product.size_quantity_available_set.all()
+        product_quantity_sold = product.size_quantity_sold_set.all()
+        wines_sizes.append({
+            'wine':product.id,
+            'size_quantities':[]
+        })
+        for dim in product_sizes:
+            wines_sizes[i]['size_quantities'].append(
+                {
+                    'size': dim.size,
+                    'quantity_available': dim.quantity,
+                    'quantity_sold:':0
+                })
+        # goes through every size of the product with quantity sold and updates the quantity sold in the template array
+        for index, sold in enumerate(product_quantity_sold):
+            wines_sizes[i]['size_quantities'][index]['quantity_sold'] = sold.quantity
+        i+=1
     categories = []
     if "color" in request.GET:
         value = request.GET['color']
@@ -43,6 +63,7 @@ def wines_view(request):
         'categories': categories,
         'regions': regions,
         'grapes': grapes,
+        'wines_sizes': wines_sizes,
     }
     template = 'wines/wines.html'
     return render(request, template, context)

@@ -4,103 +4,164 @@
   <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
 {% endblock %}
 {% block content %}
-<div class="wine-filter-menu fixed-top">
-         <h4 class="text-center my-2">Ordoneaza dupa</h4>
-         <div class="container">
-                <div class="row mb-1">
-                    <div class="col-12">
-                        <div class="form-floating text-dark">
-                            <select class="form-select" id="color" aria-label="Floating label select example">
-                                <option value="reset">Oricare</option>
-                                <option value="Red" {% if 'Red' in categories %}selected{% endif %}>Rosii</option>
-                                <option value="Rose"{% if 'Rose' in categories %}selected{% endif %}>Rose</option>
-                                <option value="White"{% if 'White' in categories %}selected{% endif %}>Albe</option>
-                            </select>
-                            <label for="color">Culoare</label>
-                        </div>
-                    </div>
+<!-- Filter -->
+<div class="wine-filter-menu fixed-top" id="filter">
+    <h4 class="text-center my-2">Ordoneaza dupa</h4>
+    <div class="container">
+        <div class="row mb-1">
+            <div class="col-12">
+                <div class="form-floating text-dark">
+                    <select class="form-select" id="color" aria-label="Floating label select example">
+                        <option value="reset">Oricare</option>
+                        <option value="Red" {% if 'Red' in categories %}selected{% endif %}>Rosii</option>
+                        <option value="Rose"{% if 'Rose' in categories %}selected{% endif %}>Rose</option>
+                        <option value="White"{% if 'White' in categories %}selected{% endif %}>Albe</option>
+                    </select>
+                    <label for="color">Culoare</label>
                 </div>
-                <div class="row mb-1">
-                    <div class="col-12">
-                        <div class="form-floating text-dark">
-                            <select class="form-select" id="region" aria-label="Floating label select example">
-                                <option value="reset">Oricare</option>
-                                {% for region in regions%}
-                                    <option value="{{region.name}}"{% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
-                                {% endfor %}
-                            </select>
-                            <label for="region">Regiunea</label>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12">
+                <div class="form-floating text-dark">
+                    <select class="form-select" id="region" aria-label="Floating label select example">
+                        <option value="reset">Oricare</option>
+                        {% for region in regions%}
+                            <option value="{{region.name}}"{% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <label for="region">Regiunea</label>
                 </div>
-                 <div class="row mb-1">
-                    <div class="col-12">
-                        <div class="form-floating text-dark">
-                            <select class="form-select" id="grape">
-                                <option value="reset">Oricare</option>
-                                {% for grape in grapes %}
-                                    <option value="{{grape.name}}"{% if grape.name in categories %}selected{% endif %}>{{grape.name}}</option>
-                                {% endfor %}
-                            </select>
-                            <label for="grape">Struguri</label>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12">
+                <div class="form-floating text-dark">
+                    <select class="form-select" id="grape">
+                        <option value="reset">Oricare</option>
+                        {% for grape in grapes %}
+                            <option value="{{grape.name}}"{% if grape.name in categories %}selected{% endif %}>
+                                {{grape.name}}
+                            </option>
+                            {% endfor %}
+                    </select>
+                    <label for="grape">Struguri</label>
                 </div>
-                <div class="row mb-1">
-                    <div class="col-12">
-                        <div class="form-floating text-dark">
-                            <select class="form-select" id="price" aria-label="Floating label select example">
-                                <option value="reset">Aleatoriu</option>
-                                <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ascendent</option>
-                                <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Descendent</option>
-
-                            </select>
-                            <label for="price">Pret</label>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12">
+                <div class="form-floating text-dark">
+                    <select class="form-select" id="price" aria-label="Floating label select example">
+                        <option value="reset">Aleatoriu</option>
+                        <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ascendent</option>
+                        <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Descendent</option>
+                    </select>
+                    <label for="price">Pret</label>
                 </div>
-                <div class="row mb-1">
-                    <div class="col-12">
-                        <div class="form-floating text-dark">
-                            <select class="form-select" id="rating" aria-label="Floating label select example">
-                                <option value="reset" selected>Aleatoriu</option>
-                                <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ascendent</option>
-                                <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}> descendent</option>
-
-                            </select>
-                            <label for="rating">Rating</label>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-12">
+                <div class="form-floating text-dark">
+                    <select class="form-select" id="rating" aria-label="Floating label select example">
+                        <option value="reset" selected>Aleatoriu</option>
+                        <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ascendent</option>
+                        <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>Descendent</option>
+                    </select>
+                    <label for="rating">Rating</label>
                 </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="wine-list fixed-top">
+<!-- Wine Display-->
+<div class="wine-list fixed-top" id = "winelist">
     <div class="container">
         <div class="row">
             <h1 class="text-center">Vinuri</h1>
-            {% for wine in wines%}
-            <div class="col-3 ">
-                <div class="card" style="width: 16rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-dark">{{wine.name}}</h5>
-                        <p class="card-text text-dark"> {{wine.vinification}}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+            {% for wine in wines %}
+                <div class="col-3">
+                    <div class="card" style="width: 16rem;">
+                        <img src="" class="card-img-top" alt="...">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">{{wine.name}}</h5>
+                            <div class="row">
+                                <div class="col-6">Regiune</div>
+                                <div class="col-6 text-right"><strong>{{wine.region}}</strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">Struguri</div>
+                                <div class="col-6 text-right"><strong>{{wine.grape}}</strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-5">Pret</div>
+                                <div class="col-7 text-right"><strong>{{wine.price}} RON</strong></div>
+                            </div>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-6">
+                                        Size
+                                    </div>
+                                    <div class="col-6">
+                                        <select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
+                                        {% for winees in wines_sizes %}
+                                        {% if winees.wine == wine.id %}
+                                        {% for size in winees.size_quantities %}
+                                            <option value="{{size.size}}" data-quantity_available="{{size.quantity_available}}">
+                                                {{size.size}}
+                                            </option>
+                                        {% endfor %}
+                                        {% endif %}
+                                        {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        Quantity
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="input-group input-group-sm">
+                                            <div class="input-group-preppend">
+                                                <button class="decrement-qty btn btn-dark rounded-0 btn-sm" 
+                                                            data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <input class="form-control qty_input" type="number" value="1" min="1" max="99" id="id_input_{{wine.id}}" name="quantity" data-item_id="{{wine.id}}">
+                                            <div class="input-group-append mr-1">
+                                                <button class="increment-qty btn btn-dark rounded-0 btn-sm" 
+                                                    data-item_id="{{ wine.id }}" id="increment-qty_{{ wine.id }}">
+                                                <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>                  
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-1">
+                                        <div class="col-12">
+                                            <input type="submit" class="btn btn-danger rounded-0 w-100" value="Add to Bag">
+                                        </div>
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            </form>
+                        </div>
                     </div>
-                    </div>
-                
-            </div>
+                </div>
             {% endfor %}
         </div>
-    </div>  
-</div>
-{% endblock%}
+    </div>
+</div>  
+{% endblock %}
 {% block postload_js %}
 <script type="text/javascript">
-    $('select').change(function(){
-        var selector = $(this).attr('id');
-        var selectedVal = $(this).val();
-        var currentUrl = new URL(window.location);
-        if (selectedVal!='reset'){
+$("#filter").change(function (event) {
+    var selector = event.target.id;
+    var selectedVal = $(document.getElementById(selector)).val();
+    var currentUrl = new URL(window.location);
+    if (selectedVal!='reset'){
             if (selector=='price'){
                     currentUrl.searchParams.delete('rating');
                 }else if (selector=='rating'){
@@ -112,6 +173,53 @@
             currentUrl.searchParams.delete(selector);
             window.location.replace(currentUrl);
         }
-    })
+});
+</script>
+<script type="text/javascript">
+// function that enables or disable the buttons
+function handleEnableDisable(itemId){
+        var currentInput = parseInt($(`#id_input_${itemId}`).val());
+        var qtyAvailable = parseInt($(`#id_input_${itemId}`).data('qty-available'));
+        var minusDisabled = currentInput < 2 ;
+        var plusDisabled = currentInput >= qtyAvailable; 
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+// sets the quanitity at input and max value
+function maxQtyAvaibleSetter(wineId){
+    var qty = $(`#${wineId} option:selected`).data('quantity_available');
+    $(`#id_input_${wineId}`).data('qty-available', qty);
+    $(`#id_input_${wineId}`).attr('max', qty)
+}
+// enables/disables the buttons on page load
+var allWineInputs = $('.qty_input');
+for (let i=0; i < allWineInputs.length; i++){
+    var wineId = $(allWineInputs[i]).data('item_id');
+    maxQtyAvaibleSetter(wineId);
+    handleEnableDisable(wineId);
+}
+$('.decrement-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue - 1);
+    var itemId = $(this).data('item_id');
+    handleEnableDisable(itemId);
+})
+$('.increment-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue + 1);
+    var itemId = $(this).data('item_id');
+    handleEnableDisable(itemId);
+})
+
+// on change of size, updates the qty available for wine
+$('#winelist').change(function(event){
+    var wineTargeted = event.target.id
+    maxQtyAvaibleSetter(wineTargeted); // update the qty-available on input
+    handleEnableDisable(wineTargeted); // enable disable buttons accordingly
+})
 </script>
 {% endblock %}
