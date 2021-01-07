@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import wine, color, region, grape, size_quantity_available, size_quantity_sold, size
 
 
@@ -66,4 +66,20 @@ def wines_view(request):
         'wines_sizes': wines_sizes,
     }
     template = 'wines/wines.html'
+    return render(request, template, context)
+
+def wine_details(request, wine_id):
+    current_wine = get_object_or_404(wine, pk=wine_id)
+    product_sizes = current_wine.size_quantity_available_set.all()
+    wine_size_qty = []
+    for size_qty in product_sizes:
+        wine_size_qty.append({
+            "size":size_qty.size,
+            "quantity_available": size_qty.quantity
+        })
+    template = "wines/wine_details.html"
+    context = {
+        "wine": current_wine,
+        "wine_sizes": wine_size_qty,
+    }
     return render(request, template, context)

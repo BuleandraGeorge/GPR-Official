@@ -5,9 +5,9 @@
 {% endblock %}
 {% block content %}
 <!-- Filter -->
-<div class="wine-filter-menu fixed-top" id="filter">
+<div class="pb-2 wine-filter-menu bg-danger fixed-top rounded " id="filter">
     <h4 class="text-center my-2">Ordoneaza dupa</h4>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mb-1">
             <div class="col-12">
                 <div class="form-floating text-dark">
@@ -76,36 +76,44 @@
     </div>
 </div>
 <!-- Wine Display-->
-<div class="wine-list fixed-top" id = "winelist">
-    <div class="container">
+<div class="fixed-top page-header bg-white">
+    <h1 class="text-center mt-3">Vinuri</h1>
+</div>
+<div class="wine-list" id = "winelist">
+    <div class="container-fluid">
+        <span class="badge badge-pill badge-warning">Warning</span>
         <div class="row">
-            <h1 class="text-center">Vinuri</h1>
             {% for wine in wines %}
-                <div class="col-3">
-                    <div class="card" style="width: 16rem;">
-                        <img src="" class="card-img-top" alt="...">
+                <div class="col-3 " >
+                    <a class="text-decoration-none" href="{% url 'wine_details' wine.id %}">
+                    <div class="card ">
+                    <span class="badge text-dark bg-warning price-tag p-1">{{wine.rating }} <i class="fas fa-star fa-sm"></i></span>
+                        {% if wine.image %}
+                            <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="...">
+                        {% else %}
+                            <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="...">
+                        {% endif %}
                         <div class="card-body text-dark">
-                            <h5 class="card-title text-center">{{wine.name}}</h5>
                             <div class="row">
-                                <div class="col-6">Regiune</div>
-                                <div class="col-6 text-right"><strong>{{wine.region}}</strong></div>
+                                <div class="col-12">
+                                    <h5 class="card-title text-center text-truncate">{{wine.name}}</h5>
+                                </div>
                             </div>
                             <div class="row">
-                                <div class="col-6">Struguri</div>
-                                <div class="col-6 text-right"><strong>{{wine.grape}}</strong></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-5">Pret</div>
-                                <div class="col-7 text-right"><strong>{{wine.price}} RON</strong></div>
-                            </div>
-                            <form method="POST" action="">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-6">
-                                        Size
-                                    </div>
-                                    <div class="col-6">
-                                        <select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
+                                <div class="col-5">
+                                    <p class="m-0">Regiune</p>
+                                    <p class="m-0">Struguri</p>
+                                    <p class="m-0">Pret</p>
+                                    <p class="m-0">Marime</p>
+                                    <p class="m-0 pt-2">Cantitate</p>
+                                </div>
+                                <div class="col-7 ">
+                                    <p class="mb-0 ml-auto text-truncate text-right"><strong >{{wine.region}}</strong></p>
+                                    <p class="m-0 text-truncate text-right"><strong>{{wine.grape}}</strong></p>
+                                    <p class="m-0 text-truncate text-right"><strong>{{wine.price}}RON</strong></p>
+                                    <form method="POST" action="{% url 'wines_view' %}" id="wine-form">
+                                         {% csrf_token %}
+                                        <p class="m-0"><select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
                                         {% for winees in wines_sizes %}
                                         {% if winees.wine == wine.id %}
                                         {% for size in winees.size_quantities %}
@@ -115,15 +123,8 @@
                                         {% endfor %}
                                         {% endif %}
                                         {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5">
-                                        Quantity
-                                    </div>
-                                    <div class="col-7">
-                                        <div class="input-group input-group-sm">
+                                        </select></p>
+                                        <p class="m-0"><div class="input-group input-group-sm">
                                             <div class="input-group-preppend">
                                                 <button class="decrement-qty btn btn-dark rounded-0 btn-sm" 
                                                             data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
@@ -137,19 +138,23 @@
                                                 <i class="fas fa-plus"></i>
                                                 </button>
                                             </div>                  
-                                        </div>
+                                        </div></p>
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    </form> 
+                                </div>
+                            </div>
+                             <div class="row mb-1">
+                                    <div class="col-12">
+                                            <input type="submit" form="wine-form" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
                                     </div>
                                 </div>
-                                <div class="row mb-1">
-                                        <div class="col-12">
-                                            <input type="submit" class="btn btn-danger rounded-0 w-100" value="Add to Bag">
-                                        </div>
-                                </div>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            </form>
                         </div>
                     </div>
+                    </a>
                 </div>
+                {% if forloop.counter|divisibleby:4 %}
+                    <hr>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

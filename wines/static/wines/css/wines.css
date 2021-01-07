@@ -1,11 +1,26 @@
 .wine-filter-menu{
     width:20vw;
-    top: 7rem;
+    top: 11rem;
     left:0;
-    border-right: 1px solid white;
 }
 .wine-list{
     width:80vw;
-    top: 7rem;
+    margin-top: 10rem;
+    margin-left:19vw;
+}
+.text-right{
+    text-align: right !important;
+}
+.page-header{
+
+    width:80vw;
+    top: 6.8rem;
     left:20vw;
+}
+.price-tag{
+    position: absolute;
+    top:5rem;
+    left:50%;
+    color: black;
+    font-size: 1.5rem;
 }

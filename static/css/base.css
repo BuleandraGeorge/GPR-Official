@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap');
 body{
     margin-top: 10rem;
-    background-color: #000;
+
 }
 .font-header{
     font-family: 'Roboto', sans-serif;
@@ -16,6 +16,10 @@ body{
 
 .wine-color{
     color: #fff;
+    
+}
+.top-index{
+    z-index: 9999;
 }
 .wine-color:hover{
     background-color: #fff;

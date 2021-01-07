@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+  <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Detalii despre vin</h1>
+            </div>
+        </div>
+        <div class="row">
+            <h3 class="text-center my-5 ">{{wine.name}}</h3>
+            <div class="col-4">
+                {% if wine.image %}
+                    <img src="{{wine.image.url}}" style="max-height: 80vh;">
+                {% else %}
+                    <img src="{{ MEDIA_URL}}no_img.jpg" style="max-height: 80vh;">
+                {% endif %}
+                <!-- imaginea cu vinul-->
+            </div>
+            <div class="col-4">
+                <p>{{wine.region}}</p>
+                <p>{{wine.grape}}</p>
+                <p>{{wine.vinification}}</p>
+                <p>{{wine.palate}}</p>
+                <!--detalii despre vin-->
+            </div>
+            <div class="col-4">
+                <!--detalii despre vin-->
+                <p>{{ wine.aging }}</p>
+                <p>{{ wine.color_details}}</p>
+                <p>{{ wine.serving }}</p>
+                <p>{{ wine.boxing }}</p>
+                <p>{{ wine.price }}</p>
+                <p>{{ wine.rating }}</p>
+                <p>{{ wine.first_time_listed }}</p>
+                <form method="POST" action="{% url 'wines_view' %}" id="wine-form">
+                    {% csrf_token %}
+                        <p class="m-0"><select class="form-control form-control-sm size-select" name="wine_size" id="{{wine.id}}" > 
+                        {% for size in wine_sizes %}
+                        <option value="{{size.size}}" data-quantity_available="{{size.quantity_available}}">
+                            {{size.size}}
+                        </option>
+                        {% endfor %}
+                        </select></p>
+                        <p class="m-0">
+                            <div class="input-group input-group-sm">
+                                <div class="input-group-preppend">
+                                    <button class="decrement-qty btn btn-dark rounded-0 btn-sm" data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
+                                    <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                                <input class="form-control qty_input" type="number" value="1" min="1" max="99" id="id_input_{{wine.id}}" name="quantity" data-item_id="{{wine.id}}">
+                                <div class="input-group-append mr-1">
+                                    <button class="increment-qty btn btn-dark rounded-0 btn-sm" data-item_id="{{ wine.id }}" id="increment-qty_{{ wine.id }}">
+                                    <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>                  
+                            </div>
+                        </p>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        <input type="submit" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
+                    </form> 
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block postload_js %}
+<script type="text/javascript">
+// function that enables or disable the buttons
+function handleEnableDisable(itemId){
+        var currentInput = parseInt($(`#id_input_${itemId}`).val());
+        var qtyAvailable = parseInt($(`#id_input_${itemId}`).data('qty-available'));
+        var minusDisabled = currentInput < 2 ;
+        var plusDisabled = currentInput >= qtyAvailable; 
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+// sets the quanitity at input and max value
+function maxQtyAvaibleSetter(wineId){
+    var qty = $(`#${wineId} option:selected`).data('quantity_available');
+    $(`#id_input_${wineId}`).data('qty-available', qty);
+    $(`#id_input_${wineId}`).attr('max', qty)
+}
+// enables/disables the buttons on page load
+var allWineInputs = $('.qty_input');
+for (let i=0; i < allWineInputs.length; i++){
+    var wineId = $(allWineInputs[i]).data('item_id');
+    console.log("asdasd");
+    maxQtyAvaibleSetter(wineId);
+    handleEnableDisable(wineId);
+}
+$('.decrement-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue - 1);
+    var itemId = $(this).data('item_id');
+    handleEnableDisable(itemId);
+})
+$('.increment-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue + 1);
+    var itemId = $(this).data('item_id');
+    handleEnableDisable(itemId);
+})
+
+// on change of size, updates the qty available for wine
+$('.size-select').change(function(event){
+    var wineTargeted = event.target.id
+    maxQtyAvaibleSetter(wineTargeted); // update the qty-available on input
+    handleEnableDisable(wineTargeted); // enable disable buttons accordingly
+})
+</script>
+{% endblock %}
