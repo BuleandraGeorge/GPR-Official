@@ -88,11 +88,13 @@
                     <a class="text-decoration-none" href="{% url 'wine_details' wine.id %}">
                     <div class="card ">
                     <span class="badge text-dark bg-warning price-tag p-1">{{wine.rating }} <i class="fas fa-star fa-sm"></i></span>
+                        <a class="text-decoration-none mx-auto" href="{% url 'wine_details' wine.id %}">
                         {% if wine.image %}
-                            <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="...">
+                            <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="{{wine.name}}">
                         {% else %}
-                            <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="...">
+                            <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="no-image">
                         {% endif %}
+                        </a>
                         <div class="card-body text-dark">
                             <div class="row">
                                 <div class="col-12">

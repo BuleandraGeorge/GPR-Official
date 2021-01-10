@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto&display=swap');
 body{
-    margin-top: 10rem;
+    margin-top: 6rem;
+    font-family: 'Roboto, sans-serif';
 
 }
 .font-header{
