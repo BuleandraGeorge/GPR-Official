@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from wines.models import wine
 
 
@@ -21,4 +21,17 @@ def add_to_bag(request, wine_id):
     else:
         bag[wine_id] = {'size_qty':{size: quantity}}
     request.session['bag'] = bag
+    print(bag)
     return redirect(redirect_url)
+
+def edit_bag(request, wine_id):
+    qty = int(request.POST.get('quantity'))
+    wine_id = str(wine_id)
+    size = request.POST.get('size')
+    bag = request.session.get('bag',{})
+    if qty == 0:
+        bag.pop(wine_id)
+    else:
+        bag[wine_id]['size_qty'][size] = qty
+    request.session['bag'] = bag
+    return redirect(reverse('bag'))

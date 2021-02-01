@@ -54,7 +54,7 @@
                                     <p class="mb-0 ml-auto text-truncate text-right"><strong >{{wine.region}}</strong></p>
                                     <p class="m-0 text-truncate text-right"><strong>{{wine.grape}}</strong></p>
                                     <p class="m-0 text-truncate text-right"><strong>{{wine.price}}RON</strong></p>
-                                    <form method="POST" action="{% url 'add_to_bag' wine.id %}" id="wine-form">
+                                    <form method="POST" action="{% url 'add_to_bag' wine.id %}" id="wine-form_{{wine.id}}">
                                          {% csrf_token %}
                                         <p class="m-0"><select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
                                         {% for winees in wines_sizes %}
@@ -89,7 +89,7 @@
                         </div>
                         <div class="row mb-1">
                             <div class="col-12">
-                                <input type="submit" form="wine-form" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
+                                <input type="submit" form="wine-form_{{wine.id}}" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
                             </div>
                         </div>
                     </div>

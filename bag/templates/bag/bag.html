@@ -2,7 +2,113 @@
 {% load static %}
 {% block content %}
 <h2> Here is your bag </h2>
+<div class="container">
+    <div class="row">
+        <div class="col-2">Image</div>
+        <div class="col-4 mx-auto">Name</div>
+        <div class="col-2 mx-auto">Quantity</div>
+        <div class="col-2 mx-auto">Price</div>
+        <div class="col-2 mx-auto">Subtotal</div>
+    </div>
+<hr>
 {% for item in bag_items %}
-    {{item}}
+    <div class="row">
+        <div class="col-2">
+            {% if item.wine.image %}
+                <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
+            {% else %}
+                <img src="{{MEDIA_URL}}no_img.jpg" width="100rem" height="100rem" >
+            {% endif %}
+        </div>
+        <div class="col-4 my-auto">
+            <p>{{item.wine.name}}</p>
+            <p>{{item.size}}</p>
+        </div>
+        <div class="col-2 my-auto">
+            <form method="POST" action="{% url 'edit_bag' item.wine.id %}" id="form_{{ item.wine.id }}">
+                    {% csrf_token %}
+            <div class="input-group input-group-sm">
+                <div class="input-group-preppend">
+                    <button 
+                    class="decrement-qty btn btn-dark rounded-0 btn-sm" data-item_id="{{ item.wine.id }}" 
+                    id="decrement-qty_{{ item.wine.id }}">
+                    <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+                    <input class="form-control qty_input text-center" type="number" value="{{item.qty}}" min="0" max="99" id="id_input_{{item.wine.id}}" name="quantity" data-item_id="{{item.wine.id}}">
+                    <input type="hidden" value="{{item.size}}" name="size">
+               
+                <div class="input-group-append mr-1">
+                    <button 
+                    class="increment-qty btn btn-dark rounded-0 btn-sm" 
+                    data-item_id="{{ item.wine.id }}" 
+                    id="increment-qty_{{ item.wine.id }}">
+                    <i class="fas fa-plus"></i>
+                    </button>
+                </div>                  
+            </div>
+             </form>
+            <p class="mx-auto">
+                <a class="text-decoration-none text-info update_link" 
+                id="{{item.wine.id}}">Update</a>
+            </p>
+        </div>
+        <div class="col-2 my-auto">{{item.wine.price}}</div>
+        <div class="col-2 my-auto">Se calculeaza</div>
+    </div>
 {% endfor %}
+<hr>
+<div class="row">
+    <div class="col-2 mx-auto">
+        <a href="#" class="btn btn-info rounded-0">CHECKOUT <i class="fas fa-chevron-right "></i></a>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% block postload_js %}
+<script type="text/javascript">
+    // function that enables or disable the buttons
+$('.update_link').click(function(e){
+    var formId = $(this).attr("id");
+    var form = $(`#form_${formId}`);
+    form.submit();
+})
+function handleEnableDisable(itemId){
+        var currentInput = parseInt($(`#id_input_${itemId}`).val());
+        var qtyAvailable = parseInt($(`#id_input_${itemId}`).data('qty-available'));
+        var minusDisabled = currentInput < 1 ;
+        var plusDisabled = currentInput >= qtyAvailable; 
+        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+    }
+// sets the quantity at input and max value
+function maxQtyAvaibleSetter(wineId){
+    var qty = $(`#${wineId} option:selected`).data('quantity_available');
+    $(`#id_input_${wineId}`).data('qty-available', qty);
+    $(`#id_input_${wineId}`).attr('max', qty)
+}
+// enables/disables the buttons on page load
+var allWineInputs = $('.qty_input');
+for (let i=0; i < allWineInputs.length; i++){
+    var wineId = $(allWineInputs[i]).data('item_id');
+    maxQtyAvaibleSetter(wineId);
+    handleEnableDisable(wineId);
+}
+$('.decrement-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue - 1);
+    var itemId = $(this).data('item_id');
+    handleEnableDisable(itemId);
+});
+$('.increment-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue + 1);
+    var itemId = $(this).data('item_id');
+    handleEnableDisable(itemId);
+});
+</script>
 {% endblock %}
