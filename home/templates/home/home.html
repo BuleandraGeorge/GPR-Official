@@ -54,7 +54,7 @@
                                     <p class="mb-0 ml-auto text-truncate text-right"><strong >{{wine.region}}</strong></p>
                                     <p class="m-0 text-truncate text-right"><strong>{{wine.grape}}</strong></p>
                                     <p class="m-0 text-truncate text-right"><strong>{{wine.price}}RON</strong></p>
-                                    <form method="POST" action="{% url 'wines_view' %}" id="wine-form">
+                                    <form method="POST" action="{% url 'add_to_bag' wine.id %}" id="wine-form">
                                          {% csrf_token %}
                                         <p class="m-0"><select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
                                         {% for winees in wines_sizes %}

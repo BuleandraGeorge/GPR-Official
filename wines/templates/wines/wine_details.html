@@ -36,7 +36,7 @@
                 <p>{{ wine.price }}</p>
                 <p>{{ wine.rating }}</p>
                 <p>{{ wine.first_time_listed }}</p>
-                <form method="POST" action="{% url 'wines_view' %}" id="wine-form">
+                <form method="POST" action="{% url 'add_to_bag' wine.id  %}" id="wine-form">
                     {% csrf_token %}
                         <p class="m-0"><select class="form-control form-control-sm size-select" name="wine_size" id="{{wine.id}}" > 
                         {% for size in wine_sizes %}
