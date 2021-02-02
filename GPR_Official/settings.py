@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'bag',
     'colorfield',
     'checkout',
+    'django_countries',
 ]
 
 MIDDLEWARE = [
