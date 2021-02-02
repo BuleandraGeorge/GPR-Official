@@ -30,7 +30,7 @@ def edit_bag(request, wine_id):
     size = request.POST.get('size')
     bag = request.session.get('bag',{})
     if qty == 0:
-        bag.pop(wine_id)
+        bag[wine_id]['size_qty'].pop(size)
     else:
         bag[wine_id]['size_qty'][size] = qty
     request.session['bag'] = bag
