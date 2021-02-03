@@ -16,7 +16,6 @@ def add_to_bag(request, wine_id):
         if size in list(bag[wine_id]['size_qty'].keys()):
             bag[wine_id]['size_qty'][size] += quantity
         else:
-
             bag[wine_id]['size_qty'][size] = quantity
     else:
         bag[wine_id] = {'size_qty':{size: quantity}}
@@ -31,6 +30,8 @@ def edit_bag(request, wine_id):
     bag = request.session.get('bag',{})
     if qty == 0:
         bag[wine_id]['size_qty'].pop(size)
+        if not bag[wine_id]['size_qty']:
+            bag.pop(wine_id)
     else:
         bag[wine_id]['size_qty'][size] = qty
     request.session['bag'] = bag

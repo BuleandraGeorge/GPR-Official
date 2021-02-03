@@ -7,15 +7,15 @@ from wines.models import wine
 
 class Order(models.Model):
     order_number = models.CharField(max_length=255, null=False, blank=False)
-    full_name = models.CharField(max_length=50, null=False, blank=False)
-    phone_number = models.CharField(max_length=25, null=False, blank=False)
+    nume = models.CharField(max_length=50, null=False, blank=False)
+    telefon = models.CharField(max_length=25, null=False, blank=False)
     email = models.EmailField(blank=False, null=False)
-    address_line_1 = models.CharField(max_length=255, null=False, blank=False)
-    address_line_2 = models.CharField(max_length=255, null=True, blank=True)
-    county = models.CharField(max_length=50, null=False, blank=False)
-    country = CountryField(default='RO')
+    adresa  = models.CharField(max_length=255, null=False, blank=False)
+    adresa_linia_2 = models.CharField(max_length=255, null=True, blank=True)
+    judet = models.CharField(max_length=50, null=False, blank=False)
+    tara = CountryField(default='RO')
     date = models.DateField(auto_now=True)
-    total = models.DecimalField(max_digits=8, decimal_places=2)
+    total = models.DecimalField(max_digits=8, decimal_places=2, default=0)
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
@@ -39,3 +39,7 @@ class lineitem(models.Model):
     quantity = models.IntegerField(blank=False, null=False)
     product_size = models.CharField(max_length=10, blank=False, null=False)
     lineitem_total = models.DecimalField(max_digits=8, decimal_places=2, blank=False, null=False)
+
+    def save(self, *args, **kwargs):
+        self.lineitem_total = self.quantity * self.the_wine.price
+        super().save(*args, **kwargs)

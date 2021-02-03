@@ -2,8 +2,11 @@
 {% load bag_tools %}
 {% load static %}
 {% block content %}
-<h2> Here is your bag </h2>
 <div class="container">
+<h1> Cosul tau de cumparaturi </h1>
+{% if not bag_items %}
+    <p class="my-auto mx-auto">Cosul de cumparaturi este gol. <a class="link link-danger" href="{% url 'wines_view' %}">Descopera vinurile Grupo Pierola</a></p>
+{% else %}
     <div class="row">
         <div class="col-2 ">Image</div>
         <div class="col-4 text-center">Name</div>
@@ -54,18 +57,30 @@
                     Update
             </a>
         </div>
-        <div class="col-2 my-auto text-center"><strong>{{item.wine.price}}</strong></div>
-        <div class="col-2 my-auto text-center"><strong>{{item.wine.price|calc_subtotal:item.qty}}</strong></div>
+        <div class="col-2 my-auto text-center"><strong>{{item.wine.price}} RON</strong></div>
+        <div class="col-2 my-auto text-center"><strong>{{item.wine.price|calc_subtotal:item.qty}} RON</strong></div>
     </div>
     <hr>
 {% endfor %}
+<div class="row d-flex justify-content-end">
+    <div class="col-2">
+        <div class="row">
+            <div class="col-4"><small>Total:</small></div>
+            <div class="col-8"><strong>{{total}} RON</strong></div>
+        </div>
+    </div>
+</div>
 <hr>
-<div class="row">
-    <div class="col-2 mx-auto">
-        <a href="{% url 'checkout' %}" class="btn btn-info rounded-0"><strong>CHECKOUT    </strong><i class="fas fa-chevron-right"></i></a>
+<div class="row d-flex justify-content-center">
+    <div class="col-2 ml-auto ">
+        <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  INCA CEVA</strong></a>
+    </div>
+    <div class="col-2 mr-auto ">
+        <a href="{% url 'checkout' %}" class="btn btn-info rounded-0 w-100"><strong>CHECKOUT    </strong><i class="fas fa-chevron-right"></i></a>
     </div>
 </div>
 </div>
+{% endif %}
 {% endblock %}
 {% block postload_js %}
 <script type="text/javascript">

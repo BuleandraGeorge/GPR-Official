@@ -1,20 +1,72 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load static %}
+{% load bag_tools %}
 {% block content %}
 <div class="container">
-<h1> Checkout </h1>
+<h1 class="mb-2"> Checkout </h1>
 <div class="row">
     <div class="col-6">
         <!--Delivery Address-->
-        <div class="row">
-            
-        </div>
+        <form method="POST" action="#">
+            {% csrf_token %}
+            {{OrderForm|crispy}}
+            <button class="btn btn-warning rounded-0" type="submit">Trimite comanda de {{total}} RON <i class="fas fa-paper-plane"></i></button>
+        </form>
     </div>
     <div class="col-6">
         <!--Order Details-->
         <div class="row">
-
+            <div class="col-2 ">Image</div>
+            <div class="col-4 text-center">Name</div>
+            <div class="col-2 text-center">Quantity</div>
+            <div class="col-2 text-center">Price</div>
+            <div class="col-2 text-center">Subtotal</div>
         </div>
+        {% for item in bag_items %}
+        <hr>
+        <div class="row">
+            <div class="col-2 mx-auto">
+                {% if item.wine.image %}
+                    <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
+                {% else %}
+                    <img src="{{MEDIA_URL}}no_img.jpg" width="100rem" height="100rem" >
+                {% endif %}
+            </div>
+            <div class="col-4 my-auto">
+                <p><strong>{{item.wine.name}}</strong></p>
+                <p><strong>{{item.size}}</strong></p>
+            </div>
+            <div class="col-2 my-auto">
+                    {{item.qty}}
+            </div>
+            <div class="col-2 my-auto text-center">
+                <strong>{{item.wine.price}} RON</strong>
+            </div>
+            <div class="col-2 my-auto text-center">
+                <strong>{{item.wine.price|calc_subtotal:item.qty}} RON</strong>
+            </div>
+        </div>
+        {% endfor %}
+        <hr>
+    <div class="row d-flex justify-content-end">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-4">Total:</div>
+                <div class="col-8"><strong>{{total}} RON</strong></div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+    <div class="col-6">
+        <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>
+    </div>
+    <div class="col-6">
+        <a href="{% url 'bag' %}" class="btn btn-outline-danger rounded-0 w-100">
+            <i class="fas fa-shopping-cart"></i>
+            <strong>  Editeaza comanda </strong>
+        </a>
     </div>
 </div>
 </div>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load bag_tools %}
+{% block content %}
+<div class="container">
+    <h1 class="mb-2"> COMANDA {{order.order_number}} a fost plasata cu success </h1>
+    <h2 class="mb-2"> Va vom contacta in curand. Multumim!  </h2>
+</div>
+
+{% endblock %}

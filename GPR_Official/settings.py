@@ -33,7 +33,9 @@ INSTALLED_APPS = [
     'colorfield',
     'checkout',
     'django_countries',
+    'crispy_forms',
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -46,6 +48,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'GPR_Official.urls'
+
 
 TEMPLATES = [
     {
