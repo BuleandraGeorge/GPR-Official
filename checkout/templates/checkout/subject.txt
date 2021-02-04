@@ -1,0 +1,1 @@
+Grupo Pierola: Comanda {{order.order_number}} a fost plasata.

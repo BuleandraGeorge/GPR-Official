@@ -1,0 +1,25 @@
+Salut, {{order.nume}}!
+
+In cel mai scurt timp veti fi contactat in legura cu livrarea.
+
+Aici sunt detaliile comenzii {{order.order_number}}:
+
+Produsele comandate:
+{% for line in items %}
+    {{line.the_wine.name}} {{line.product_size}} x{{line.quantity}}, subtotal {{line.lineitem_total}} RON
+{% endfor %}
+Total de plata : {{total}} RON
+
+Detalii de livrare:
+Nume: {{order.nume}}
+Telefon: {{order.telefon}}
+Email: {{order.email}}
+Adresa: {{order.adresa}}
+{% if order.adresa_linia_2 %}Adresa linia 2:{{order.adresa_linia_2}}{% endif %}
+Judet: {{order.judet}}
+Tara: {{order.tara}}
+
+Pentru mai multe detalii aveti la dispozitie adresa de email {{contact_email}} sau la numarul de telefon {{contact_phone}}.
+Va multumim!
+
+Grupo Pierola Romania
