@@ -30,8 +30,10 @@ INSTALLED_APPS = [
     'wines',
     'offers',
     'bag',
-    'colorfield',
     'checkout',
+    'contact',
+    # Others
+    'colorfield',
     'django_countries',
     'crispy_forms',
 ]
