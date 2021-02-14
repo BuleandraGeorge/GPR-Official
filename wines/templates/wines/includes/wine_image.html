@@ -1,0 +1,5 @@
+{% if wine.image %}
+    <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="{{wine.name}}">
+{% else %}
+    <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="no-image">
+{% endif %}

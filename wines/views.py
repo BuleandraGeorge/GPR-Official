@@ -1,32 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from .models import wine, color, region, grape, size_quantity_available, size_quantity_sold, size
+from .models import wine, color, region, grape, size_details, size
 
 
 def wines_view(request):
     wines = wine.objects.all()
+    size_detailss = size_details.objects.all()
     regions = region.objects.all()
     grapes = grape.objects.all()
-    # template array which stores every product with sizes and quantities available or sold
-    wines_sizes = []
-    i=0
-    for product in wines:
-        product_sizes = product.size_quantity_available_set.all()
-        product_quantity_sold = product.size_quantity_sold_set.all()
-        wines_sizes.append({
-            'wine':product.id,
-            'size_quantities':[]
-        })
-        for dim in product_sizes:
-            wines_sizes[i]['size_quantities'].append(
-                {
-                    'size': dim.size,
-                    'quantity_available': dim.quantity,
-                    'quantity_sold:':0
-                })
-        # goes through every size of the product with quantity sold and updates the quantity sold in the template array
-        for index, sold in enumerate(product_quantity_sold):
-            wines_sizes[i]['size_quantities'][index]['quantity_sold'] = sold.quantity
-        i+=1
     categories = []
     if "color" in request.GET:
         value = request.GET['color']
@@ -42,14 +22,14 @@ def wines_view(request):
         value = request.GET['grape']
         wines = wines.filter(grape__name=value)
         categories.append(value)
-
-    if "price" in request.GET:
+    ### Ordered by price, needs updates acc new wine model
+    """if "price" in request.GET:
         value = request.GET['price']
         if value == "price_desc":
             wines = wines.order_by("-price")
         else:
             wines = wines.order_by("price")
-        categories.append(value)
+        categories.append(value)"""
 
     if "rating" in request.GET:
         value = request.GET['rating']
@@ -63,23 +43,18 @@ def wines_view(request):
         'categories': categories,
         'regions': regions,
         'grapes': grapes,
-        'wines_sizes': wines_sizes,
+        'size_details': size_detailss,
     }
     template = 'wines/wines.html'
     return render(request, template, context)
 
 def wine_details(request, wine_id):
     current_wine = get_object_or_404(wine, pk=wine_id)
-    product_sizes = current_wine.size_quantity_available_set.all()
-    wine_size_qty = []
-    for size_qty in product_sizes:
-        wine_size_qty.append({
-            "size":size_qty.size,
-            "quantity_available": size_qty.quantity
-        })
+    size_detailss = size_details.objects.all()
+
     template = "wines/wine_details.html"
     context = {
         "wine": current_wine,
-        "wine_sizes": wine_size_qty,
+        "wine_sizes": size_detailss,
     }
     return render(request, template, context)

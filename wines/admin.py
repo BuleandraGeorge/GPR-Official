@@ -1,25 +1,19 @@
 from django.contrib import admin
 
-from .models import wine, color, grape, region, size, size_quantity_available,size_quantity_sold
+from .models import wine, color, grape, region, size, size_details
 
 
 class wineQuantityAvailableDetailsAdmin(admin.TabularInline):
-    model = size_quantity_available
-
-
-class wineQuantitySoldDetailsAdmin(admin.TabularInline):
-    model = size_quantity_sold
-    readonly_fields = ('size', 'quantity')
+    model = size_details
 
 class wineAdmin(admin.ModelAdmin):
-    inlines = (wineQuantityAvailableDetailsAdmin, wineQuantitySoldDetailsAdmin,)
+    inlines = (wineQuantityAvailableDetailsAdmin,)
     list_display = (
         'name',
         'color',
         'region',
         'grape',
         'first_time_listed',
-        'price',
         'rating',
         'image',
     )

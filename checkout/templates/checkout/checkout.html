@@ -41,10 +41,10 @@
                     {{item.qty}}
             </div>
             <div class="col-2 my-auto text-center">
-                <strong>{{item.wine.price}} RON</strong>
+                <strong>{{item.price}} RON</strong>
             </div>
             <div class="col-2 my-auto text-center">
-                <strong>{{item.wine.price|calc_subtotal:item.qty}} RON</strong>
+                <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
             </div>
         </div>
         {% endfor %}

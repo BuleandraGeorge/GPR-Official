@@ -1,0 +1,54 @@
+<div class="col-3 rounded-1 ">
+    <a class="text-decoration-none" href="{% url 'wine_details' wine.id %}">
+        <div class="card shadow-lg border-0">
+            <span class="badge text-dark bg-warning price-tag p-1">
+                {{wine.rating }} 
+                <i class="fas fa-star fa-sm"></i>
+            </span>
+            <a class="text-decoration-none mx-auto" href="{% url 'wine_details' wine.id %}">
+                {% include 'wines/includes/wine_image.html' %}
+            </a>
+            <div class="card-body text-dark">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="card-title text-center text-truncate">
+                            <strong>{{wine.name}}</strong>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center"> 
+                        Regiunea <strong> {{wine.region}}</strong>
+                    </div>
+                </div>
+                <form method="POST" action="{% url 'add_to_bag' wine.id %}" id="wine-form_{{wine.id}}">
+                        {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6"> 
+                            <select class="form-control form-control-sm border-0 size" name="wine_size" id="{{wine.id}}" > 
+                            {% for sizeDetails in wine.size_details_set.all %}
+                                <option value="{{sizeDetails.size}}" data-quantity_available="{{sizeDetails.qty_available}}" data-price_size="{{sizeDetails.price}}">
+                                    {{sizeDetails.size}}
+                                </option>
+                            {% endfor %}
+                            </select></div>
+                        <div class="col-6">
+                            <strong class="price_wine_{{wine.id}}">
+                            <!--price set through js-->
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 px-0">
+                            {% include 'wines/includes/qty_input.html'%}
+                        </div>
+                        <div class="col-6">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            <button type="submit" form="wine-form_{{wine.id}}" class="btn btn-danger rounded-0 w-100"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                    </div>
+                </form> 
+            </div>   
+        </div>
+    </a>
+</div>

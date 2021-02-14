@@ -20,7 +20,7 @@
     <title>GPR {%block title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="fixed-top bg-white top-index">
+    <header class="fixed-top bg-white top-index shadow">
          <!-- Lg desktop header-->
         <nav class="navbar navbar-expand-lg d-none d-lg-block p-0">
             <div class="container-fluid">
@@ -64,13 +64,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark " href="#">
+                            <a class="nav-link text-dark " href="{% url 'contact' %}">
                                 <i class="far fa-comment-alt"></i>
                                 Contact
                             </a>
                         </li>
                         <li class="nav-item d-md-none text-dark">
-                            <a class="nav-link " href="#">0.00 RON <i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link " href="{% url 'bag' %}">0.00 RON <i class="fas fa-shopping-cart"></i></a>
                         </li>
                         <!-- Search bar -->
                         <li class="nav-item">
@@ -88,8 +88,11 @@
             </div>
         </nav>
     </header>
-    {% block content %}
+    <div class="content-zone">
+        {% block content %}
         {% endblock %}
+    </div>
+    
     {% block extra_js%}
     {% endblock %}
     

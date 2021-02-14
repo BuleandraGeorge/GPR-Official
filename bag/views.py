@@ -20,7 +20,6 @@ def add_to_bag(request, wine_id):
     else:
         bag[wine_id] = {'size_qty':{size: quantity}}
     request.session['bag'] = bag
-    print(bag)
     return redirect(redirect_url)
 
 def edit_bag(request, wine_id):

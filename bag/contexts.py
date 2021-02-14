@@ -9,12 +9,15 @@ def bag_content(request):
     for item_id, size_qty in bag.items():
         winee = get_object_or_404(wine, pk=item_id)
         for size, quantity in size_qty['size_qty'].items():
+            theSize = winee.size_details_set.filter(size__name=size)
+            price = theSize[0].price
             bag_items.append({
                 "wine": winee,
                 "size": size,
-                "qty": quantity
+                "qty": quantity,
+                "price": price,
             })
-            total = total + Decimal(quantity) * winee.price
+            total = total + Decimal(quantity) * price
     context = {
         "bag_items": bag_items,
         "total": total

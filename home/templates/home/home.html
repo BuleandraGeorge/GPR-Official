@@ -22,236 +22,22 @@
     </div>
 {% endif %}
 <div class="container mt-5">
-    <div class="row">
-        <h3 class="font-weight-bold">Best Sold</h3>
+    <div class="row mb-5">
+        <h1 class="font-weight-bold">Cele mai vandute</h1>
         {% for wine in best_sold %}
-        <div class="col-3 " >
-            
-                <div class="card ">
-                    <span class="badge text-dark bg-warning price-tag p-1">{{wine.rating }} <i class="fas fa-star fa-sm"></i></span>
-                        <a class="text-decoration-none mx-auto" href="{% url 'wine_details' wine.id %}">
-                        {% if wine.image %}
-                            <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="{{wine.name}}">
-                        {% else %}
-                            <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="no-image">
-                        {% endif %}
-                        </a>
-                        <div class="card-body text-dark">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="card-title text-center text-truncate">{{wine.name}}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-5">
-                                    <p class="m-0">Regiune</p>
-                                    <p class="m-0">Struguri</p>
-                                    <p class="m-0">Pret</p>
-                                    <p class="m-0">Marime</p>
-                                    <p class="m-0 pt-2">Cantitate</p>
-                                </div>
-                                <div class="col-7 ">
-                                    <p class="mb-0 ml-auto text-truncate text-right"><strong >{{wine.region}}</strong></p>
-                                    <p class="m-0 text-truncate text-right"><strong>{{wine.grape}}</strong></p>
-                                    <p class="m-0 text-truncate text-right"><strong>{{wine.price}}RON</strong></p>
-                                    <form method="POST" action="{% url 'add_to_bag' wine.id %}" id="wine-form_{{wine.id}}">
-                                         {% csrf_token %}
-                                        <p class="m-0"><select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
-                                        {% for winees in wines_sizes %}
-                                        {% if winees.wine == wine.id %}
-                                        {% for size in winees.size_quantities %}
-                                            <option value="{{size.size}}" data-quantity_available="{{size.quantity_available}}">
-                                                {{size.size}}
-                                            </option>
-                                        {% endfor %}
-                                        {% endif %}
-                                        {% endfor %}
-                                        </select></p>
-                                        <p class="m-0"><div class="input-group input-group-sm">
-                                            <div class="input-group-preppend">
-                                                <button class="decrement-qty btn btn-dark rounded-0 btn-sm" 
-                                                            data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                            </div>
-                                            <input class="form-control qty_input" type="number" value="1" min="1" max="99" id="id_input_{{wine.id}}" name="quantity" data-item_id="{{wine.id}}">
-                                            <div class="input-group-append mr-1">
-                                                <button class="increment-qty btn btn-dark rounded-0 btn-sm" 
-                                                    data-item_id="{{ wine.id }}" id="increment-qty_{{ wine.id }}">
-                                                <i class="fas fa-plus"></i>
-                                                </button>
-                                            </div>                  
-                                        </div>
-                                    </p>
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                </form> 
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col-12">
-                                <input type="submit" form="wine-form_{{wine.id}}" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        {% if forloop.counter|divisibleby:4 %}
-            <hr>
-        {% endif %}
+        {% include 'wines/includes/wine_card.html' %}
         {% endfor %}
     </div>
-    <div class="row">
-        <h3 class="font-weight-bold">New Arrivals</h3>
+    <div class="row mb-5">
+        <h1 class="font-weight-bold">Cele mai noi</h1>
     {% for wine in new_arrivals %}
-        <div class="col-3 " >
-                <div class="card ">
-                    <span class="badge text-dark bg-warning price-tag p-1">{{wine.rating }} <i class="fas fa-star fa-sm"></i></span>
-                    <a class="text-decoration-none mx-auto" href="{% url 'wine_details' wine.id %}">
-                        {% if wine.image %}
-                            <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="{{wine.name}}">
-                        {% else %}
-                            <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="no-image">
-                        {% endif %}
-                     </a>
-                        <div class="card-body text-dark">
-                            <div class="row">
-                                   <div class="col-12">
-                                    <h5 class="card-title text-center text-truncate">{{wine.name}}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-5">
-                                    <p class="m-0">Regiune</p>
-                                    <p class="m-0">Struguri</p>
-                                    <p class="m-0">Pret</p>
-                                    <p class="m-0">Marime</p>
-                                    <p class="m-0 pt-2">Cantitate</p>
-                                </div>
-                                <div class="col-7 ">
-                                    <p class="mb-0 ml-auto text-truncate text-right"><strong >{{wine.region}}</strong></p>
-                                    <p class="m-0 text-truncate text-right"><strong>{{wine.grape}}</strong></p>
-                                    <p class="m-0 text-truncate text-right"><strong>{{wine.price}}RON</strong></p>
-                                    <form method="POST" action="{% url 'wines_view' %}" id="wine-form">
-                                         {% csrf_token %}
-                                        <p class="m-0"><select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
-                                        {% for winees in wines_sizes %}
-                                        {% if winees.wine == wine.id %}
-                                        {% for size in winees.size_quantities %}
-                                            <option value="{{size.size}}" data-quantity_available="{{size.quantity_available}}">
-                                                {{size.size}}
-                                            </option>
-                                        {% endfor %}
-                                        {% endif %}
-                                        {% endfor %}
-                                        </select></p>
-                                        <p class="m-0"><div class="input-group input-group-sm">
-                                            <div class="input-group-preppend">
-                                                <button class="decrement-qty btn btn-dark rounded-0 btn-sm" 
-                                                            data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                            </div>
-                                            <input class="form-control qty_input" type="number" value="1" min="1" max="99" id="id_input_{{wine.id}}" name="quantity" data-item_id="{{wine.id}}">
-                                            <div class="input-group-append mr-1">
-                                                <button class="increment-qty btn btn-dark rounded-0 btn-sm" 
-                                                    data-item_id="{{ wine.id }}" id="increment-qty_{{ wine.id }}">
-                                                <i class="fas fa-plus"></i>
-                                                </button>
-                                            </div>                  
-                                        </div>
-                                    </p>
-                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                </form> 
-                            </div>
-                        </div>
-                        <div class="row mb-1">
-                            <div class="col-12">
-                                <input type="submit" form="wine-form" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% if forloop.counter|divisibleby:4 %}
-            <hr>
-        {% endif %}
+        {% include 'wines/includes/wine_card.html' %}
     {% endfor %}
     </div>
     <div class="row">
-        <h3 class="font-weight-bold">Best Rated</h3>
+        <h1 class="font-weight-bold">Cele mai multe stele</h1>
         {% for wine in best_rated %}
-            <div class="col-3 " >
-                <div class="card ">
-                <span class="badge text-dark bg-warning price-tag p-1">{{wine.rating }} <i class="fas fa-star fa-sm"></i></span>
-                    <a class="text-decoration-none mx-auto" href="{% url 'wine_details' wine.id %}">
-                        {% if wine.image %}
-                            <img src="{{wine.image.url}}" class="card-img-top mx-auto" style="height:15rem; width:5rem;" alt="{{wine.name}}">
-                        {% else %}
-                            <img src="{{MEDIA_URL}}no_img.jpg" class="card-img-top" alt="no-image">
-                        {% endif %}
-                    </a>
-                        <div class="card-body text-dark">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h5 class="card-title text-center text-truncate">{{wine.name}}</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-5">
-                                    <p class="m-0">Regiune</p>
-                                    <p class="m-0">Struguri</p>
-                                    <p class="m-0">Pret</p>
-                                    <p class="m-0">Marime</p>
-                                    <p class="m-0 pt-2">Cantitate</p>
-                                </div>
-                                <div class="col-7 ">
-                                    <p class="mb-0 ml-auto text-truncate text-right"><strong >{{wine.region}}</strong></p>
-                                    <p class="m-0 text-truncate text-right"><strong>{{wine.grape}}</strong></p>
-                                    <p class="m-0 text-truncate text-right"><strong>{{wine.price}}RON</strong></p>
-                                    <form method="POST" action="{% url 'wines_view' %}" id="wine-form">
-                                         {% csrf_token %}
-                                        <p class="m-0"><select class="form-control form-control-sm size" name="wine_size" id="{{wine.id}}" > 
-                                        {% for winees in wines_sizes %}
-                                        {% if winees.wine == wine.id %}
-                                        {% for size in winees.size_quantities %}
-                                            <option value="{{size.size}}" data-quantity_available="{{size.quantity_available}}">
-                                                {{size.size}}
-                                            </option>
-                                        {% endfor %}
-                                        {% endif %}
-                                        {% endfor %}
-                                        </select></p>
-                                        <p class="m-0"><div class="input-group input-group-sm">
-                                            <div class="input-group-preppend">
-                                                <button class="decrement-qty btn btn-dark rounded-0 btn-sm" 
-                                                            data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
-                                                    <i class="fas fa-minus"></i>
-                                                </button>
-                                            </div>
-                                            <input class="form-control qty_input" type="number" value="1" min="1" max="99" id="id_input_{{wine.id}}" name="quantity" data-item_id="{{wine.id}}">
-                                            <div class="input-group-append mr-1">
-                                                <button class="increment-qty btn btn-dark rounded-0 btn-sm" 
-                                                    data-item_id="{{ wine.id }}" id="increment-qty_{{ wine.id }}">
-                                                <i class="fas fa-plus"></i>
-                                                </button>
-                                            </div>                  
-                                        </div></p>
-                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                                    </form> 
-                                </div>
-                            </div>
-                             <div class="row mb-1">
-                                    <div class="col-12">
-                                            <input type="submit" form="wine-form" class="btn btn-danger rounded-0 w-100" value="Comanda ACUM!">
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:4 %}
-            <hr>
-        {% endif %}
+            {% include 'wines/includes/wine_card.html' %}
         {% endfor %}
     </div>
 </div>
@@ -267,11 +53,15 @@ function handleEnableDisable(itemId){
         $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
     }
-// sets the quanitity at input and max value
+// sets the quantity at input and max value
 function maxQtyAvaibleSetter(wineId){
     var qty = $(`#${wineId} option:selected`).data('quantity_available');
+    var price = $(`#${wineId} option:selected`).data('price_size');
     $(`#id_input_${wineId}`).data('qty-available', qty);
     $(`#id_input_${wineId}`).attr('max', qty)
+    $(`.price_wine_${wineId}`).text(`${price} RON`)
+    console.log($(`.price_wine_${wineId}`)[0].class())
+    
 }
 // enables/disables the buttons on page load
 var allWineInputs = $('.qty_input');
