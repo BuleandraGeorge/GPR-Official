@@ -41,5 +41,7 @@ class lineitem(models.Model):
     lineitem_total = models.DecimalField(max_digits=8, decimal_places=2, blank=False, null=False)
 
     def save(self, *args, **kwargs):
-        self.lineitem_total = self.quantity * self.the_wine.price
+        theSize = self.the_wine.size_details_set.filter(size__name=self.product_size)
+        price = theSize[0].price
+        self.lineitem_total = self.quantity * price
         super().save(*args, **kwargs)

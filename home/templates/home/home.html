@@ -9,7 +9,10 @@
     <div class="jumbotron jumbotron-fluid mb-5" style="background: url({{offer.image.url}}); height:60vh; background-repeat:no-repeat; background-size:cover; background-position: center;">
         <div class="container pt-5" style="color:{{offer.text_color}}">
             <h1 class="display-4 pt-5">{{offer.title}}</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <p class="lead">{{offer.hook}}</p>
+            <p class="lead">
+                <a class="btn btn-danger btn-lg float-right border-dark rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe <i class="fas fa-chevron-right"></i></a>
+            </p>
         </div>
     </div>
     {% endfor %}

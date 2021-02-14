@@ -16,7 +16,7 @@
     </div>
     <div class="col-6">
         <!--Order Details-->
-        <div class="row">
+        <div class="row mb-3 shadow">
             <div class="col-2 ">Image</div>
             <div class="col-4 text-center">Name</div>
             <div class="col-2 text-center">Quantity</div>
@@ -24,8 +24,7 @@
             <div class="col-2 text-center">Subtotal</div>
         </div>
         {% for item in bag_items %}
-        <hr>
-        <div class="row">
+        <div class="row shadow mb-2">
             <div class="col-2 mx-auto">
                 {% if item.wine.image %}
                     <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
@@ -48,8 +47,7 @@
             </div>
         </div>
         {% endfor %}
-        <hr>
-    <div class="row d-flex justify-content-end">
+    <div class="row d-flex justify-content-end mb-3">
         <div class="col-4">
             <div class="row">
                 <div class="col-4">Total:</div>
@@ -57,7 +55,6 @@
             </div>
         </div>
     </div>
-    <hr>
     <div class="row">
     <div class="col-6">
         <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>

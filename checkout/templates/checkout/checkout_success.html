@@ -4,8 +4,10 @@
 {% load bag_tools %}
 {% block content %}
 <div class="container">
-    <h1 class="mb-2"> COMANDA {{order.order_number}} a fost plasata cu success </h1>
-    <h2 class="mb-2"> Va vom contacta in curand. Multumim!  </h2>
+    <h1>Checkout realizat cu success!</h1>
+    <hr>
+    <h3 class="mb-2"> Comanda <strong>{{order.order_number}} </strong>a fost plasata cu success si un email cu mai multe detalii a fost trimis pe adresa <strong>{{order.email}}</strong></h3>
+    <h3 class="mb-2"> Va vom contacta in curand privind finalizarea comenzii. Multumim!  </h3>
 </div>
 
 {% endblock %}
