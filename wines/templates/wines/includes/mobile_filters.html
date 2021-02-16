@@ -1,0 +1,80 @@
+  <div class="col-sm-12 col-md-4 " id="filter">
+        <div class="accordion " id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed border-0 bg-danger rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Filtre
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <div class="form-floating text-danger">
+                                <select class="form-select text-danger" id="color" aria-label="Floating label select example">
+                                    <option value="reset">Oricare</option>
+                                    <option value="Red" {% if 'Red' in categories %}selected{% endif %}>Rosii</option>
+                                    <option value="Rose"{% if 'Rose' in categories %}selected{% endif %}>Rose</option>
+                                    <option value="White"{% if 'White' in categories %}selected{% endif %}>Albe</option>
+                                </select>
+                                <label for="color">Culoare</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <div class="form-floating text-danger">
+                                <select class="form-select text-danger"" id="region" aria-label="Floating label select example">
+                                    <option value="reset">Oricare</option>
+                                    {% for region in regions%}
+                                        <option value="{{region.name}}"{% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="region">Regiunea</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <div class="form-floating text-danger">
+                                <select class="form-select text-danger" id="grape">
+                                    <option value="reset">Oricare</option>
+                                    {% for grape in grapes %}
+                                        <option value="{{grape.name}}"{% if grape.name in categories %}selected{% endif %}>
+                                            {{grape.name}}
+                                        </option>
+                                        {% endfor %}
+                                </select>
+                                <label for="grape">Struguri</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <div class="form-floating text-danger">
+                                <select class="form-select text-danger" id="price" aria-label="Floating label select example">
+                                    <option value="reset">Aleatoriu</option>
+                                    <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ascendent</option>
+                                    <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Descendent</option>
+                                </select>
+                                <label for="price">Pret</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            <div class="form-floating text-danger">
+                                <select class="form-select text-danger" id="rating" aria-label="Floating label select example">
+                                    <option value="reset" selected>Aleatoriu</option>
+                                    <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ascendent</option>
+                                    <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>Descendent</option>
+                                </select>
+                                <label for="rating">Rating</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<script type="text/javascript">
+// function that enables or disable the buttons
+function handleEnableDisable(cardForm){
+        var qty_input = $(cardForm.find('.qty_input'));
+        var currentInput = parseInt(qty_input.val());
+        var qtyAvailable = parseInt(qty_input.data('qty-available'));
+        var minusDisabled = currentInput < 2 ;
+        var plusDisabled = currentInput >= qtyAvailable; 
+        qty_input.prev('.input-group-preppend').find('.decrement-qty').prop('disabled', minusDisabled);
+        qty_input.next('.input-group-append').find('.increment-qty').prop('disabled', plusDisabled);
+    }
+// sets the quantity at input and max value
+function maxQtyAvaibleSetter(cardForm)
+{   var select = $(cardForm.find('select'));
+    var selectedOption = $(select.find(':selected'));
+    var qty = selectedOption.data('quantity_available');
+    var price = selectedOption.data('price_size');
+    var qty_input = $(cardForm.find('.qty_input'));
+    qty_input.data('qty-available', qty);
+    qty_input.attr('max', qty);
+}
+function priceHandler(cardForm){
+    var select = $(cardForm.find('select'));
+    var selectedOption = $(select.find(':selected'));
+    var price = selectedOption.data('price_size');
+    var priceSlot = cardForm.find('.price_slot');
+    priceSlot.text(`${price} RON`);
+}
+var allCards = $('.card-form');
+for(i=0; i<allCards.length; i++)
+{   var cardForm = $(allCards[i]);
+    maxQtyAvaibleSetter(cardForm);
+    priceHandler(cardForm);
+    handleEnableDisable(cardForm);
+}
+$('.decrement-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue - 1);
+    var cardForm = $($(this).closest('.card-form'));
+    handleEnableDisable(cardForm);
+})
+$('.increment-qty').click(function(e){
+    e.preventDefault();
+    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
+    var currentValue = parseInt($(closestInput).val());
+    $(closestInput).val(currentValue + 1);
+    var cardForm = $($(this).find('card-form'));
+    handleEnableDisable(cardForm);
+})
+
+// on change of size, updates the qty available for wine
+$('.card-form').change(function(event){
+    cardForm = $(this);
+    priceHandler(cardForm);
+    maxQtyAvaibleSetter(cardForm); // update the qty-available on input
+    handleEnableDisable(cardForm); // enable disable buttons accordingly
+    
+})
+</script>

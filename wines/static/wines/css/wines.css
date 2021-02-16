@@ -1,20 +1,9 @@
 .wine-filter-menu{
-    width:20vw;
-    top: 11rem;
+    top: 25vh;
     left:0;
-}
-.wine-list{
-    width:80vw;
-    margin-top: 10rem;
-    margin-left:19vw;
 }
 .text-right{
     text-align: right !important;
-}
-.page-header{
-    width:80vw;
-    top: 6.8rem;
-    left:20vw;
 }
 .price-tag{
     position: absolute;
@@ -22,4 +11,10 @@
     left:50%;
     color: black;
     font-size: 1.5rem;
+}
+
+@media (min-width: 768px){
+#filter{
+    float: left;
+}
 }

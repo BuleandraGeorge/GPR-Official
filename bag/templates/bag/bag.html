@@ -26,12 +26,13 @@
         </div>
         <div class="col-4 my-auto">
             <p><strong>{{item.wine.name}}</strong></p>
-            <p><strong>{{item.size}}</strong></p>
+            <p><strong >{{item.size}}</strong></p>
         </div>
         <div class="col-2 my-auto">
             <form method="POST" action="{% url 'edit_bag' item.wine.id %}">
                 {% csrf_token %}
                 {% include 'wines/includes/qty_input.html' %}
+                <input type="hidden" name="size" value="{{item.size}}">
              </form>
             <a class="text-decoration-none text-info update_link" >
                     Update
@@ -68,42 +69,27 @@ $('.update_link').click(function(e){
     console.log(form);
     form.submit();
 })
-function handleEnableDisable(itemId){
-        var currentInput = parseInt($(`#id_input_${itemId}`).val());
-        var qtyAvailable = parseInt($(`#id_input_${itemId}`).data('qty-available'));
-        var minusDisabled = currentInput < 1 ;
-        var plusDisabled = currentInput >= qtyAvailable; 
-        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
+function handleEnableDisable(qty_input)
+    {
+        var currentInput = parseInt($(qty_input).val());
+        var minusDisabled = currentInput < 1;
+        var plusDisabled = currentInput >= 99; 
+        $(qty_input).prev('.input-group-preppend').find('.decrement-qty').prop('disabled', minusDisabled);
+        $(qty_input).next('.input-group-append').find('.increment-qty').prop('disabled', plusDisabled);
     }
-// sets the quantity at input and max value
-function maxQtyAvaibleSetter(wineId){
-    var qty = $(`#${wineId} option:selected`).data('quantity_available');
-    $(`#id_input_${wineId}`).data('qty-available', qty);
-    $(`#id_input_${wineId}`).attr('max', qty)
-}
-// enables/disables the buttons on page load
-var allWineInputs = $('.qty_input');
-for (let i=0; i < allWineInputs.length; i++){
-    var wineId = $(allWineInputs[i]).data('item_id');
-    maxQtyAvaibleSetter(wineId);
-    handleEnableDisable(wineId);
-}
 $('.decrement-qty').click(function(e){
     e.preventDefault();
     var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue - 1);
-    var itemId = $(this).data('item_id');
-    handleEnableDisable(itemId);
-});
+    handleEnableDisable(closestInput);
+})
 $('.increment-qty').click(function(e){
     e.preventDefault();
     var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue + 1);
-    var itemId = $(this).data('item_id');
-    handleEnableDisable(itemId);
-});
+    handleEnableDisable(closestInput);
+})
 </script>
 {% endblock %}

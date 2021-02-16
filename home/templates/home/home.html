@@ -28,7 +28,7 @@
     <div class="row mb-5">
         <h1 class="font-weight-bold">Cele mai vandute</h1>
         {% for wine in best_sold %}
-        {% include 'wines/includes/wine_card.html' %}
+            {% include 'wines/includes/wine_card.html' %}
         {% endfor %}
     </div>
     <div class="row mb-5">
@@ -46,55 +46,6 @@
 </div>
 {% endblock %}
 {% block postload_js %}
-<script type="text/javascript">
-// function that enables or disable the buttons
-function handleEnableDisable(itemId){
-        var currentInput = parseInt($(`#id_input_${itemId}`).val());
-        var qtyAvailable = parseInt($(`#id_input_${itemId}`).data('qty-available'));
-        var minusDisabled = currentInput < 2 ;
-        var plusDisabled = currentInput >= qtyAvailable; 
-        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
-    }
-// sets the quantity at input and max value
-function maxQtyAvaibleSetter(wineId){
-    var qty = $(`#${wineId} option:selected`).data('quantity_available');
-    var price = $(`#${wineId} option:selected`).data('price_size');
-    $(`#id_input_${wineId}`).data('qty-available', qty);
-    $(`#id_input_${wineId}`).attr('max', qty)
-    $(`.price_wine_${wineId}`).text(`${price} RON`)
-    console.log($(`.price_wine_${wineId}`)[0].class())
-    
-}
-// enables/disables the buttons on page load
-var allWineInputs = $('.qty_input');
-for (let i=0; i < allWineInputs.length; i++){
-    var wineId = $(allWineInputs[i]).data('item_id');
-    maxQtyAvaibleSetter(wineId);
-    handleEnableDisable(wineId);
-}
-$('.decrement-qty').click(function(e){
-    e.preventDefault();
-    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-    var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue - 1);
-    var itemId = $(this).data('item_id');
-    handleEnableDisable(itemId);
-})
-$('.increment-qty').click(function(e){
-    e.preventDefault();
-    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-    var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue + 1);
-    var itemId = $(this).data('item_id');
-    handleEnableDisable(itemId);
-})
-
-// on change of size, updates the qty available for wine
-$('#winelist').change(function(event){
-    var wineTargeted = event.target.id
-    maxQtyAvaibleSetter(wineTargeted); // update the qty-available on input
-    handleEnableDisable(wineTargeted); // enable disable buttons accordingly
-})
-</script>
+{{block.super}}
+{% include 'wines/includes/card_js.html' %}
 {% endblock %}

@@ -7,31 +7,21 @@ body{
 }
 .brand{
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
-}
-.bg-black{
-    background-color: #000000;
-}
-
-.wine-color{
-    color: #fff;
     
-}
-.top-index{
-    z-index: 9999;
+    font-size: 1.5rem;
 }
 .wine-color:hover{
-    background-color: #fff;
-    color: #000;
+    background-color: #dc3545;
 }
 .content-zone{
-    margin-top:8rem;
+    
+    margin-top: 4rem;
 }
-@media (max-width: 768px){
-    body{
-            margin-top: 4rem;
+@media (min-width: 768px){
+    .content-zone{
+    margin-top:8rem;
     }
     .brand{
-    font-size: 1rem;
+    font-size: 2.5rem;
     } 
 }

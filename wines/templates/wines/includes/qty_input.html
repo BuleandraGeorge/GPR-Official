@@ -1,14 +1,12 @@
 <div class="input-group input-group-sm h-100">
     <div class="input-group-preppend">
-        <button class="decrement-qty btn" data-item_id="{{ wine.id }}" id="decrement-qty_{{ wine.id }}">
+        <button class="decrement-qty btn">
             <i class="fas fa-minus"></i>
         </button>
     </div>
-    <input class="form-control qty_input border-0 text-center" type="number" value="1" min="1" max="99" id="id_input_{{wine.id}}" name="quantity" data-item_id="{{wine.id}}">
+    <input class="form-control border-0 text-center qty_input" type="number" value="1" min="1" max="99" name="quantity">
     <div class="input-group-append mr-1">
-    <button class="increment-qty btn" 
-            data-item_id="{{ wine.id }}" 
-            id="increment-qty_{{ wine.id }}">
+    <button class="increment-qty btn">
         <i class="fas fa-plus"></i>
      </button>
     </div>                  

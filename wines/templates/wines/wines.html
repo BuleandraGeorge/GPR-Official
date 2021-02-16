@@ -4,93 +4,24 @@
   <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
 {% endblock %}
 {% block content %}
-<!-- Filter -->
-<div class="pb-2 wine-filter-menu fixed-top rounded" id="filter">
-    <h4 class="text-center my-2">Ordoneaza dupa</h4>
-    <div class="container-fluid">
-        <div class="row mb-1">
-            <div class="col-12">
-                <div class="form-floating text-dark">
-                    <select class="form-select" id="color" aria-label="Floating label select example">
-                        <option value="reset">Oricare</option>
-                        <option value="Red" {% if 'Red' in categories %}selected{% endif %}>Rosii</option>
-                        <option value="Rose"{% if 'Rose' in categories %}selected{% endif %}>Rose</option>
-                        <option value="White"{% if 'White' in categories %}selected{% endif %}>Albe</option>
-                    </select>
-                    <label for="color">Culoare</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-12">
-                <div class="form-floating text-dark">
-                    <select class="form-select" id="region" aria-label="Floating label select example">
-                        <option value="reset">Oricare</option>
-                        {% for region in regions%}
-                            <option value="{{region.name}}"{% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
-                        {% endfor %}
-                    </select>
-                    <label for="region">Regiunea</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-12">
-                <div class="form-floating text-dark">
-                    <select class="form-select" id="grape">
-                        <option value="reset">Oricare</option>
-                        {% for grape in grapes %}
-                            <option value="{{grape.name}}"{% if grape.name in categories %}selected{% endif %}>
-                                {{grape.name}}
-                            </option>
-                            {% endfor %}
-                    </select>
-                    <label for="grape">Struguri</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-12">
-                <div class="form-floating text-dark">
-                    <select class="form-select" id="price" aria-label="Floating label select example">
-                        <option value="reset">Aleatoriu</option>
-                        <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ascendent</option>
-                        <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Descendent</option>
-                    </select>
-                    <label for="price">Pret</label>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-1">
-            <div class="col-12">
-                <div class="form-floating text-dark">
-                    <select class="form-select" id="rating" aria-label="Floating label select example">
-                        <option value="reset" selected>Aleatoriu</option>
-                        <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ascendent</option>
-                        <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>Descendent</option>
-                    </select>
-                    <label for="rating">Rating</label>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Wine Display-->
-<div class="fixed-top page-header bg-white">
-    <h1 class="text-center mt-3">Vinuri</h1>
-</div>
-<div class="wine-list" id = "winelist">
-    <div class="container-fluid">
-        <span class="badge badge-pill badge-warning">Warning</span>
-        <div class="row">
+{% include 'wines/includes/mobile_filters.html' %}
+<div class="container-fluid wine-list" id ="winelist">
+    <h1 class="text-center">Vinuri</h1>
+    <span class="badge badge-pill badge-warning">Warning</span>
+    <div class="row">
+        {% if not wines %}
+            <p class="text-center">Nici un rezultat</p>
+        {% else %}
             {% for wine in wines %}
                 {% include 'wines/includes/wine_card.html' %}
             {% endfor %}
-        </div>
+        {% endif %}
     </div>
-</div>  
+</div>
+ 
 {% endblock %}
 {% block postload_js %}
+{{block.super}}
 <script type="text/javascript">
 $("#filter").change(function (event) {
     var selector = event.target.id;
@@ -110,53 +41,5 @@ $("#filter").change(function (event) {
         }
 });
 </script>
-<script type="text/javascript">
-// function that enables or disable the buttons
-function handleEnableDisable(itemId){
-        var currentInput = parseInt($(`#id_input_${itemId}`).val());
-        var qtyAvailable = parseInt($(`#id_input_${itemId}`).data('qty-available'));
-        var minusDisabled = currentInput < 2 ;
-        var plusDisabled = currentInput >= qtyAvailable; 
-        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
-    }
-// sets the quanitity at input and max value
-function maxQtyAvaibleSetter(wineId){
-    var qty = $(`#${wineId} option:selected`).data('quantity_available');
-    var price = $(`#${wineId} option:selected`).data('price_size');
-    $(`#id_input_${wineId}`).data('qty-available', qty);
-    $(`#id_input_${wineId}`).attr('max', qty)
-    $(`.price_wine_${wineId}`).text(`${price} RON`)
-}
-// enables/disables the buttons on page load
-var allWineInputs = $('.qty_input');
-for (let i=0; i < allWineInputs.length; i++){
-    var wineId = $(allWineInputs[i]).data('item_id');
-    maxQtyAvaibleSetter(wineId);
-    handleEnableDisable(wineId);
-}
-$('.decrement-qty').click(function(e){
-    e.preventDefault();
-    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-    var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue - 1);
-    var itemId = $(this).data('item_id');
-    handleEnableDisable(itemId);
-})
-$('.increment-qty').click(function(e){
-    e.preventDefault();
-    var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-    var currentValue = parseInt($(closestInput).val());
-    $(closestInput).val(currentValue + 1);
-    var itemId = $(this).data('item_id');
-    handleEnableDisable(itemId);
-})
-
-// on change of size, updates the qty available for wine
-$('#winelist').change(function(event){
-    var wineTargeted = event.target.id
-    maxQtyAvaibleSetter(wineTargeted); // update the qty-available on input
-    handleEnableDisable(wineTargeted); // enable disable buttons accordingly
-})
-</script>
+{% include 'wines/includes/card_js.html' %}
 {% endblock %}

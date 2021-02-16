@@ -27,7 +27,7 @@ def edit_bag(request, wine_id):
     wine_id = str(wine_id)
     size = request.POST.get('size')
     bag = request.session.get('bag',{})
-    if qty == 0:
+    if qty < 1:
         bag[wine_id]['size_qty'].pop(size)
         if not bag[wine_id]['size_qty']:
             bag.pop(wine_id)
