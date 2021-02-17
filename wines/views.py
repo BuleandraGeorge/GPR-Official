@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from .models import wine, color, region, grape, size_details, size
+
 
 
 def wines_view(request):
@@ -38,6 +40,13 @@ def wines_view(request):
         else:
             wines = wines.order_by("rating")
         categories.append(value)
+    if "q" in request.GET:
+        query = request.GET['q']
+        print(query)
+        if query:
+            queries = Q(vinification__icontains=query) | Q(aging__icontains=query) | Q(name__icontains=query) | Q(grape__name__icontains=query) | Q(region__name__icontains=query) | Q(color__name__icontains=query) | Q(color_details__icontains=query)
+            print(queries)
+            wines = wine.objects.filter(queries)
     context = {
         'wines': wines,
         'categories': categories,

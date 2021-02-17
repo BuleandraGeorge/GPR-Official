@@ -52,9 +52,9 @@
                             </a>
                             <ul class="dropdown-menu text-center rounded-0 m-0 wines-dropdown p-0 " aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item wine-color" href="{% url 'wines_view' %}">Toate</a></li>
-                                <li><a class="dropdown-item wine-color" href="#">Rosii</a></li>
-                                <li><a class="dropdown-item wine-color" href="#">Rose</a></li>
-                                <li><a class="dropdown-item wine-color" href="#">Albe</a></li>
+                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Red">Rosii</a></li>
+                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Rose">Rose</a></li>
+                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=White">Albe</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -74,14 +74,12 @@
                         </li>
                         <!-- Search bar -->
                         <li class="nav-item">
-                            <a class="nav-link  p-0 text-danger" href="#">
-                                <form>
+                                <form method="GET" action="{% url 'wines_view' %}">
                                     <div class="input-group input-group-sm">
                                         <input type="text" name="q" class="form-control text-danger rounded-0 border-start-0 border-end-0    border-top-0" placeholder="Cauta un vin" >
                                         <button type="submit" class="btn btn-small text-light bg-danger"><i class="fas fa-search"></i></button>
                                     </div>
                                 </form>
-                            </a>
                         </li>
                     </ul>
                 </div>
