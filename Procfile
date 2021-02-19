@@ -1,1 +1,1 @@
-web:gunicorn GPR_Official:application
+web: gunicorn GPR_Official.wsgi:application
