@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Q
+from django.db.models import Q, Min
 from .models import wine, color, region, grape, size_details, size
 
 
@@ -25,13 +25,14 @@ def wines_view(request):
         wines = wines.filter(grape__name=value)
         categories.append(value)
     ### Ordered by price, needs updates acc new wine model
-    """if "price" in request.GET:
+    if "price" in request.GET:
         value = request.GET['price']
+        wines = wine.objects.annotate(lowest_price=Min('size_details__price'))
         if value == "price_desc":
-            wines = wines.order_by("-price")
+            wines = wines.order_by("-lowest_price")
         else:
-            wines = wines.order_by("price")
-        categories.append(value)"""
+            wines = wines.order_by("lowest_price")
+        categories.append(value)
 
     if "rating" in request.GET:
         value = request.GET['rating']
