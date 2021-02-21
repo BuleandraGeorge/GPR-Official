@@ -21,8 +21,8 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-        self.total = self.lineitem.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        self.save
+        self.total = self.lineitem.aggregate(order_total=Sum('lineitem_total'))['order_total'] or 0
+        self.save()
 
     def save(self, *args, **kwargs):
         """
@@ -32,6 +32,9 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.order_number
 
 class lineitem(models.Model):
     order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='lineitem')
@@ -45,3 +48,7 @@ class lineitem(models.Model):
         price = theSize[0].price
         self.lineitem_total = self.quantity * price
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return "Produsele din comanda"
+

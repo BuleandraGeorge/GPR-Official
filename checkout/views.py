@@ -9,7 +9,7 @@ from wines.models import wine
 def checkout_success(request, order_number):
     order = Order.objects.get(order_number=order_number)
     email_send = request.session.get('email_send')
-    if email_send == "0":
+    if not email_send:
         cust_email = order.email
         lineitems = order.lineitem.all()
         subject = render_to_string('checkout/subject.txt', {"order": order})
@@ -26,7 +26,7 @@ def checkout_success(request, order_number):
     context = {
         "order":order,
     }
-    request.session['email_send'] = "1"
+    request.session['email_send'] = True
     template = "checkout/checkout_success.html"
     return render(request, template, context)
 
@@ -44,8 +44,8 @@ def checkout_view(request):
             'tara': request.POST['tara']
         }
         this_order = OrderForm(order_details)
+        order = this_order.save()
         if this_order.is_valid:
-            order = this_order.save()
             for item_id, item_data in bag.items():
                 the_wine = get_object_or_404(wine, pk=item_id)
                 for size, qty in item_data['size_qty'].items():
@@ -56,7 +56,8 @@ def checkout_view(request):
                         quantity=qty,
                     )
                     order_line_item.save()
-            request.session['email_send'] = "0"
+            request.session['email_send'] = False
+            order.update_total()
         return redirect(reverse(
             'checkout_success',
             args=[order.order_number]))

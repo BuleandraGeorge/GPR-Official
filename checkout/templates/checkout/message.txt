@@ -8,7 +8,7 @@ Produsele comandate:
 {% for line in items %}
     {{line.the_wine.name}} {{line.product_size}} x{{line.quantity}}, subtotal {{line.lineitem_total}} RON
 {% endfor %}
-Total de plata : {{total}} RON
+Total de plata : {{order.total}} RON
 
 Detalii de livrare:
 Nume: {{order.nume}}
