@@ -4,9 +4,10 @@
   <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
 {% endblock %}
 {% block content %}
-{% include 'wines/includes/mobile_filters.html' %}
+
 <div class="container-fluid wine-list" id ="winelist">
     <h1 class="text-center mt-5">Vinuri</h1>
+    {% include 'wines/includes/mobile_filters.html' %}
     <span class="badge badge-pill badge-warning">Warning</span>
     <div class="row">
         {% if not wines %}

@@ -1,3 +1,9 @@
+.hero-img{
+    height:60vh; 
+    background-repeat:no-repeat !important;
+    background-size:cover !important;
+    background-position: center !important;
+}
 .wine-filter-menu{
     top: 25vh;
     left:0;

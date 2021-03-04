@@ -42,7 +42,19 @@
         <div class="col-2 my-auto">
             <form method="POST" action="{% url 'edit_bag' item.wine.id %}">
                 {% csrf_token %}
-                {% include 'wines/includes/qty_input.html' %}
+                <div class="input-group input-group-sm h-100">
+                    <div class="input-group-preppend">
+                        <button class="decrement-qty btn">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                    <input class="form-control border-0 text-center qty_input" type="number" value="{{ item.qty }}" min="0" max="99" name="quantity">
+                    <div class="input-group-append mr-1">
+                    <button class="increment-qty btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    </div>                  
+                </div>
                 <input type="hidden" name="size" value="{{item.size}}">
              </form>
             <a class="text-decoration-none text-info update_link" >

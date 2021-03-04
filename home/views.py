@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.db.models import Sum
 from offers.models import Offer
 from wines.models import wine, size_details
+from decorators import security
 
+
+@security
 def home(request):
     offer = Offer.objects.all()
     displayed_offers = offer.filter(display=True)

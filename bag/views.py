@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, reverse
 from wines.models import wine
+from decorators import security
 
 
+@security
 def bag_view(request):
     template="bag/bag.html"
     return render(request, template)
 
+
+@security
 def add_to_bag(request, wine_id):
     size = request.POST['wine_size']
     quantity = int(request.POST['quantity'])
@@ -22,6 +26,8 @@ def add_to_bag(request, wine_id):
     request.session['bag'] = bag
     return redirect(redirect_url)
 
+
+@security
 def edit_bag(request, wine_id):
     qty = int(request.POST.get('quantity'))
     wine_id = str(wine_id)

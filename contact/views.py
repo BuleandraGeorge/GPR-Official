@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from decorators import security
 
-# Create your views here.
+
+@security
 def contact(request):
     template = "contact/contact.html"
     return render(request, template)

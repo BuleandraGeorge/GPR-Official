@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Min
 from .models import wine, color, region, grape, size_details, size
+from decorators import security
 
 
-
+@security
 def wines_view(request):
     wines = wine.objects.all()
     size_detailss = size_details.objects.all()
@@ -58,6 +59,8 @@ def wines_view(request):
     template = 'wines/wines.html'
     return render(request, template, context)
 
+
+@security
 def wine_details(request, wine_id):
     current_wine = get_object_or_404(wine, pk=wine_id)
     size_detailss = size_details.objects.all()

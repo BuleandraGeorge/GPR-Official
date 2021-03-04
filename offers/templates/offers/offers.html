@@ -18,10 +18,14 @@
             <div class="col-12">
             <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
                     <div class="container">
-                        <h1 class="display-4">{{offer.title}}</h1>
-                    <p class="lead">{{offer.hook}}</p>
+                        <h1 class="display-4">
+                                {{offer.title}}
+                        </h1>
+                        <p class="lead fw-bolt">
+                            {{offer.hook}}
+                        </p>
                      <p class="lead">
-                        <a class="btn btn-danger btn-lg float-right border-dark rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe <i class="fas fa-chevron-right"></i></a>
+                        <a class="btn btn-danger btn-lg float-right rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe <i class="fas fa-chevron-right"></i></a>
                     </p>
                     </div>
                 </div>
@@ -41,8 +45,12 @@
                 <div class="col-12">
             <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
                     <div class="container">
-                        <h1 class="display-4">{{offer.title}}</h1>
-                    <p class="lead">{{offer.hook}}</p>
+                        <h1 class="display-4 ">
+                            {{offer.title}}
+                            </h1>
+                    <p class="lead fw-bolt">
+                        {{offer.hook}}
+                        </p>
                      <p class="lead">
                         <a class="btn btn-primary btn-lg float-right" href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe</a>
                     </p>

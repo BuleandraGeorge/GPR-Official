@@ -5,7 +5,10 @@ from django.template.loader import render_to_string
 from .forms import OrderForm
 from .models import Order, lineitem
 from wines.models import wine
+from decorators import security
 
+
+@security
 def checkout_success(request, order_number):
     order = Order.objects.get(order_number=order_number)
     email_send = request.session.get('email_send')
@@ -30,7 +33,7 @@ def checkout_success(request, order_number):
     template = "checkout/checkout_success.html"
     return render(request, template, context)
 
-
+@security
 def checkout_view(request):
     bag = request.session.get('bag', {})
     if request.method == "POST":
