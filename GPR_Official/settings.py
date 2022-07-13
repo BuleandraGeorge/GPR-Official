@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
+
     'home',
     'wines',
     'offers',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'checkout',
     'contact',
     'security',
+    'profiles',
     # Others
     'colorfield',
     'django_countries',
@@ -133,6 +135,14 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL = True
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
