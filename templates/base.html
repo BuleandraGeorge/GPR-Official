@@ -20,81 +20,99 @@
     <title>GPR {%block title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="fixed-top bg-white top-index shadow">
-         <!-- Lg desktop header-->
-        <nav class="navbar navbar-expand-lg d-none d-lg-block p-0">
-            <div class="container-fluid">
-                <a class="navbar-brand text-dark pt-3 brand" href="{% url 'home' %}" >Grupo Pierola Romania</a>
-                <ul class="navbar-nav font-header">
-                    <li class="nav-item">
-                        <a class="nav-link text-light bg-danger" href="{% url 'bag' %}"><strong>{{total}} RON</strong><i class="fas fa-shopping-cart"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Tablet and less header-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light menu p-0 ">
-            <div class="container-fluid">
-                <!-- Brand -->
-                <a class="navbar-brand text-dark d-lg-none m-0 brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
-                <!-- Menu Button-->
-                <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <!-- List of menu option-->
-                <div class="collapse navbar-collapse justify-content-end font-header" id="navbarNav">
-                    <ul class="navbar-nav text-center mb-2 text-danger">
-                        <!-- Dropdown menu option-->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-wine-glass-alt"></i>
-                                Vinuri
-                            </a>
-                            <ul class="dropdown-menu text-center rounded-0 m-0 wines-dropdown p-0 " aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view' %}">Toate</a></li>
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Red">Rosii</a></li>
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Rose">Rose</a></li>
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=White">Albe</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="{% url 'offers' %}">
-                                <i class="fas fa-gifts"></i>
-                                Oferte si Promotii
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="{% url 'contact' %}">
-                                <i class="far fa-comment-alt"></i>
-                                Contact
-                            </a>
-                        </li>
-                        <li class="nav-item d-md-none">
-                            <a class="nav-link text-danger" href="{% url 'bag' %} "><i class="fas fa-shopping-cart text-light bg-danger"></i> {{total}} RON</a>
-                        </li>
-                        <!-- Search bar -->
-                        <li class="nav-item">
-                                <form method="GET" action="{% url 'wines_view' %}">
-                                    <div class="input-group input-group-sm">
-                                        <input type="text" name="q" class="form-control text-danger rounded-0 border-start-0 border-end-0    border-top-0" placeholder="Cauta un vin" >
-                                        <button type="submit" class="btn btn-small text-light bg-danger"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="content-zone">
-        {% block content %}
-        {% endblock %}
-    </div>
-    
-    {% block extra_js%}
-    {% endblock %}
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+      <header class="fixed-top bg-white top-index shadow">
+          <!-- Lg desktop header-->
+          <nav class="navbar navbar-expand-lg d-none d-lg-block p-0">
+              <div class="container-fluid">
+                  <a class="navbar-brand text-dark pt-3 brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
+                  <ul class="navbar-nav font-header">
+                      <li class="nav-item">
+                          <a class="nav-link text-light bg-danger" href="{% url 'bag' %}"><strong>{{total}} RON</strong><i class="fas fa-shopping-cart"></i></a>
+                      </li>
+                  </ul>
+              </div>
+          </nav>
+          <!-- Tablet and less header-->
+          <nav class="navbar navbar-expand-lg navbar-light bg-light menu p-0 ">
+              <div class="container-fluid">
+                  <!-- Brand -->
+                  <a class="navbar-brand text-dark d-lg-none m-0 brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
+                  <!-- Menu Button-->
+                  <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <!-- List of menu option-->
+                  <div class="collapse navbar-collapse justify-content-end font-header" id="navbarNav">
+                      <ul class="navbar-nav text-center mb-2 text-danger">
+                          <!-- Dropdown menu option-->
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fas fa-wine-glass-alt"></i>
+                                  Vinuri
+                              </a>
+                              <ul class="dropdown-menu text-center rounded-0 m-0 wines-dropdown p-0 " aria-labelledby="navbarDropdown">
+                                  <li><a class="dropdown-item wine-color" href="{% url 'wines_view' %}">Toate</a></li>
+                                  <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Red">Rosii</a></li>
+                                  <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Rose">Rose</a></li>
+                                  <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=White">Albe</a></li>
+                              </ul>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-danger" href="{% url 'offers' %}">
+                                  <i class="fas fa-gifts"></i>
+                                  Oferte si Promotii
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link text-danger" href="{% url 'contact' %}">
+                                  <i class="far fa-comment-alt"></i>
+                                  Contact
+                              </a>
+                          </li>
+                          <li class="nav-item d-md-none">
+                              <a class="nav-link text-danger" href="{% url 'bag' %} "><i class="fas fa-shopping-cart text-light bg-danger"></i> {{total}} RON</a>
+                          </li>
+                          <!-- Search bar -->
+                          <li class="nav-item">
+                              <form method="GET" action="{% url 'wines_view' %}">
+                                  <div class="input-group input-group-sm">
+                                      <input type="text" name="q" class="form-control text-danger rounded-0 border-start-0 border-end-0    border-top-0" placeholder="Cauta un vin">
+                                      <button type="submit" class="btn btn-small text-light bg-danger"><i class="fas fa-search"></i></button>
+                                  </div>
+                              </form>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+      </header>
+     
+      <div class="content-zone">
+          {% if messages %}
+          <div class="message-container">
+              {% for message in messages %}
+              {% with message.level as level %}
+              {% if level == 40 %}
+              {% include 'includes/toasts/toast_error.html' %}
+              {% elif level == 30 %}
+              {% include 'includes/toasts/toast_warning.html' %}
+              {% elif level == 25 %}
+              {% include 'includes/toasts/toast_success.html' %}
+              {% else %}
+              {% include 'includes/toasts/toast_info.html' %}
+              {% endif %}
+              {% endwith %}
+              {% endfor %}
+          </div>
+          {% endif %}
+          {% block content %}
+          {% endblock %}
+      </div>
+
+      {% block extra_js%}
+      {% endblock %}
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>
 {% block postload_js %}

@@ -3,10 +3,13 @@ from django.db.models import Sum
 from offers.models import Offer
 from wines.models import wine, size_details
 from decorators import security
+import os
 
 
 @security
 def home(request):
+    if 'USE_AWS' in os.environ:
+        print('yes')
     offer = Offer.objects.all()
     displayed_offers = offer.filter(display=True)
     wines = wine.objects.all()
