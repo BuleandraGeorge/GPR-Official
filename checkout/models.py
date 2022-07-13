@@ -3,6 +3,7 @@ from django.db.models import Sum
 from django_countries.fields import CountryField
 from django.db import models
 from wines.models import wine
+from profiles.models import UserProfile
 
 
 class Order(models.Model):
@@ -16,6 +17,7 @@ class Order(models.Model):
     tara = CountryField(default='RO')
     date = models.DateField(auto_now=True)
     total = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()

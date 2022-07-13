@@ -6,7 +6,7 @@ from .forms import OrderForm
 from .models import Order, lineitem
 from wines.models import wine
 from decorators import security
-
+from django.contrib import messages
 
 @security
 def checkout_success(request, order_number):
@@ -65,6 +65,10 @@ def checkout_view(request):
             'checkout_success',
             args=[order.order_number]))
     else:
+        bag = request.session.get('bag', {})
+        if not bag:
+            messages.error(request, "There's nothing in your bag at the moment")
+            return redirect(reverse('wines_view'))
         template = "checkout/checkout.html"
         context = {
             "OrderForm": OrderForm,
