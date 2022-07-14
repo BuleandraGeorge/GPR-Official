@@ -8,6 +8,44 @@
     <hr>
     <h3 class="mb-2"> Comanda <strong>{{order.order_number}} </strong>a fost plasata cu success si un email cu mai multe detalii a fost trimis pe adresa <strong>{{order.email}}</strong></h3>
     <h3 class="mb-2"> Va vom contacta in curand privind finalizarea comenzii. Multumim!  </h3>
+    <h4 class="text-center text-dark my-5"> Comanda </h4>
+    <div class="row ">
+        <div class="col-6">
+            <p class="fw-bold">Nume</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center fw-bold">Dimensiune</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center fw-bold">Cantitate</p>
+        </div>
+        <div class="col-2"> 
+            <p class="text-end fw-bold">Subtotal</p>
+        </div>
+    </div>
+    {% for item in order.lineitem.all %}
+    <div class="row">
+        <div class="col-6">
+            <p>{{item.the_wine.name}}</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center"> {{item.product_size}}</p>
+        </div>
+        <div class="col-2">
+            <p class="text-center">{{item.quantity}}</p>
+        </div>
+        <div class="col-2">
+            <p class="text-end">{{item.lineitem_total}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <hr />
+    <div class="row d-flex justify-content-end">
+        <div class="col-1 fw-bold text-end">Total:</div>
+        <div class="col-1 text-end">{{order.total}}</div>
+    </div>
+
+
 </div>
 
 {% endblock %}

@@ -8,8 +8,6 @@ import os
 
 @security
 def home(request):
-    if 'USE_AWS' in os.environ:
-        print('yes')
     offer = Offer.objects.all()
     displayed_offers = offer.filter(display=True)
     wines = wine.objects.all()

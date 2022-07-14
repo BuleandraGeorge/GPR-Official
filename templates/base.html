@@ -26,8 +26,41 @@
               <div class="container-fluid">
                   <a class="navbar-brand text-dark pt-3 brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
                   <ul class="navbar-nav font-header">
+                      <li class="nav-item dropdown mx-4">
+                          <a class="nav-link text-light dropdown bg-danger" href="#" id="user-options" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <div class="text-center">
+                                  <div>
+                                    <i class="fas fa-user fa-lg"></i>
+                                      <span>My Account</span>
+                                  </div>
+                              </div>
+                          </a>
+                          <ul class="dropdown-menu border-0" aria-labelledby="user-options">
+                              {% if request.user.is_authenticated %}
+                              {% if request.user.is_superuser %}
+                              <li>
+                                  <a href="{% url 'admin:index' %}" class="dropdown-item">Product Management</a>
+                              </li>
+                              {% endif %}
+                              <li><a href="{% url 'profile_view' %}" class="dropdown-item wine-color">My Profile</a></li>
+                              <li>
+                                  <a href="{% url 'account_logout' %}" class="dropdown-item wine-color">Logout</a>
+                              </li>
+                                  {% else %}
+                              <li>
+                                  <a href="{% url 'account_signup' %}" class="dropdown-item wine-color">Register</a>
+                              </li>
+                              <li>
+                                  <a href="{% url 'account_login' %}" class="dropdown-item wine-color">Login</a>
+                              </li>
+                                  {% endif %}
+                          </ul>
+                      </li>
                       <li class="nav-item">
-                          <a class="nav-link text-light bg-danger" href="{% url 'bag' %}"><strong>{{total}} RON</strong><i class="fas fa-shopping-cart"></i></a>
+                          <a class="nav-link text-light bg-danger" href="{% url 'bag' %}">
+                              <i class="fas fa-shopping-cart"></i>
+                              <strong>{{total}} RON</strong>
+                          </a>
                       </li>
                   </ul>
               </div>
@@ -46,11 +79,11 @@
                       <ul class="navbar-nav text-center mb-2 text-danger">
                           <!-- Dropdown menu option-->
                           <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              <a class="nav-link dropdown text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                   <i class="fas fa-wine-glass-alt"></i>
-                                  Vinuri
+                                  <span>Vinuri</span>
                               </a>
-                              <ul class="dropdown-menu text-center rounded-0 m-0 wines-dropdown p-0 " aria-labelledby="navbarDropdown">
+                              <ul class="dropdown-menu text-center border-0 wines-dropdown" aria-labelledby="navbarDropdown">
                                   <li><a class="dropdown-item wine-color" href="{% url 'wines_view' %}">Toate</a></li>
                                   <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Red">Rosii</a></li>
                                   <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Rose">Rose</a></li>
@@ -69,8 +102,41 @@
                                   Contact
                               </a>
                           </li>
-                          <li class="nav-item d-md-none">
-                              <a class="nav-link text-danger" href="{% url 'bag' %} "><i class="fas fa-shopping-cart text-light bg-danger"></i> {{total}} RON</a>
+                          <li class="nav-item d-lg-none">
+                              <a class="nav-link text-danger" href="{% url 'bag' %} ">
+                              <i class="fas fa-shopping-cart text-danger "></i> {{total}} RON
+                              </a>
+                          </li>
+                          <li class="nav-item  d-lg-none">
+                          <li class="nav-item dropdown mx-4">
+                              <a class="nav-link text-danger dropdown" href="#" id="user-options"  data-bs-toggle="dropdown" aria-expanded="false">
+                                  <div class="text-center">
+                                      <div>
+                                          <i class="fas fa-user fa-lg"></i>
+                                          <span>My Account</span>
+                                      </div>
+                                  </div>
+                              </a>
+                              <ul class="dropdown-menu border-0" aria-labelledby="user-options">
+                                  {% if request.user.is_authenticated %}
+                                  {% if request.user.is_superuser %}
+                                  <li>
+                                      <a href="#" class="dropdown-item wine-color">Product Management</a>
+                                  </li>
+                                  {% endif %}
+                                  <li><a href="{% url 'profile_view' %}" class="dropdown-item wine-color">My Profile</a></li>
+                                  <li>
+                                      <a href="{% url 'account_logout' %}" class="dropdown-item wine-color">Logout</a>
+                                  </li>
+                                  {% else %}
+                                  <li>
+                                      <a href="{% url 'account_signup' %}" class="dropdown-item wine-color">Register</a>
+                                  </li>
+                                  <li>
+                                      <a href="{% url 'account_login' %}" class="dropdown-item wine-color">Login</a>
+                                  </li>
+                                  {% endif %}
+                              </ul>
                           </li>
                           <!-- Search bar -->
                           <li class="nav-item">

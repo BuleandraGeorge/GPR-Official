@@ -4,66 +4,87 @@
 {% load bag_tools %}
 {% block content %}
 <div class="container">
-<h1 class="mb-2"> Checkout </h1>
-<div class="row">
-    <div class="col-12 mb-5">
-        <!--Delivery Address-->
-        <form method="POST" action="#">
-            {% csrf_token %}
-            {{OrderForm|crispy}}
-            <button class="btn btn-warning rounded-0 mt-3" type="submit">Trimite comanda de {{total}} RON <i class="fas fa-paper-plane"></i></button>
-        </form>
-    </div>
-    <div class="col-12 mb-5">
-        <!--Order Details-->
-        <div class="container">
-            {% for item in bag_items %}
-        <div class="row pb-2 shadow">
-        <div class="col-2 mx-auto">
-            {% if item.wine.image %}
-                <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
-            {% else %}
-                <img src="{{MEDIA_URL}}no_img.jpg" width="100rem" height="100rem" >
-            {% endif %}
+    <h1 class="mb-2"> Checkout </h1>
+    <div class="row">
+        <div class="col-12 mb-5">
+            <!--Delivery Address-->
+            <form method="POST" action="#">
+                {% csrf_token %}
+                {{OrderForm|crispy}}
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="form-check form-check-inline float-right mr-0">
+                            {% if user.is_authenticated %}
+                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                            {% else %}
+                            <label class="form-check-label" for="id-save-info">
+                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
+                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                            </label>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-warning rounded-0 mt-3" type="submit">Trimite comanda de {{total}} RON <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+           
+            
+            </form>
         </div>
-        <div class="col-4 my-auto">
-            <p><strong>{{item.wine.name}}</strong></p>
-            <p><strong >{{item.size}}</strong></p>
-        </div>
-        <div class="col-2 my-auto">
-           {{ item.qty }}
-        </div>
-        <div class="col-2 my-auto text-center px-0">
-            <span>Price:</span>
-            <strong>{{item.price}} RON</strong>
-        </div>
-        <div class="col-2 my-auto text-center px-0">
-            <span>Subtotal:</span>
-            <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
-        </div>
-        </div>
-        {% endfor %}
-        </div>
+        <div class="col-12 mb-5">
+            <!--Order Details-->
+            <div class="container">
+                {% for item in bag_items %}
+            <div class="row pb-2 shadow">
+            <div class="col-2 mx-auto">
+                {% if item.wine.image %}
+                    <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
+                {% else %}
+                    <img src="{{MEDIA_URL}}no_img.jpg" >
+                {% endif %}
+            </div>
+            <div class="col-4 my-auto">
+                <p><strong>{{item.wine.name}}</strong></p>
+                <p><strong >{{item.size}}</strong></p>
+            </div>
+            <div class="col-2 my-auto">
+               {{ item.qty }}
+            </div>
+            <div class="col-2 my-auto text-center px-0">
+                <span>Price:</span>
+                <strong>{{item.price}} RON</strong>
+            </div>
+            <div class="col-2 my-auto text-center px-0">
+                <span>Subtotal:</span>
+                <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
+            </div>
+            </div>
+            {% endfor %}
+            </div>
         
-    <div class="row d-flex justify-content-end mb-3">
-        <div class="col-4">
-            <div class="row">
-                <div class="col-4">Total:</div>
-                <div class="col-8"><strong>{{total}} RON</strong></div>
+        <div class="row d-flex justify-content-end mb-3">
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-4">Total:</div>
+                    <div class="col-8"><strong>{{total}} RON</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>
+            </div>
+            <div class="col-6">
+                <a href="{% url 'bag' %}" class="btn btn-outline-danger rounded-0 w-100">
+                    <i class="fas fa-shopping-cart"></i>
+                    <strong>  Editeaza </strong>
+                </a>
             </div>
         </div>
     </div>
-    <div class="row">
-    <div class="col-6">
-        <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>
     </div>
-    <div class="col-6">
-        <a href="{% url 'bag' %}" class="btn btn-outline-danger rounded-0 w-100">
-            <i class="fas fa-shopping-cart"></i>
-            <strong>  Editeaza </strong>
-        </a>
-    </div>
-</div>
 </div>
 
 {% endblock %}

@@ -24,7 +24,7 @@ def profile_view(request):
         'form': form,
         'orders': orders
     }
-    template = 'profiles/my_profile.html'
+    template = 'profiles/profiles.html'
     return render(request, template,  context)
 
 
