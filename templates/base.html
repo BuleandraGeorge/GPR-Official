@@ -108,36 +108,6 @@
                               </a>
                           </li>
                           <li class="nav-item  d-lg-none">
-                          <li class="nav-item dropdown mx-4">
-                              <a class="nav-link text-danger dropdown" href="#" id="user-options"  data-bs-toggle="dropdown" aria-expanded="false">
-                                  <div class="text-center">
-                                      <div>
-                                          <i class="fas fa-user fa-lg"></i>
-                                          <span>My Account</span>
-                                      </div>
-                                  </div>
-                              </a>
-                              <ul class="dropdown-menu border-0" aria-labelledby="user-options">
-                                  {% if request.user.is_authenticated %}
-                                  {% if request.user.is_superuser %}
-                                  <li>
-                                      <a href="#" class="dropdown-item wine-color">Product Management</a>
-                                  </li>
-                                  {% endif %}
-                                  <li><a href="{% url 'profile_view' %}" class="dropdown-item wine-color">My Profile</a></li>
-                                  <li>
-                                      <a href="{% url 'account_logout' %}" class="dropdown-item wine-color">Logout</a>
-                                  </li>
-                                  {% else %}
-                                  <li>
-                                      <a href="{% url 'account_signup' %}" class="dropdown-item wine-color">Register</a>
-                                  </li>
-                                  <li>
-                                      <a href="{% url 'account_login' %}" class="dropdown-item wine-color">Login</a>
-                                  </li>
-                                  {% endif %}
-                              </ul>
-                          </li>
                           <!-- Search bar -->
                           <li class="nav-item">
                               <form method="GET" action="{% url 'wines_view' %}">
