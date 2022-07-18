@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12 mb-5">
             <!--Delivery Address-->
-            <form method="POST" action="#">
+            <form method="POST" action="#"  id="payment-form">
                 {% csrf_token %}
                 {{OrderForm|crispy}}
                 <div class="row mt-2">
@@ -25,66 +25,80 @@
                             {% endif %}
                         </div>
                     </div>
+                    <fieldset class="p-3 m-2 border border-dark rounded-2" id="fieldset-card">
+                        <legend class="fieldset-label text-black px-2 w-auto mb-4">Payment</legend>
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+                        <!-- Used to display form errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    </fieldset>
                     <div class="col-12">
-                        <button class="btn btn-warning rounded-0 mt-3" type="submit">Trimite comanda de {{total}} RON <i class="fas fa-paper-plane"></i></button>
+                        <button class="btn btn-warning rounded-0 mt-3" type="submit" id="submit-button">Trimite comanda de {{total}} RON <i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
-           
-            
             </form>
         </div>
+       
         <div class="col-12 mb-5">
             <!--Order Details-->
             <div class="container">
                 {% for item in bag_items %}
-            <div class="row pb-2 shadow">
-            <div class="col-2 mx-auto">
-                {% if item.wine.image %}
-                    <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
-                {% else %}
-                    <img src="{{MEDIA_URL}}no_img.jpg" >
-                {% endif %}
+                <div class="row pb-2 shadow">
+                    <div class="col-2 mx-auto">
+                        {% if item.wine.image %}
+                        <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
+                        {% else %}
+                        <img src="{{MEDIA_URL}}no_img.jpg">
+                        {% endif %}
+                    </div>
+                    <div class="col-4 my-auto">
+                        <p><strong>{{item.wine.name}}</strong></p>
+                        <p><strong>{{item.size}}</strong></p>
+                    </div>
+                    <div class="col-2 my-auto">
+                        {{ item.qty }}
+                    </div>
+                    <div class="col-2 my-auto text-center px-0">
+                        <span>Price:</span>
+                        <strong>{{item.price}} RON</strong>
+                    </div>
+                    <div class="col-2 my-auto text-center px-0">
+                        <span>Subtotal:</span>
+                        <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="col-4 my-auto">
-                <p><strong>{{item.wine.name}}</strong></p>
-                <p><strong >{{item.size}}</strong></p>
-            </div>
-            <div class="col-2 my-auto">
-               {{ item.qty }}
-            </div>
-            <div class="col-2 my-auto text-center px-0">
-                <span>Price:</span>
-                <strong>{{item.price}} RON</strong>
-            </div>
-            <div class="col-2 my-auto text-center px-0">
-                <span>Subtotal:</span>
-                <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
-            </div>
-            </div>
-            {% endfor %}
-            </div>
-        
-        <div class="row d-flex justify-content-end mb-3">
-            <div class="col-4">
-                <div class="row">
-                    <div class="col-4">Total:</div>
-                    <div class="col-8"><strong>{{total}} RON</strong></div>
+
+            <div class="row">
+                <div class="row d-flex justify-content-end mb-3">
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-4">Total:</div>
+                            <div class="col-8"><strong>{{total}} RON</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>
+                </div>
+                <div class="col-6">
+                    <a href="{% url 'bag' %}" class="btn btn-outline-danger rounded-0 w-100">
+                        <i class="fas fa-shopping-cart"></i>
+                        <strong>  Editeaza </strong>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-                <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>
-            </div>
-            <div class="col-6">
-                <a href="{% url 'bag' %}" class="btn btn-outline-danger rounded-0 w-100">
-                    <i class="fas fa-shopping-cart"></i>
-                    <strong>  Editeaza </strong>
-                </a>
-            </div>
-        </div>
-    </div>
     </div>
 </div>
 
+{% endblock %}
+{% block extra_js %}
+{{stripe_public_key|json_script:"id_stripe_public_key"}}
+{{client_secret|json_script:"id_client_secret"}}
+<script type="text/javascript" src="{% static 'checkout/js/stripe_cards.js' %}" defer></script>
 {% endblock %}

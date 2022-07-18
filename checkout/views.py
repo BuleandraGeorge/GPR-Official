@@ -1,15 +1,18 @@
 import os
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404, reverse, redirect, HttpResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.views.decorators.http import require_POST
+from django.contrib import messages
 from .forms import OrderForm
 from .models import Order, lineitem
 from profiles.models import UserProfile
 from wines.models import wine
 from decorators import security
-from django.contrib import messages
-from bag.context import bag_content
+
+from bag.contexts import bag_content
+
 ### STRIPE ####
 
 import stripe
@@ -78,6 +81,7 @@ def checkout_success(request, order_number):
 
 @security
 def checkout_view(request):
+    bag = request.session.get('bag', {})
     if request.method == "POST":
         order_details = {
             'nume': request.POST['nume'],
@@ -107,13 +111,13 @@ def checkout_view(request):
             'checkout_success',
             args=[order.order_number]))
     else:
-        bag = request.session.get('bag', {})
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
             return redirect(reverse('wines_view'))
-        total = bag_content['total']
+        current_bag = bag_content(request)
+        total = current_bag['total']
         stripe_total = round(total*100)
-        stripe.secret_key = os.environ["STRIPE_SK"]
+        stripe.api_key = settings.STRIPE_SK
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency='RON',
@@ -138,10 +142,24 @@ def checkout_view(request):
         template = "checkout/checkout.html"
         context = {
             "OrderForm": order_form,
-            "stripe_public_key": os.environ['STRIPE_PK']
+            "stripe_public_key": settings.STRIPE_PK,
             "client_secret": intent.client_secret
         }
         return render(request, template, context)
-
-
+@require_POST
+def cache_checkout_data(request):
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SK
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        print(e)
+        return HttpResponse(content=e, status=400)
 ### STRIPE VIEWS ###

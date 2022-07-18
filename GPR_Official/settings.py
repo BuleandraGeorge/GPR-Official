@@ -175,7 +175,7 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
     DEFAULT_PHONE = "07242424242"
 
-if 'asd' in os.environ:
+if not os.environ["DEVELOPMENT"]:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
@@ -209,10 +209,10 @@ else:
 
 ### STRIPE ####
 
-if os.environ['DEVELOPEMENT']:
-   STRIPE_PK = os.environ["STRIPE_DEVELOPEMENT_PK"]
-   STRIPE_SK = os.envrion["STRIPE_DEVELOPEMENT_SK"]
+if os.environ['DEVELOPMENT']:
+   STRIPE_PK = os.environ["STRIPE_DEVELOPMENT_PK"]
+   STRIPE_SK = os.environ["STRIPE_DEVELOPMENT_SK"]
 else:
    STRIPE_PK = os.environ["STRIPE_PK"]
-   STRIPE_SK = os.envrion["STRIPE_SK"]
+   STRIPE_SK = os.environ["STRIPE_SK"]
    
