@@ -205,3 +205,14 @@ else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+
+### STRIPE ####
+
+if os.environ['DEVELOPEMENT']:
+   STRIPE_PK = os.environ["STRIPE_DEVELOPEMENT_PK"]
+   STRIPE_SK = os.envrion["STRIPE_DEVELOPEMENT_SK"]
+else:
+   STRIPE_PK = os.environ["STRIPE_PK"]
+   STRIPE_SK = os.envrion["STRIPE_SK"]
+   

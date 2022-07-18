@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.core.mail import send_mail
 from django.conf import settings
@@ -8,7 +9,12 @@ from profiles.models import UserProfile
 from wines.models import wine
 from decorators import security
 from django.contrib import messages
+from bag.context import bag_content
+### STRIPE ####
 
+import stripe
+import json
+ 
 @security
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
@@ -72,7 +78,6 @@ def checkout_success(request, order_number):
 
 @security
 def checkout_view(request):
-    bag = request.session.get('bag', {})
     if request.method == "POST":
         order_details = {
             'nume': request.POST['nume'],
@@ -106,6 +111,13 @@ def checkout_view(request):
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
             return redirect(reverse('wines_view'))
+        total = bag_content['total']
+        stripe_total = round(total*100)
+        stripe.secret_key = os.environ["STRIPE_SK"]
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency='RON',
+        )
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -126,5 +138,10 @@ def checkout_view(request):
         template = "checkout/checkout.html"
         context = {
             "OrderForm": order_form,
+            "stripe_public_key": os.environ['STRIPE_PK']
+            "client_secret": intent.client_secret
         }
         return render(request, template, context)
+
+
+### STRIPE VIEWS ###
