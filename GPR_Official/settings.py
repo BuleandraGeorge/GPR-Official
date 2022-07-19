@@ -209,10 +209,6 @@ else:
 
 ### STRIPE ####
 
-if os.environ['DEVELOPMENT']:
-   STRIPE_PK = os.environ["STRIPE_DEVELOPMENT_PK"]
-   STRIPE_SK = os.environ["STRIPE_DEVELOPMENT_SK"]
-else:
-   STRIPE_PK = os.environ["STRIPE_PK"]
-   STRIPE_SK = os.environ["STRIPE_SK"]
+STRIPE_PK = os.environ["STRIPE_PK"]
+STRIPE_SK = os.environ["STRIPE_SK"]
    
