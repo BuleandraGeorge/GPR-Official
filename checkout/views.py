@@ -93,23 +93,37 @@ def checkout_view(request):
             'tara': request.POST['tara']
         }
         this_order = OrderForm(order_details)
-        order = this_order.save()
+       
         if this_order.is_valid:
+            order = this_order.save(commit=False)
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
             for item_id, item_data in bag.items():
-                the_wine = get_object_or_404(wine, pk=item_id)
-                for size, qty in item_data['size_qty'].items():
-                    order_line_item = lineitem(
-                        order=order,
-                        the_wine=the_wine,
-                        product_size=size,
-                        quantity=qty,
+                try:
+                    the_wine = get_object_or_404(wine, pk=item_id)
+                    for size, qty in item_data['size_qty'].items():
+                        order_line_item = lineitem(
+                            order=order,
+                            the_wine=the_wine,
+                            product_size=size,
+                            quantity=qty,
+                        )
+                        order_line_item.save()
+                except wine.DoesNotExist:
+                    messages.error(request, (
+                        "One of the products in your bag wasn't found in our database. "
+                        "Please call us for assistance!")
                     )
-                    order_line_item.save()
-            request.session['email_send'] = False
+                    order.delete()
+                    return redirect(reverse('bag'))
+
             order.update_total()
-        return redirect(reverse(
-            'checkout_success',
-            args=[order.order_number]))
+            return redirect(reverse('checkout_success',args=[order.order_number]))
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
     else:
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")

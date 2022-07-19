@@ -17,6 +17,8 @@ class Order(models.Model):
     tara = CountryField(default='RO')
     date = models.DateField(auto_now=True)
     total = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
 
     def _generate_order_number(self):
