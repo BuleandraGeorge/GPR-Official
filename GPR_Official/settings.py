@@ -210,4 +210,4 @@ else:
 ### STRIPE ####
 STRIPE_PK = os.environ["STRIPE_PK"]
 STRIPE_SK = os.environ["STRIPE_SK"]
-   
+WEBHOOK_SK = os.environ["WEBHOOK_SK"]
