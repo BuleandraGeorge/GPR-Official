@@ -85,9 +85,9 @@
                             </a>
                             <ul class="dropdown-menu text-center border-0 wines-dropdown" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item wine-color" href="{% url 'wines_view' %}">Toate</a></li>
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Red">Rosii</a></li>
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=Rose">Rose</a></li>
-                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color=White">Albe</a></li>
+                                {% for color in colors %}
+                                <li><a class="dropdown-item wine-color" href="{% url 'wines_view'%}?color={{color}}">{{color}}</a></li>
+                                {% endfor %}
                             </ul>
                         </li>
                         <li class="nav-item">

@@ -13,9 +13,9 @@
                             <div class="form-floating text-danger">
                                 <select class="form-select text-danger" id="color" aria-label="Floating label select example">
                                     <option value="reset">Oricare</option>
-                                    <option value="Red" {% if 'Red' in categories %}selected{% endif %}>Rosii</option>
-                                    <option value="Rose"{% if 'Rose' in categories %}selected{% endif %}>Rose</option>
-                                    <option value="White"{% if 'White' in categories %}selected{% endif %}>Albe</option>
+                                    {% for color in colors %}
+                                    <option value="{{color}}" {% if color in categories %}selected{% endif %}>{{color}}</option>
+                                    {% endfor %}
                                 </select>
                                 <label for="color">Culoare</label>
                             </div>

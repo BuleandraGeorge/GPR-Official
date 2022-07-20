@@ -10,6 +10,7 @@ def wines_view(request):
     size_detailss = size_details.objects.all()
     regions = region.objects.all()
     grapes = grape.objects.all()
+    colors = color.objects.all()
     categories = []
     if "color" in request.GET:
         value = request.GET['color']
@@ -55,6 +56,7 @@ def wines_view(request):
         'regions': regions,
         'grapes': grapes,
         'size_details': size_detailss,
+        'colors': colors
     }
     template = 'wines/wines.html'
     return render(request, template, context)

@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from wines.models import wine
+from wines.models import wine, color
 from decimal import Decimal
 
 def bag_content(request):
@@ -18,8 +18,11 @@ def bag_content(request):
                 "price": price,
             })
             total = total + Decimal(quantity) * price
+    colors = color.objects.all()
     context = {
         "bag_items": bag_items,
-        "total": total
+        "total": total,
+        "colors":colors
     }
+
     return context
