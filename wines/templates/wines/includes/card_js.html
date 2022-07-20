@@ -1,6 +1,6 @@
 <script type="text/javascript">
 // function that enables or disable the buttons
-function handleEnableDisable(cardForm){
+    function handleEnableDisable(cardForm) {
         var qty_input = $(cardForm.find('.qty_input'));
         var currentInput = parseInt(qty_input.val());
         var qtyAvailable = parseInt(qty_input.data('qty-available'));
@@ -46,7 +46,7 @@ $('.increment-qty').click(function(e){
     var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
     $(closestInput).val(currentValue + 1);
-    var cardForm = $($(this).find('card-form'));
+    var cardForm = $($(this).closest('.card-form'));
     handleEnableDisable(cardForm);
 })
 
