@@ -41,7 +41,7 @@
                               {% if request.user.is_authenticated %}
                               {% if request.user.is_superuser %}
                               <li>
-                                  <a href="{% url 'admin:index' %}" class="dropdown-item">Product Management</a>
+                                  <a href="{% url 'admin:index' %}" class="dropdown-item wine-color">Product Management</a>
                               </li>
                               {% endif %}
                               <li><a href="{% url 'profile_view' %}" class="dropdown-item wine-color">My Profile</a></li>
