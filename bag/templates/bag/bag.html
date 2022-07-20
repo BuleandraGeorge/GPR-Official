@@ -3,92 +3,71 @@
 {% load static %}
 {% block content %}
 <div class="container">
-<h1 class="mb-3 d-none d-md-flex"> Cosul tau de cumparaturi </h1>
-{% if not bag_items %}
+    <h1 class="mb-3 d-flex"> Cosul tau de cumparaturi </h1>
+    {% if not bag_items %}
     <p class="my-auto mx-auto">Cosul de cumparaturi este gol. <a class="link link-danger" href="{% url 'wines_view' %}">Descopera vinurile Grupo Pierola</a></p>
-{% else %}
+    {% else %}
+    <div class="container">
+        {% for item in bag_items %}
 
-<div class="row d-flex d-md-none justify-content-center mb-2">
-    <div class="col-6 ml-auto ">
-        <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  INCA CEVA</strong></a>
-    </div>
-    <div class="col-6 mr-auto ">
-        <a href="{% url 'checkout' %}" class="btn btn-info rounded-0 w-100"><strong>CHECKOUT    </strong><i class="fas fa-chevron-right"></i></a>
-    </div>
-</div>
-    <div class="row d-flex d-md-none justify-content-end mb-2">
-    <div class="col-6">
-        <div class="row">
-            <div class="col-4"><small>Total:</small></div>
-            <div class="col-8"><strong>{{total}} RON</strong></div>
-        </div>
-    </div>
-</div>
-<div class="container">
-{% for item in bag_items %}
-
-    <div class="row pb-2 shadow">
-        <div class="col-2 mx-auto">
-            {% if item.wine.image %}
+        <div class="row mb-4 p-4 shadow">
+            <div class="col-2 mx-auto">
+                {% if item.wine.image %}
                 <img src="{{item.wine.image.url}}" class="mx-auto" style="height:9rem; width:3rem;" alt="{{wine.name}}">
-            {% else %}
-                <img src="{{MEDIA_URL}}no_img.jpg" >
-            {% endif %}
-        </div>
-        <div class="col-4 my-auto">
-            <p><strong>{{item.wine.name}}</strong></p>
-            <p><strong >{{item.size}}</strong></p>
-        </div>
-        <div class="col-2 my-auto">
-            <form method="POST" action="{% url 'edit_bag' item.wine.id %}">
-                {% csrf_token %}
-                <div class="input-group input-group-sm h-100">
-                    <div class="input-group-preppend">
-                        <button class="decrement-qty btn">
-                            <i class="fas fa-minus"></i>
-                        </button>
+                {% else %}
+                <img src="{{MEDIA_URL}}no_img.jpg">
+                {% endif %}
+            </div>
+            <div class="col-4 my-auto">
+                <p><strong>{{item.wine.name}}</strong></p>
+                <p><strong>{{item.size}}</strong></p>
+            </div>
+            <div class="col-2 my-auto">
+                <form method="POST" action="{% url 'edit_bag' item.wine.id %}">
+                    {% csrf_token %}
+                    <div class="input-group input-group-sm h-100">
+                        <div class="input-group-preppend">
+                            <button class="decrement-qty btn">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                        <input class="form-control border-0 text-center qty_input" type="number" value="{{ item.qty }}" min="0" max="99" name="quantity">
+                        <div class="input-group-append mr-1">
+                            <button class="increment-qty btn">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
                     </div>
-                    <input class="form-control border-0 text-center qty_input" type="number" value="{{ item.qty }}" min="0" max="99" name="quantity">
-                    <div class="input-group-append mr-1">
-                    <button class="increment-qty btn">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                    </div>                  
-                </div>
-                <input type="hidden" name="size" value="{{item.size}}">
-             </form>
-            <a class="text-decoration-none text-info update_link" >
+                    <input type="hidden" name="size" value="{{item.size}}">
+                </form>
+                <a class="text-decoration-none text-info update_link">
                     Update
-            </a>
+                </a>
+            </div>
+            <div class="col-2 my-auto text-center px-0">
+                <span>Price:</span>
+                <strong>{{item.price}} RON</strong>
+            </div>
+            <div class="col-2 my-auto text-center px-0">
+                <span>Subtotal:</span>
+                <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
+            </div>
         </div>
-        <div class="col-2 my-auto text-center px-0">
-            <span>Price:</span>
-            <strong>{{item.price}} RON</strong>
-        </div>
-        <div class="col-2 my-auto text-center px-0">
-            <span>Subtotal:</span>
-            <strong>{{item.price|calc_subtotal:item.qty}} RON</strong>
-        </div>
+        {% endfor %}
     </div>
-{% endfor %}
-</div>
 
-<div class="row d-none d-md-flex justify-content-end mb-2">
-    <div class="col-6">
-        <div class="row">
-            <div class="col-4"><small>Total:</small></div>
-            <div class="col-8"><strong>{{total}} RON</strong></div>
+    <div class="row d-flex justify-content-end my-5">
+        <div class="col-auto"><small>Total:</small></div>
+        <div class="col-auto"><strong>{{total}} RON</strong></div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-auto ml-auto ">
+            <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  INCA CEVA</strong></a>
+        </div>
+        <div class="col-auto mr-auto ">
+            <a href="{% url 'checkout' %}" class="btn btn-info rounded-0 w-100"><strong>CHECKOUT    </strong><i class="fas fa-chevron-right"></i></a>
         </div>
     </div>
-</div>
-<div class="row d-none d-md-flex justify-content-center">
-    <div class="col-2 ml-auto ">
-        <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  INCA CEVA</strong></a>
-    </div>
-    <div class="col-2 mr-auto ">
-        <a href="{% url 'checkout' %}" class="btn btn-info rounded-0 w-100"><strong>CHECKOUT    </strong><i class="fas fa-chevron-right"></i></a>
-    </div>
-</div>
 </div>
 {% endif %}
 {% endblock %}
