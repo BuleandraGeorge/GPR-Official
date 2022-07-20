@@ -92,7 +92,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'GPR_Official.wsgi.application'
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -161,7 +161,7 @@ USE_L10N = True
 
 USE_TZ = True
 #EMAIL SETTINGS
-if 'DEVELOPMENT' in os.environ:
+if os.environ['DEVELOPMENT']:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
     DEFAULT_PHONE = "07242342342"

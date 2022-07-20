@@ -43,9 +43,9 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+    messages.success(request, f'Comanda a fost procesata cu success! \
+        Numarul comenzii este {order_number}. Un email de confirmare va fi trimis \
+        la {order.email}.')
 
     if 'bag' in request.session:
         del request.session['bag']
@@ -172,8 +172,6 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
-        print(e)
+        messages.error(request, 'Ne pare rau dar plata \
+            nu se poate face momentan. Va rugam incercati mai tarziu.')
         return HttpResponse(content=e, status=400)
-### STRIPE VIEWS ###

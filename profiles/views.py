@@ -14,9 +14,9 @@ def profile_view(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid:
             form.save()
-            messages.success(request, 'Profile Updated!')
+            messages.success(request, 'Profilul a fost actualizat!')
         else:
-            messages.error(request, 'Something went wrong, please check the form and try again.')
+            messages.error(request, 'Ceva nu a mers bine, verificati formularul si incercati inca o data.')
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
@@ -32,13 +32,13 @@ def order_history(request, order_number):
     curr_order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
+        f'Aceasta este doar o confirmare a comenzii {order_number}. '
+        'Un email de confirmare a fost trimis la data comenzii'
     ))
 
     template = 'checkout/checkout_success.html'
     context = {
-        'order':   curr_order,
+        'order': curr_order,
         'from_profile': True,
     }
 
