@@ -161,7 +161,7 @@ USE_L10N = True
 
 USE_TZ = True
 #EMAIL SETTINGS
-if 'DEVELOPMENT' os.environ:
+if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
     DEFAULT_PHONE = "07242342342"
@@ -180,7 +180,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-if "DEVELOPMENT" os.environ:
+if "DEVELOPMENT" in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
