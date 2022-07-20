@@ -76,7 +76,7 @@
                 </button>
                 <!-- List of menu option-->
                 <div class="collapse navbar-collapse justify-content-end font-header" id="navbarNav">
-                    <ul class="navbar-nav text-center mb-2 text-danger">
+                    <ul class="navbar-nav text-center text-danger">
                         <!-- Dropdown menu option-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,9 +107,8 @@
                                 <i class="fas fa-shopping-cart text-danger "></i> {{total}} RON
                             </a>
                         </li>
-                        <li class="nav-item  d-lg-none">
                             <!-- Search bar -->
-                        <li class="nav-item">
+                        <li class="nav-item my-auto">
                             <form method="GET" action="{% url 'wines_view' %}">
                                 <div class="input-group input-group-sm">
                                     <input type="text" name="q" class="form-control text-danger rounded-0 border-start-0 border-end-0    border-top-0" placeholder="Cauta un vin">
