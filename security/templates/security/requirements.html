@@ -12,23 +12,24 @@
   </head>
   <body>
     <h1 class="mt-3 text-center"><a class="brand text-dark text-decoration-none  " href="{% url 'home' %}" >Grupo Pierola Romania</a></h1>
-    <div class="pt-5">
+    <div class="container pt-5">
         <h5 class="text-center mb-5">Pentru a putea naviga acest website trebuie sa indeplinesti urmatoarele:</h5>
         <h6 class="text-center">Sa ai cel putin 18 ani impliniti</h6>
         <h6 class="text-center"> Sa ne acorzi dreptul de a prelucra si colecta datele tale cu caracter personal ( nume, adresa etc ... ) in vederea efectuarii comenzii, conform <a href="https://www.dataprotection.ro/servlet/ViewDocument?id=1262" target="_blank"> GDPR 2018</a>. </h6>
         <h6 class="text-center">Sa ne permiti a colecta cookies temporar pentru a face disponibile functiile website-ului </h6>
         <h6 class="text-center mb-5"> Multumim! </h6>
         <div class="row d-md-flex justify-content-center">
-            <div class="col-sm-12 col-md-2">
-                <a class="btn btn-danger text-center" href="{% url 'access_denied' %}">Nu indeplinesc toate cerintele</a>
+            <div class="col-auto">
+                <a class="btn btn-danger text-center" href="{% url 'access_denied' %}">Nu indeplinesc</a>
             </div>
-            <div class="col-sm-12 col-md-2">
+            <div class="col-auto">
                 <form method="POST" action="{% url 'requirements' %}">
                     {% csrf_token %}
-                    <button class="btn btn-success text-center" type="submit">Indeplinesc toate cerintele</button>
+                    <button class="btn btn-success text-center" type="submit">Indeplinesc</button>
                 </form>
             </div>
         </div>
+        <h6 class="text-center">toate cerintele</h6>
     </div>
     
   </body>
