@@ -30,7 +30,7 @@
                 {% csrf_token %}
                 {% for field in form%}
                 <div class="row ">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4 mb-3">
                         {{field | as_crispy_field}}
                     </div>
                 </div>
@@ -40,22 +40,16 @@
                 {% endif %}
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <div class="row">
-                            <div class="col-7 ">
-                                <a class="button secondaryAction small" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-auto ">
+                                <a class="btn btn-info rounded-0 text-light" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                             </div>
-                            <div class="col-5 text-right">
+                            <div class="col-auto">
                                 <button class="btn btn-dark rounded-0" type="submit">{% trans "Sign In" %}</button>
                             </div>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-6">
-                                <p class="small"> Or sign in with : </p>
-                            </div>
-                            <div class="col-6 small text-right">
-                                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                            </div>
-                        </div>
+                        <h6 class="small text-center mt-3"> Or sign in with : </h6>
+                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
                     </div>
                 </div>
             </form>
