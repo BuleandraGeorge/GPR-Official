@@ -4,7 +4,7 @@ from offers.models import Offer
 from wines.models import wine, size_details
 from decorators import security
 import os
-
+from django.utils.translation import gettext
 
 @security
 def home(request):

@@ -13,5 +13,6 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('contact/', include('contact.urls')),
     path('requirements/', include('security.urls')),
-    path('profiles/', include('profiles.urls'))
+    path('profiles/', include('profiles.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
