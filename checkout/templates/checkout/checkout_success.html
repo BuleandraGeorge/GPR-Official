@@ -1,25 +1,26 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% load bag_tools %}
 {% block content %}
 <div class="container">
-    <h1>Checkout realizat cu success!</h1>
+    <h1>{% trans "Checkout realizat cu success!" %} </h1>
     <hr>
-    <h3 class="mb-2"> Comanda <strong>{{order.order_number}} </strong>a fost plasata cu success si un email cu mai multe detalii a fost trimis pe adresa <strong>{{order.email}}</strong></h3>
-    <h3 class="mb-2"> Va vom contacta in curand privind finalizarea comenzii. Multumim!  </h3>
-    <h4 class="text-center text-dark my-5"> Comanda </h4>
+    <h3 class="mb-2">{% trans "Comanda" %}  <strong>{{order.order_number}} </strong>{% trans "a fost plasata cu success si un email cu mai multe detalii a fost trimis pe adresa" %} <strong>{{order.email}}</strong></h3>
+    <h3 class="mb-2">{% trans "Multumim!" %}   </h3>
+    <h4 class="text-center text-dark my-5">{% trans "Comanda" %} Comanda </h4>
     <div class="row ">
         <div class="col-6">
-            <p class="fw-bold">Nume</p>
+            <p class="fw-bold">{% trans "Nume" %}</p>
         </div>
         <div class="col-2">
-            <p class="text-center fw-bold">Dimensiune</p>
+            <p class="text-center fw-bold">{% trans "Dimensiune" %}</p>
         </div>
         <div class="col-2">
-            <p class="text-center fw-bold">Cantitate</p>
+            <p class="text-center fw-bold">{% trans "Cantitate" %}</p>
         </div>
-        <div class="col-2"> 
+        <div class="col-2">
             <p class="text-end fw-bold">Subtotal</p>
         </div>
     </div>

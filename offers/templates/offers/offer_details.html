@@ -1,27 +1,28 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block extra_css %}
-  <link type="text/css" rel="stylesheet" href="{% static 'offers/css/offer.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'offers/css/offer.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>{% trans "Detalii Oferta" %}</h1>
+        </div>
         <div class="row">
             <div class="col-12">
-                <h1>Detalii Oferta</h1>
-            </div>
-            <div class="row">
+                <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
+                    <div class="container">
+                        <h1 class="display-4">{{offer.title}}</h1>
+                        <p class="lead">{{offer.hook}}</p>
+                    </div>
+                </div>
                 <div class="col-12">
-                    <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
-                        <div class="container">
-                            <h1 class="display-4">{{offer.title}}</h1>
-                            <p class="lead">{{offer.hook}}</p>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <p style="font-size: 2rem;" class="mt-2 px-3 text-justify" >{{offer.body}}</p>
-                    </div>
+                    <p style="font-size: 2rem;" class="mt-2 px-3 text-justify">{{offer.body}}</p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

@@ -1,55 +1,56 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% block extra_css %}
-  <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
 {% endblock %}
 {% block content %}
 {% if offers %}
     {% for offer in offers %}
-    <div class="jumbotron jumbotron-fluid mb-5 hero-img" style="background: url({{offer.image.url}}); ">
-        <div class="container pt-5 " style="color:{{offer.text_color}}">
-            <h1 class="display-4 pt-5">        
-                    {{offer.title}}
-            </h1>
-            <p class="lead">
-                {{offer.hook}}
-            </p>
-            <p class="lead">
-                <a class="btn btn-danger btn-lg float-right rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe <i class="fas fa-chevron-right"></i></a>
-            </p>
-        </div>
+<div class="jumbotron jumbotron-fluid mb-5 hero-img" style="background: url({{offer.image.url}}); ">
+    <div class="container pt-5 " style="color:{{offer.text_color}}">
+        <h1 class="display-4 pt-5">
+            {{offer.title}}
+        </h1>
+        <p class="lead">
+            {{offer.hook}}
+        </p>
+        <p class="lead">
+            <a class="btn btn-danger btn-lg float-right rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">{% trans "Find More" %}<i class="fas fa-chevron-right"></i></a>
+        </p>
     </div>
+</div>
     {% endfor %}
 {% else %}
-    <div class="jumbotron jumbotron-fluid hero-img" style="background: url({{MEDIA_URL}}hero_img.jpg); color:black;">
-        <div class="container pt-5">
-            <h1 class="display-4 pt-5">
-                Grupo Pierola Romania
-            </h1>
-            <p class="lead">
-                {% trans "Desavarsire in fiecare strop"%}
-                
-            </p>   
-        </div>
+<div class="jumbotron jumbotron-fluid hero-img" style="background: url({{MEDIA_URL}}hero_img.jpg); color:black;">
+    <div class="container pt-5">
+        <h1 class="display-4 pt-5">
+            Grupo Pierola Romania
+        </h1>
+        <p class="lead">
+            {% trans "Desavarsire in fiecare strop" %}
+
+        </p>
     </div>
+</div>
 {% endif %}
 <div class="container mt-5">
     <div class="row mb-5">
-        <h1 class="font-weight-bold">Cele mai vandute</h1>
+        <h1 class="font-weight-bold">{% trans "Cele mai vandute" %}</h1>
         {% for wine in best_sold %}
-            {% include 'wines/includes/wine_card.html' %}
+        {% include 'wines/includes/wine_card.html' %}
         {% endfor %}
     </div>
     <div class="row mb-5">
-        <h1 class="font-weight-bold">Cele mai noi</h1>
-    {% for wine in new_arrivals %}
+        <h1 class="font-weight-bold">{% trans "Cele mai noi" %}</h1>
+        {% for wine in new_arrivals %}
         {% include 'wines/includes/wine_card.html' %}
-    {% endfor %}
+        {% endfor %}
     </div>
     <div class="row">
-        <h1 class="font-weight-bold">Cele mai multe stele</h1>
+        <h1 class="font-weight-bold">{% trans "Cel mai mare rating" %}</h1>
         {% for wine in best_rated %}
-            {% include 'wines/includes/wine_card.html' %}
+        {% include 'wines/includes/wine_card.html' %}
         {% endfor %}
     </div>
 </div>

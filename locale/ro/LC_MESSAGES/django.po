@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 16:15+0100\n"
+"POT-Creation-Date: 2022-07-26 15:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,52 +19,222 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
+#: .\bag\templates\bag\bag.html:6
+msgid "Cosul tau de cumparaturi"
+msgstr ""
+
+#: .\bag\templates\bag\bag.html:8
+msgid "Cosul de cumparaturi este gol."
+msgstr ""
+
+#: .\bag\templates\bag\bag.html:8 .\bag\templates\bag\bag.html:65
+msgid "Catre Vinuri"
+msgstr "Vinuri"
+
+#: .\bag\templates\bag\bag.html:44
+msgid "Update"
+msgstr ""
+
+#: .\bag\templates\bag\bag.html:48
+#: .\checkout\templates\checkout\checkout.html:64
+msgid "Price"
+msgstr ""
+
+#: .\bag\templates\bag\bag.html:68
+msgid "CHECKOUT"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:18
+msgid "Save this delivery information to my profile"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:22
+#: .\checkout\templates\checkout\checkout.html:23
+#: .\checkout\templates\checkout\checkout.html:29
+msgid "Create an account"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:38
+msgid "Trimite comanda de"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:86
+msgid "VINURI"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:91
+msgid "Editeaza"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:9
+#: .\checkout\templates\checkout\checkout_success.html:11
+msgid "Comanda"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:9
+msgid ""
+"a fost plasata cu success si un email cu mai multe detalii a fost trimis pe "
+"adresa"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:10
+#: .\security\templates\security\requirements.html:20
+msgid "Multumim!"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:14
+msgid "Nume"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:17
+msgid "Dimensiune"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:20
+msgid "Cantitate"
+msgstr ""
+
+#: .\offers\templates\offers\offer_details.html:10
+msgid "Detalii Oferta"
+msgstr ""
+
+#: .\offers\templates\offers\offers.html:10
+msgid "Oferte"
+msgstr ""
+
+#: .\offers\templates\offers\offers.html:16
+msgid "Oferte in curs"
+msgstr "Oferte si Promotii"
+
+#: .\offers\templates\offers\offers.html:36
+msgid "Nici o oferta disponibila mometan, stai aproape!"
+msgstr ""
+
+#: .\offers\templates\offers\offers.html:43
+msgid "Oferte care au avut loc"
+msgstr ""
+
+#: .\offers\templates\offers\offers.html:55
+msgid "Afla mai multe"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:10
+msgid "My Profile"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:18
+msgid "Profile Details"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:26
+msgid "Orders history"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:31
+msgid "Order Number"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:32
+msgid "Date"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:33
+msgid "Order Total"
+msgstr ""
+
+#: .\security\templates\security\access_denied.html:16
+msgid ""
+"Ne pare rau dar nu poti vizita website-ul deoarece nu inteplinesti cel putin "
+"una din cerintele mentionate anterior."
+msgstr ""
+
+#: .\security\templates\security\access_denied.html:17
+msgid "Te reasteptam cu drag"
+msgstr ""
+
+#: .\security\templates\security\access_denied.html:19
+msgid "Catre cerinte"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:16
+msgid ""
+"Pentru a putea naviga acest website trebuie sa indeplinesti urmatoarele:"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:17
+msgid "Sa ai cel putin 18 ani impliniti"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:18
+msgid ""
+"Sa ne acorzi dreptul de a prelucra si colecta datele tale cu caracter "
+"personal ( nume, adresa etc ... ) in vederea efectuarii comenzii, conform"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:19
+msgid ""
+"Sa ne permiti a colecta cookies temporar pentru a face disponibile functiile "
+"website-ului"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:23
+msgid "Nu indeplinesc"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:28
+msgid "Indeplinesc"
+msgstr ""
+
+#: .\security\templates\security\requirements.html:32
+msgid "toate cerintele"
+msgstr ""
+
 #: .\templates\allauth\account\account_inactive.html:5
 #: .\templates\allauth\account\account_inactive.html:8
 msgid "Account Inactive"
-msgstr ""
+msgstr "Cont Inactiv"
 
 #: .\templates\allauth\account\account_inactive.html:10
 msgid "This account is inactive."
-msgstr ""
+msgstr "Acest cont este inactiv"
 
 #: .\templates\allauth\account\email.html:5
 #: .\templates\allauth\account\email.html:8
 msgid "E-mail Addresses"
-msgstr ""
+msgstr "Adrese de email"
 
 #: .\templates\allauth\account\email.html:10
 msgid "The following e-mail addresses are associated with your account:"
-msgstr ""
+msgstr "Urmatoarele adrese de email sunt asociate cu acest cont"
 
 #: .\templates\allauth\account\email.html:24
 msgid "Verified"
-msgstr ""
+msgstr "Verificat"
 
 #: .\templates\allauth\account\email.html:26
 msgid "Unverified"
-msgstr ""
+msgstr "Ne-verificat"
 
 #: .\templates\allauth\account\email.html:28
 msgid "Primary"
-msgstr ""
+msgstr "Principal"
 
 #: .\templates\allauth\account\email.html:34
 msgid "Make Primary"
-msgstr ""
+msgstr "Marcheaza ca principal"
 
 #: .\templates\allauth\account\email.html:35
 msgid "Re-send Verification"
-msgstr ""
+msgstr "Re-trimite emailul de verificare"
 
 #: .\templates\allauth\account\email.html:36
 #: .\templates\allauth\socialaccount\connections.html:35
 msgid "Remove"
-msgstr ""
+msgstr "Elimina"
 
 #: .\templates\allauth\account\email.html:43
 msgid "Warning:"
-msgstr ""
+msgstr "Atentionare"
 
 #: .\templates\allauth\account\email.html:43
 msgid ""
@@ -87,14 +257,15 @@ msgstr ""
 #: .\templates\allauth\account\email\base_message.txt:1
 #, python-format
 msgid "Hello from %(site_name)s!"
-msgstr ""
+msgstr "Salurari de la %(site_name)s!"
 
 #: .\templates\allauth\account\email\base_message.txt:5
 #, python-format
 msgid ""
 "Thank you for using %(site_name)s!\n"
 "%(site_domain)s"
-msgstr ""
+msgstr "Multumim ca ati ales %(site_name)s!\n"
+"%(site_domain)s"
 
 #: .\templates\allauth\account\email\email_confirmation_message.txt:5
 #, python-format
@@ -103,11 +274,13 @@ msgid ""
 "mail address to register an account on %(site_domain)s.\n"
 "\n"
 "To confirm this is correct, go to %(activate_url)s"
-msgstr ""
+msgstr "Ati primit acest mesaj deoarece utilizatorul %(user_display) a oferit"
+"aceasta adresa de email pentru a se inregistra pe website-ul %(site_domain)s.\n"
+"Pentru a confirma, merge pe link-ul urmator %(activate_url)"
 
 #: .\templates\allauth\account\email\email_confirmation_subject.txt:3
 msgid "Please Confirm Your E-mail Address"
-msgstr ""
+msgstr "Va rugam sa confirmati adresa de email"
 
 #: .\templates\allauth\account\email\password_reset_key_message.txt:4
 msgid ""
@@ -115,7 +288,9 @@ msgid ""
 "password for your user account.\n"
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password."
-msgstr ""
+msgstr "Ati primit aceast email deoarece cineva a comandat o resetare de parola \n"
+"Puteti ignora acest mesaj daca nu ati fost dumeavoastra cel in cauza. Mergeti pe"
+"link-ul urmator pentru a reseta parola"
 
 #: .\templates\allauth\account\email\password_reset_key_message.txt:9
 #, python-format
@@ -125,7 +300,7 @@ msgstr ""
 #: .\templates\allauth\account\email\password_reset_key_subject.txt:3
 #: .\templates\allauth\account\email\unknown_account_subject.txt:3
 msgid "Password Reset E-mail"
-msgstr ""
+msgstr "Email de resetare a parolei"
 
 #: .\templates\allauth\account\email\unknown_account_message.txt:4
 #, python-format
@@ -143,25 +318,26 @@ msgstr ""
 #: .\templates\allauth\account\email_confirm.html:6
 #: .\templates\allauth\account\email_confirm.html:10
 msgid "Confirm E-mail Address"
-msgstr ""
+msgstr "Confirmati adresa de email"
 
 #: .\templates\allauth\account\email_confirm.html:16
 #, python-format
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
-msgstr ""
+msgstr "Va rugam sa confirmati ca <a href=\"mailto:%(email)s\">%(email)s</a> este adresa pentru userul %(user_display)."
 
 #: .\templates\allauth\account\email_confirm.html:20
 msgid "Confirm"
-msgstr ""
+msgstr "Confirma"
 
 #: .\templates\allauth\account\email_confirm.html:27
 #, python-format
 msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a href="
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
-msgstr ""
+msgstr "Acest email de confirmare a expirat sau este invalid."
+"Va rugam <a href=\"%(email_url)s\">creeati o noua cerere de confirmare a emailului aici</a>."
 
 #: .\templates\allauth\account\login.html:6
 #: .\templates\allauth\account\login.html:9
@@ -177,19 +353,22 @@ msgid ""
 "        of your existing third party accounts. Or, <a href=\"%(signup_url)s"
 "\">sign up</a>\n"
 "        for a <strong>%(site_name)s</strong> account and sign in below:"
-msgstr ""
+msgstr "Va rugam sa va logati cu unul dintre \n"
+" exitenele conturi externe. Sau <a href=\"%(signup_url)s\">Inregistrati-va</a>\n"
+" pentru un cont <strong>%(site_name)s</strong> si semnati mai jos:"
 
 #: .\templates\allauth\account\login.html:22
 #, python-format
 msgid ""
-"If you have not created an account yet, then please\n"
+"If you have not created an account yet, then please"
 "        <a href=\"%(signup_url)s\">sign up</a> first."
-msgstr ""
+msgstr "Daca nu v-ati creat un cont inca, va rugam"
+"<a href=\"%(signup_url)s\">inregitrati-va</a> pentru inceput."
 
 #: .\templates\allauth\account\login.html:45
 #: .\templates\allauth\account\password_change.html:14
 msgid "Forgot Password?"
-msgstr ""
+msgstr "Parola Uitata"
 
 #: .\templates\allauth\account\logout.html:5
 #: .\templates\allauth\account\logout.html:8
@@ -199,7 +378,7 @@ msgstr ""
 
 #: .\templates\allauth\account\logout.html:10
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "Sunteti siguri ca doriti sa va deconectati?"
 
 #: .\templates\allauth\account\messages\cannot_delete_primary_email.txt:2
 #, python-format
@@ -209,12 +388,12 @@ msgstr ""
 #: .\templates\allauth\account\messages\email_confirmation_sent.txt:2
 #, python-format
 msgid "Confirmation e-mail sent to %(email)s."
-msgstr ""
+msgstr "Email de confirmare trimis la %(email)."
 
 #: .\templates\allauth\account\messages\email_confirmed.txt:2
 #, python-format
 msgid "You have confirmed %(email)s."
-msgstr ""
+msgstr "Tocmai ati confirmat urmatoarea/le  adresa/e de email %(email)"
 
 #: .\templates\allauth\account\messages\email_deleted.txt:2
 #, python-format
@@ -224,19 +403,19 @@ msgstr ""
 #: .\templates\allauth\account\messages\logged_in.txt:4
 #, python-format
 msgid "Successfully signed in as %(name)s."
-msgstr ""
+msgstr "Va-ti conectat cu succes ca %(name)."
 
 #: .\templates\allauth\account\messages\logged_out.txt:2
 msgid "You have signed out."
-msgstr ""
+msgstr "V-ati deconectat cu succes."
 
 #: .\templates\allauth\account\messages\password_changed.txt:2
 msgid "Password successfully changed."
-msgstr ""
+msgstr "Parola a fost schimbata cu succes."
 
 #: .\templates\allauth\account\messages\password_set.txt:2
 msgid "Password successfully set."
-msgstr ""
+msgstr "Parola a fost setata cu succes."
 
 #: .\templates\allauth\account\messages\primary_email_set.txt:2
 msgid "Primary e-mail address set."
@@ -244,7 +423,7 @@ msgstr ""
 
 #: .\templates\allauth\account\messages\unverified_primary_email.txt:2
 msgid "Your primary e-mail address must be verified."
-msgstr ""
+msgstr "Adresa de email prinicipala trebuie sa fie verificata."
 
 #: .\templates\allauth\account\password_change.html:5
 #: .\templates\allauth\account\password_change.html:8
@@ -254,34 +433,36 @@ msgstr ""
 #: .\templates\allauth\account\password_reset_from_key_done.html:4
 #: .\templates\allauth\account\password_reset_from_key_done.html:7
 msgid "Change Password"
-msgstr ""
+msgstr "Schimba Parola"
 
 #: .\templates\allauth\account\password_reset.html:6
 #: .\templates\allauth\account\password_reset.html:10
 #: .\templates\allauth\account\password_reset_done.html:6
 #: .\templates\allauth\account\password_reset_done.html:9
 msgid "Password Reset"
-msgstr ""
+msgstr "Reseteaza Parola"
 
 #: .\templates\allauth\account\password_reset.html:15
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
-msgstr ""
+msgstr "Ai uitat parola. Introduceti adresa dumneavoastra de email mai jos, si va vom trimite un email,"
+"care va ofera posibilitatea de a crea una noua."
 
 #: .\templates\allauth\account\password_reset.html:20
 msgid "Reset My Password"
-msgstr ""
+msgstr "Resetare Parola"
 
 #: .\templates\allauth\account\password_reset.html:23
 msgid "Please contact us if you have any trouble resetting your password."
-msgstr ""
+msgstr "Va rugam sa ne contactati intampinati probleme in resetarea parolei."
 
 #: .\templates\allauth\account\password_reset_done.html:15
 msgid ""
 "We have sent you an e-mail. If you have not received it please check your "
 "spam folder. Otherwise contact us if you do not receive it in a few minutes."
-msgstr ""
+msgstr "Tocmai v-am trimis un email. Daca nu l-ati primit inca va rugam sa verificati si sectiunea de spam al email-ului dumeanvoastra."
+"Daca totusi emailul nu a ajuns, va incurajam sa ne contactati in cateva minute."
 
 #: .\templates\allauth\account\password_reset_from_key.html:7
 msgid "Bad Token"
@@ -293,21 +474,22 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
-msgstr ""
+msgstr "Link-ul de resetare a parolei a fost invalid."
+"Va rugam cereti un nou formulat de resetare a parolei <a href=\"%(passwd_reset_url)s\">aici</a>."
 
 #: .\templates\allauth\account\password_reset_from_key.html:16
 msgid "change password"
-msgstr ""
+msgstr "schimba parola"
 
 #: .\templates\allauth\account\password_reset_from_key_done.html:8
 msgid "Your password is now changed."
-msgstr ""
+msgstr "Parola a fost resetata cu succes"
 
 #: .\templates\allauth\account\password_set.html:5
 #: .\templates\allauth\account\password_set.html:8
 #: .\templates\allauth\account\password_set.html:13
 msgid "Set Password"
-msgstr ""
+msgstr "Seteaza parola"
 
 #: .\templates\allauth\account\signup.html:5
 #: .\templates\allauth\socialaccount\signup.html:5
@@ -325,12 +507,12 @@ msgstr ""
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
-msgstr ""
+msgstr "Esti deja inregistrat? Atunci concteaza-te apasand <a href=\"%(login_url)s\">aici</a>."
 
 #: .\templates\allauth\account\signup_closed.html:5
 #: .\templates\allauth\account\signup_closed.html:8
 msgid "Sign Up Closed"
-msgstr ""
+msgstr "Inregistrari indisponibile momentan"
 
 #: .\templates\allauth\account\signup_closed.html:10
 msgid "We are sorry, but the sign up is currently closed."
@@ -350,7 +532,7 @@ msgstr ""
 #: .\templates\allauth\account\verified_email_required.html:5
 #: .\templates\allauth\account\verified_email_required.html:8
 msgid "Verify Your E-mail Address"
-msgstr ""
+msgstr "Verifica-ti adresa de email"
 
 #: .\templates\allauth\account\verification_sent.html:10
 msgid ""
@@ -358,7 +540,9 @@ msgid ""
 "finalize the signup process. If you do not see the verification e-mail in "
 "your main inbox, check your spam folder. Please contact us if you do not "
 "receive the verification e-mail within a few minutes."
-msgstr ""
+msgstr "V-am trimis un email pentru verificare. Urmati link-ul pentru a finaliza procesul de inregistrare."
+"Daca nu gasiti email in Inbox atunci verificati si in folder-ul de spam sau mai asteptati cateva minute pana ajunge."
+"Altfel va incurajam sa luati legatura cu noi."
 
 #: .\templates\allauth\account\verified_email_required.html:13
 msgid ""
@@ -391,7 +575,7 @@ msgstr ""
 #: .\templates\allauth\socialaccount\authentication_error.html:10
 msgid ""
 "An error occurred while attempting to login via your social network account."
-msgstr ""
+msgstr "Am intampinat o eroare in incercarea de a va conecta prin contul dumeanvoastra extern."
 
 #: .\templates\allauth\socialaccount\connections.html:5
 #: .\templates\allauth\socialaccount\connections.html:8
@@ -402,7 +586,7 @@ msgstr ""
 msgid ""
 "You can sign in to your account using any of the following third party "
 "accounts:"
-msgstr ""
+msgstr "Va puteti conecat folosint urmatoarele conturi externe."
 
 #: .\templates\allauth\socialaccount\connections.html:43
 msgid ""
@@ -416,31 +600,31 @@ msgstr ""
 #: .\templates\allauth\socialaccount\login.html:8
 #, python-format
 msgid "Connect %(provider)s"
-msgstr ""
+msgstr "Conectati %(provider)"
 
 #: .\templates\allauth\socialaccount\login.html:10
 #, python-format
 msgid "You are about to connect a new third party account from %(provider)s."
-msgstr ""
+msgstr "Sunteti pe cale sa va conectati cu un cont extern de la %(provider)."
 
 #: .\templates\allauth\socialaccount\login.html:12
 #, python-format
 msgid "Sign In Via %(provider)s"
-msgstr ""
+msgstr "Conectativa cu %(provider)."
 
 #: .\templates\allauth\socialaccount\login.html:14
 #, python-format
 msgid "You are about to sign in using a third party account from %(provider)s."
-msgstr ""
+msgstr "Sunteti pe cale de a va conecta folosind un cont extern de la %(provider)"
 
 #: .\templates\allauth\socialaccount\login.html:19
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
 
 #: .\templates\allauth\socialaccount\login_cancelled.html:5
 #: .\templates\allauth\socialaccount\login_cancelled.html:9
 msgid "Login Cancelled"
-msgstr ""
+msgstr "Conectare anulata"
 
 #: .\templates\allauth\socialaccount\login_cancelled.html:13
 #, python-format
@@ -452,11 +636,11 @@ msgstr ""
 
 #: .\templates\allauth\socialaccount\messages\account_connected.txt:2
 msgid "The social account has been connected."
-msgstr ""
+msgstr "Contul extern a fost conectat cu succes"
 
 #: .\templates\allauth\socialaccount\messages\account_connected_other.txt:2
 msgid "The social account is already connected to a different account."
-msgstr ""
+msgstr "Contul extern este deja folosit pentru un cont existent"
 
 #: .\templates\allauth\socialaccount\messages\account_disconnected.txt:2
 msgid "The social account has been disconnected."
@@ -468,7 +652,87 @@ msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "    %(site_name)s. As a final step, please complete the following form:"
 msgstr ""
-
+"Sunteti pe cale sa folositi contul de %(provider_name) pentru a va conecta la %(site_name).\n"
+"Va rugam ca un ultim pas va completati fomularul urmator:"
 #: .\templates\base.html:48
 msgid "Contul Meu"
+msgstr ""
+
+#: .\templates\base.html:59
+msgid "Profil"
+msgstr ""
+
+#: .\templates\base.html:65
+msgid "Inregistreaza-te"
+msgstr ""
+
+#: .\templates\base.html:98
+msgid "Vinuri"
+msgstr "Vinuri"
+
+#: .\templates\base.html:101
+msgid "Toate"
+msgstr ""
+
+#: .\templates\base.html:110
+msgid "Oferte si Promotii"
+msgstr "Oferte si Promotii"
+
+#: .\templates\base.html:129
+msgid "Cauta un vin"
+msgstr ""
+
+#: .\templates\includes\toasts\toast_error.html:5
+msgid "Error!"
+msgstr ""
+
+#: .\templates\includes\toasts\toast_info.html:5
+msgid "Alert!"
+msgstr ""
+
+#: .\templates\includes\toasts\toast_warning.html:5
+msgid "Warning!"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:2
+msgid "Ordoneaza dupa "
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:8
+#: .\wines\templates\wines\includes\filters_desktop.html:21
+#: .\wines\templates\wines\includes\filters_desktop.html:34
+msgid "Oricare"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:13
+msgid "Culoare"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:26
+msgid "Regiunea "
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:41
+msgid "Struguri"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:50
+#: .\wines\templates\wines\includes\filters_desktop.html:62
+msgid "Ascendent "
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:51
+msgid "Descendent"
+msgstr "Descendent"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:53
+msgid "Pret"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:61
+msgid "Aleatoriu"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:63
+msgid "Descendent "
 msgstr ""

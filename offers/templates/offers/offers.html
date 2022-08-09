@@ -1,65 +1,66 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% block extra_css %}
-  <link type="text/css" rel="stylesheet" href="{% static 'offers/css/offer.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'offers/css/offer.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Oferte</h1>
-                <hr>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>{% trans "Oferte" %}</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row mb-5">
+        {% if available_offers %}
+        <h3>{% trans "Oferte in curs" %}</h3>
+        {% for offer in available_offers %}
+        <div class="col-12">
+            <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
+                <div class="container">
+                    <h1 class="display-4">
+                        {{offer.title}}
+                    </h1>
+                    <p class="lead fw-bolt">
+                        {{offer.hook}}
+                    </p>
+                    <p class="lead">
+                        <a class="btn btn-danger btn-lg float-right rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe <i class="fas fa-chevron-right"></i></a>
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="row mb-5">
-            {% if available_offers %}
-                <h3>Oferte in curs</h3>
-            {% for offer in available_offers %}
+        {% endfor %}
+        {% else %}
+        <div class="col-12">
+            <p>{% trans "Nici o oferta disponibila mometan, stai aproape!" %}</p>
+        </div>
+        {% endif%}
+    </div>
+    {% if off_offers %}
+    <div class="row">
+        <div class="col-12">
+            <h3>{% trans "Oferte care au avut loc" %}</h3>
+            {% for offer in off_offers %}
             <div class="col-12">
-            <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
+                <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
                     <div class="container">
-                        <h1 class="display-4">
-                                {{offer.title}}
+                        <h1 class="display-4 ">
+                            {{offer.title}}
                         </h1>
                         <p class="lead fw-bolt">
                             {{offer.hook}}
                         </p>
-                     <p class="lead">
-                        <a class="btn btn-danger btn-lg float-right rounded-0 " href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe <i class="fas fa-chevron-right"></i></a>
-                    </p>
+                        <p class="lead">
+                            <a class="btn btn-primary btn-lg float-right" href="{% url 'offer_details' offer.id %}" role="button">{% trans "Afla mai multe" %}</a>
+                        </p>
                     </div>
                 </div>
             </div>
             {% endfor %}
-            {% else %}
-            <div class="col-12">
-                <p>Nici o oferta disponibila mometan, stai aproape!</p>
-            </div>
-            {% endif%}
         </div>
-        {% if off_offers %}
-        <div class="row">
-            <div class="col-12">
-                <h3>Oferte care au avut loc</h3>
-                {% for offer in off_offers %}
-                <div class="col-12">
-            <div class="jumbotron jumbotron-fluid p-5 m-1 offer-img" style="background: url({{offer.image.url}});background-position:center; background-size: cover; color:{{offer.text_color}}">
-                    <div class="container">
-                        <h1 class="display-4 ">
-                            {{offer.title}}
-                            </h1>
-                    <p class="lead fw-bolt">
-                        {{offer.hook}}
-                        </p>
-                     <p class="lead">
-                        <a class="btn btn-primary btn-lg float-right" href="{% url 'offer_details' offer.id %}" role="button">Afla mai multe</a>
-                    </p>
-                    </div>
-                </div>
-            </div>
-                {% endfor %}
-            </div>
         {% endif %}
-        </div>
     </div>
+</div>
 {% endblock %}

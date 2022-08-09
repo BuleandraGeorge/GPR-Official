@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% block extra_title %} My Profile {% endblock %}
 {% block extracss%}
 
@@ -7,7 +8,7 @@
 {% block extra_header%}
 <div class="row border-bottom border-danger">
     <div class="col-12 mt-2 text-center">
-        <h2>My Profile</h2>
+        <h2>{% trans "My Profile" %}</h2>
     </div>
 </div>
 {% endblock %}
@@ -15,7 +16,7 @@
 <div class="container justify-content-center">
     <div class="row">
         <div class="col-md-12 col-lg-6">
-            <p> Profile Details </p>
+            <p> {% trans "Profile Details" %} </p>
             <form method="POST" action="{% url 'profile_view' %}" id="profile_update">
                 {% csrf_token%}
                 {{ form|crispy }}
@@ -23,14 +24,14 @@
             </form>
         </div>
         <div class="col-md-12 col-lg-6">
-            <p> Orders history </p>
+            <p> {% trans "Orders history" %} </p>
             <div class="order-history table-responsive">
                 <table class="table table-sm table-borderless">
                     <thead>
                         <tr>
-                            <th>Order Number</th>
-                            <th>Date</th>
-                            <th>Order Total</th>
+                            <th>{% trans "Order Number" %}</th>
+                            <th>{% trans "Date" %}</th>
+                            <th>{% trans "Order Total" %}</th>
                         </tr>
                     </thead>
                     <tbody>

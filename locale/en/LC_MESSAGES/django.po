@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-25 16:04+0100\n"
+"POT-Creation-Date: 2022-07-27 15:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,211 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\bag\templates\bag\bag.html:7
+msgid "Cosul tau de cumparaturi"
+msgstr "Shopping bag"
+
+#: .\bag\templates\bag\bag.html:9
+msgid "Cosul de cumparaturi este gol."
+msgstr "is empty"
+
+#: .\bag\templates\bag\bag.html:9 .\bag\templates\bag\bag.html:66
+msgid "Catre Vinuri"
+msgstr "To Wines"
+
+#: .\bag\templates\bag\bag.html:45
+msgid "Update"
+msgstr ""
+
+#: .\bag\templates\bag\bag.html:49
+#: .\checkout\templates\checkout\checkout.html:65
+msgid "Price"
+msgstr ""
+
+#: .\bag\templates\bag\bag.html:69
+msgid "CHECKOUT"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:19
+msgid "Save this delivery information to my profile"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:23
+msgid "Create an account"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:24
+msgid "to save this information"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:30
+msgid "Payment"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:39
+msgid "Trimite comanda de"
+msgstr "Place the order of "
+
+#: .\checkout\templates\checkout\checkout.html:87
+msgid "VINURI"
+msgstr "Wines"
+
+#: .\checkout\templates\checkout\checkout.html:92
+msgid "Editeaza"
+msgstr "Edit"
+
+#: .\checkout\templates\checkout\checkout_success.html:8
+msgid "Checkout realizat cu success!"
+msgstr "Checkout successful"
+
+#: .\checkout\templates\checkout\checkout_success.html:10
+#: .\checkout\templates\checkout\checkout_success.html:12
+msgid "Comanda"
+msgstr "Order"
+
+#: .\checkout\templates\checkout\checkout_success.html:10
+msgid ""
+"a fost plasata cu success si un email cu mai multe detalii a fost trimis pe "
+"adresa"
+msgstr "was send successfully and an email was send to "
+
+#: .\checkout\templates\checkout\checkout_success.html:11
+#: .\security\templates\security\requirements.html:21
+msgid "Multumim!"
+msgstr "Thank you!"
+
+#: .\checkout\templates\checkout\checkout_success.html:15
+msgid "Nume"
+msgstr "Name"
+
+#: .\checkout\templates\checkout\checkout_success.html:18
+msgid "Dimensiune"
+msgstr "Size"
+
+#: .\checkout\templates\checkout\checkout_success.html:21
+msgid "Cantitate"
+msgstr "Quantity"
+
+#: .\contact\templates\contact\contact.html:9
+msgid "Numar de telefon"
+msgstr "Mobile"
+
+#: .\home\templates\home\home.html:19
+msgid "Find More"
+msgstr ""
+
+#: .\home\templates\home\home.html:31
+msgid "Desavarsire in fiecare strop"
+msgstr "Perfection in every dropplet"
+
+#: .\home\templates\home\home.html:39
+msgid "Cele mai vandute"
+msgstr "BEST SOLD"
+
+#: .\home\templates\home\home.html:45
+msgid "Cele mai noi"
+msgstr "NEW"
+
+#: .\home\templates\home\home.html:51
+msgid "Cel mai mare rating"
+msgstr "BEST RATING"
+
+#: .\offers\templates\offers\offer_details.html:11
+msgid "Detalii Oferta"
+msgstr "Info"
+
+#: .\offers\templates\offers\offers.html:11
+msgid "Oferte"
+msgstr "Offers"
+
+#: .\offers\templates\offers\offers.html:17
+msgid "Oferte in curs"
+msgstr "Current Offers"
+
+#: .\offers\templates\offers\offers.html:37
+msgid "Nici o oferta disponibila mometan, stai aproape!"
+msgstr "No offers for the moment, check later!"
+
+#: .\offers\templates\offers\offers.html:44
+msgid "Oferte care au avut loc"
+msgstr "Past offers"
+
+#: .\offers\templates\offers\offers.html:56
+msgid "Afla mai multe"
+msgstr "Find more"
+
+#: .\profiles\templates\profiles\profiles.html:11
+msgid "My Profile"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:19
+msgid "Profile Details"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:27
+msgid "Orders history"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:32
+msgid "Order Number"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:33
+msgid "Date"
+msgstr ""
+
+#: .\profiles\templates\profiles\profiles.html:34
+msgid "Order Total"
+msgstr ""
+
+#: .\security\templates\security\access_denied.html:17
+msgid ""
+"Ne pare rau dar nu poti vizita website-ul deoarece nu inteplinesti cel putin "
+"una din cerintele mentionate anterior."
+msgstr "We are sorry, you cannot visit the website because you don't meet one of the requirements."
+
+#: .\security\templates\security\access_denied.html:18
+msgid "Te reasteptam cu drag"
+msgstr "See you later!"
+
+#: .\security\templates\security\access_denied.html:20
+msgid "Catre cerinte"
+msgstr "To requirements"
+
+#: .\security\templates\security\requirements.html:17
+msgid ""
+"Pentru a putea naviga acest website trebuie sa indeplinesti urmatoarele:"
+msgstr "To have access to this website you need to:"
+
+#: .\security\templates\security\requirements.html:18
+msgid "Sa ai cel putin 18 ani impliniti"
+msgstr "To be 18 years old or more."
+
+#: .\security\templates\security\requirements.html:19
+msgid ""
+"Sa ne acorzi dreptul de a prelucra si colecta datele tale cu caracter "
+"personal ( nume, adresa etc ... ) in vederea efectuarii comenzii, conform"
+msgstr "To allow us to proccess your data in order to be able to send you the order, as stated in "
+
+#: .\security\templates\security\requirements.html:20
+msgid ""
+"Sa ne permiti a colecta cookies temporar pentru a face disponibile functiile "
+"website-ului"
+msgstr "To allow us to collect cookies to make possible the functions of the website"
+
+#: .\security\templates\security\requirements.html:24
+msgid "Nu indeplinesc"
+msgstr "I DON'T"
+
+#: .\security\templates\security\requirements.html:29
+msgid "Indeplinesc"
+msgstr "I DO"
+
+#: .\security\templates\security\requirements.html:33
+msgid "toate cerintele"
+msgstr "agree with all."
 
 #: .\templates\allauth\account\account_inactive.html:5
 #: .\templates\allauth\account\account_inactive.html:8
@@ -470,3 +675,105 @@ msgstr ""
 #: .\templates\base.html:48
 msgid "Contul Meu"
 msgstr "My Account"
+
+#: .\templates\base.html:59
+msgid "Profil"
+msgstr ""
+
+#: .\templates\base.html:65
+msgid "Inregistreaza-te"
+msgstr "Register"
+
+#: .\templates\base.html:98 .\wines\templates\wines\wines.html:10
+msgid "Vinuri"
+msgstr "Wines"
+
+#: .\templates\base.html:101
+msgid "Toate"
+msgstr "All"
+
+#: .\templates\base.html:110
+msgid "Oferte si Promotii"
+msgstr "Offers"
+
+#: .\templates\base.html:129
+msgid "Cauta un vin"
+msgstr "Search"
+
+#: .\templates\includes\toasts\toast_error.html:5
+msgid "Error!"
+msgstr ""
+
+#: .\templates\includes\toasts\toast_info.html:5
+msgid "Alert!"
+msgstr ""
+
+#: .\templates\includes\toasts\toast_warning.html:5
+msgid "Warning!"
+msgstr ""
+
+#: .\wines\templates\wines\includes\filters_desktop.html:3
+msgid "Ordoneaza dupa "
+msgstr "Sort by"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:9
+#: .\wines\templates\wines\includes\filters_desktop.html:22
+#: .\wines\templates\wines\includes\filters_desktop.html:35
+#: .\wines\templates\wines\includes\mobile_filters.html:16
+#: .\wines\templates\wines\includes\mobile_filters.html:29
+#: .\wines\templates\wines\includes\mobile_filters.html:42
+msgid "Oricare"
+msgstr "Random"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:14
+#: .\wines\templates\wines\includes\mobile_filters.html:21
+msgid "Culoare"
+msgstr "Color"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:27
+#: .\wines\templates\wines\includes\mobile_filters.html:34
+#: .\wines\templates\wines\includes\wine_card.html:22
+msgid "Regiunea"
+msgstr "Region"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:42
+#: .\wines\templates\wines\includes\mobile_filters.html:49
+msgid "Struguri"
+msgstr "Grapes"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:51
+#: .\wines\templates\wines\includes\filters_desktop.html:63
+#: .\wines\templates\wines\includes\mobile_filters.html:58
+#: .\wines\templates\wines\includes\mobile_filters.html:70
+msgid "Ascendent"
+msgstr "Ascending"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:52
+#: .\wines\templates\wines\includes\filters_desktop.html:64
+#: .\wines\templates\wines\includes\mobile_filters.html:59
+#: .\wines\templates\wines\includes\mobile_filters.html:71
+msgid "Descendent"
+msgstr "Descending"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:54
+#: .\wines\templates\wines\includes\mobile_filters.html:61
+msgid "Pret"
+msgstr "Price"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:62
+#: .\wines\templates\wines\includes\mobile_filters.html:57
+#: .\wines\templates\wines\includes\mobile_filters.html:69
+msgid "Aleatoriu"
+msgstr "Random"
+
+#: .\wines\templates\wines\includes\mobile_filters.html:7
+msgid "Filtre"
+msgstr "Filters"
+
+#: .\wines\templates\wines\includes\mobile_filters.html:73
+msgid "Rating"
+msgstr ""
+
+#: .\wines\templates\wines\wines.html:12
+msgid "Warning"
+msgstr ""

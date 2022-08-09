@@ -1,16 +1,17 @@
+{% load i18n %}
 <div class="pb-2 wine-filter-menu fixed-top rounded d-none">
-    <h4 class="text-center my-2">Ordoneaza dupa</h4>
+    <h4 class="text-center my-2">{% trans "Ordoneaza dupa "%}</h4>
     <div class="container-fluid">
         <div class="row mb-1">
             <div class="col-12">
                 <div class="form-floating text-dark">
                     <select class="form-select" id="color" aria-label="Floating label select example">
-                        <option value="reset">Oricare</option>
-                        <option value="Red" {% if 'Red' in categories %}selected{% endif %}>Rosii</option>
-                        <option value="Rose"{% if 'Rose' in categories %}selected{% endif %}>Rose</option>
-                        <option value="White"{% if 'White' in categories %}selected{% endif %}>Albe</option>
+                        <option value="reset">{% trans "Oricare"%}</option>
+                        {% for color in colors %}
+                        <option value="{{color}}" {% if color in categories %}selected{% endif %}>{% trans color %}</option>
+                        {% endfor %}
                     </select>
-                    <label for="color">Culoare</label>
+                    <label for="color">{% trans "Culoare" %}</label>
                 </div>
             </div>
         </div>
@@ -18,12 +19,12 @@
             <div class="col-12">
                 <div class="form-floating text-dark">
                     <select class="form-select" id="region" aria-label="Floating label select example">
-                        <option value="reset">Oricare</option>
+                        <option value="reset">{% trans "Oricare"%}</option>
                         {% for region in regions%}
-                            <option value="{{region.name}}"{% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
+                        <option value="{{region.name}}" {% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
                         {% endfor %}
                     </select>
-                    <label for="region">Regiunea</label>
+                    <label for="region">{% trans "Regiunea"%}</label>
                 </div>
             </div>
         </div>
@@ -31,14 +32,14 @@
             <div class="col-12">
                 <div class="form-floating text-dark">
                     <select class="form-select" id="grape">
-                        <option value="reset">Oricare</option>
+                        <option value="reset">{% trans "Oricare"%}</option>
                         {% for grape in grapes %}
-                            <option value="{{grape.name}}"{% if grape.name in categories %}selected{% endif %}>
-                                {{grape.name}}
-                            </option>
-                            {% endfor %}
+                        <option value="{{grape.name}}" {% if grape.name in categories %}selected{% endif %}>
+                            {{grape.name}}
+                        </option>
+                        {% endfor %}
                     </select>
-                    <label for="grape">Struguri</label>
+                    <label for="grape">{% trans "Struguri"%}</label>
                 </div>
             </div>
         </div>
@@ -47,10 +48,10 @@
                 <div class="form-floating text-dark">
                     <select class="form-select" id="price" aria-label="Floating label select example">
                         <option value="reset">Aleatoriu</option>
-                        <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>Ascendent</option>
-                        <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>Descendent</option>
+                        <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>{% trans "Ascendent"%}</option>
+                        <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>{% trans "Descendent" %}</option>
                     </select>
-                    <label for="price">Pret</label>
+                    <label for="price">{% trans "Pret"%}</label>
                 </div>
             </div>
         </div>
@@ -58,9 +59,9 @@
             <div class="col-12">
                 <div class="form-floating text-dark">
                     <select class="form-select" id="rating" aria-label="Floating label select example">
-                        <option value="reset" selected>Aleatoriu</option>
-                        <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>Ascendent</option>
-                        <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>Descendent</option>
+                        <option value="reset">{% trans "Aleatoriu"%}</option>
+                        <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>{% trans "Ascendent"%}</option>
+                        <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>{% trans "Descendent"%}</option>
                     </select>
                     <label for="rating">Rating</label>
                 </div>

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% load bag_tools %}
@@ -8,25 +9,25 @@
     <div class="row">
         <div class="col-12 mb-5">
             <!--Delivery Address-->
-            <form method="POST" action="#"  id="payment-form">
+            <form method="POST" action="#" id="payment-form">
                 {% csrf_token %}
                 {{OrderForm|crispy}}
                 <div class="row mt-2">
                     <div class="col-12">
                         <div class="form-check form-check-inline float-right mr-0">
                             {% if user.is_authenticated %}
-                            <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+                            <label class="form-check-label" for="id-save-info">{% trans "Save this delivery information to my profile" %}</label>
                             <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                             {% else %}
                             <label class="form-check-label" for="id-save-info">
-                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
-                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                <a class="text-info" href="{% url 'account_signup' %}">{% trans "Create an account" %}</a> or
+                                <a class="text-info" href="{% url 'account_login' %}">login</a> {% trans "to save this information" %}
                             </label>
                             {% endif %}
                         </div>
                     </div>
                     <fieldset class="p-3 m-2 border border-dark rounded-2" id="fieldset-card">
-                        <legend class="fieldset-label text-black px-2 w-auto mb-4">Payment</legend>
+                        <legend class="fieldset-label text-black px-2 w-auto mb-4">{% trans "Payment" %}</legend>
                         <!-- A Stripe card element will go here -->
                         <div class="mb-3" id="card-element"></div>
                         <!-- Used to display form errors -->
@@ -35,12 +36,12 @@
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
                     <div class="col-12">
-                        <button class="btn btn-warning rounded-0 mt-3" type="submit" id="submit-button">Trimite comanda de {{total}} RON <i class="fas fa-paper-plane"></i></button>
+                        <button class="btn btn-warning rounded-0 mt-3" type="submit" id="submit-button">{% trans "Trimite comanda de" %} {{total}} RON <i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </form>
         </div>
-       
+
         <div class="col-12 mb-5">
             <!--Order Details-->
             <div class="container">
@@ -61,7 +62,7 @@
                         {{ item.qty }}
                     </div>
                     <div class="col-2 my-auto text-center px-0">
-                        <span>Price:</span>
+                        <span>{% trans "Price" %}:</span>
                         <strong>{{item.price}} RON</strong>
                     </div>
                     <div class="col-2 my-auto text-center px-0">
@@ -83,12 +84,12 @@
                 </div>
 
                 <div class="col-6">
-                    <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i><strong>  VINURI </strong></a>
+                    <a href="{% url 'wines_view' %}" class="btn btn-dark rounded-0 w-100"><i class="fas fa-chevron-left"></i>  <strong>{% trans "VINURI" %}</strong></a>
                 </div>
                 <div class="col-6">
                     <a href="{% url 'bag' %}" class="btn btn-outline-danger rounded-0 w-100">
                         <i class="fas fa-shopping-cart"></i>
-                        <strong>  Editeaza </strong>
+                        <strong>{% trans "Editeaza" %}</strong>
                     </a>
                 </div>
             </div>

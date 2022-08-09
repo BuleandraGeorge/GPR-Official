@@ -1,125 +1,126 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 {% block extra_css %}
-  <link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'wines/css/wines.css' %}">
 {% endblock %}
 {% block content %}
-    <div class="container mb-4">
-        <div class="row d-none d-lg-inline">
-            <div class="col-12">
-                <h1>Detalii despre vin</h1>
-            </div>
+<div class="container mb-4">
+    <div class="row d-none d-lg-inline">
+        <div class="col-12">
+            <h1>Detalii despre vin</h1>
         </div>
-        <div class="row">
-            <h2 class="text-center fw-bold my-5 ">{{wine.name}}</h2>
-            <div class="col-sm-12 col-lg-4 d-none d-md-inline">
-                <h5 class="fw-bold">Regiunea</h5>
-                <hr class="my-0">
-                <p>{{wine.region}}</p>
-                <h5 class="fw-bold">Struguri</h5>
-                <hr class="my-0">
-                <p>{{wine.grape}}</p>
-                <h5 class="fw-bold">Procesul de obtinere</h5>
-                <hr class="my-0">
-                <p>{{wine.vinification}}</p>
-            </div>
-            <div class="order-sm-0 col-sm-12 col-lg-4">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
-                         {% if wine.image %}
-                            <img class="mx-auto" src="{{wine.image.url}}" style="max-height: 80vh;">
-                        {% else %}
-                            <img src="{{ MEDIA_URL}}no_img.jpg" style="max-height: 80vh;">
-                        {% endif %}
-                    </div>
+    </div>
+    <div class="row">
+        <h2 class="text-center fw-bold my-5 ">{{wine.name}}</h2>
+        <div class="col-sm-12 col-lg-4 d-none d-md-inline">
+            <h5 class="fw-bold">Regiunea</h5>
+            <hr class="my-0">
+            <p>{{wine.region}}</p>
+            <h5 class="fw-bold">Struguri</h5>
+            <hr class="my-0">
+            <p>{{wine.grape}}</p>
+            <h5 class="fw-bold">Procesul de obtinere</h5>
+            <hr class="my-0">
+            <p>{{wine.vinification}}</p>
+        </div>
+        <div class="order-sm-0 col-sm-12 col-lg-4">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    {% if wine.image %}
+                    <img class="mx-auto" src="{{wine.image.url}}" style="max-height: 80vh;">
+                    {% else %}
+                    <img src="{{ MEDIA_URL}}no_img.jpg" style="max-height: 80vh;">
+                    {% endif %}
                 </div>
-               
-                <div class="row">
-                    <div class="col-12">
-                         <form method="POST" action="{% url 'add_to_bag' wine.id  %}" id="wine-form">
-                                {% csrf_token %}
-                             <div class="row">
-                                <div class="col-6"> 
-                                    <select class="form-control form-control-sm border-0 size" name="wine_size" id="size_select"> 
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <form method="POST" action="{% url 'add_to_bag' wine.id  %}" id="wine-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-6">
+                                <select class="form-control form-control-sm border-0 size" name="wine_size" id="size_select">
                                     {% for sizeDetails in wine.size_details_set.all %}
-                                        <option value="{{sizeDetails.size}}" data-quantity_available="{{sizeDetails.qty_available}}" data-price_size="{{sizeDetails.price}}">
-                                            {{sizeDetails.size}}
-                                        </option>
+                                    <option value="{{sizeDetails.size}}" data-quantity_available="{{sizeDetails.qty_available}}" data-price_size="{{sizeDetails.price}}">
+                                        {{sizeDetails.size}}
+                                    </option>
                                     {% endfor %}
-                                    </select></div>
-                                <div class="col-6 text-center px-0">
-                                    <strong id="price_slot">
-                            <!--price set through js-->
-                                    </strong>
+                                </select>
+                            </div>
+                            <div class="col-6 text-center px-0">
+                                <strong id="price_slot">
+                                    <!--price set through js-->
+                                </strong>
                             </div>
                         </div>
                         <p class="m-0">
-                           <div class="row">
-                        <div class="col-6 px-0">
-                            {% include 'wines/includes/qty_input.html'%}
-                        </div>
-                        <div class="col-6">
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                            <button type="submit" class="btn btn-danger rounded-0 w-100"><i class="fas fa-shopping-cart"></i></button>
-                        </div>
-                    </div>
-                    </form> 
-                    </div>
+                            <div class="row">
+                                <div class="col-6 px-0">
+                                    {% include 'wines/includes/qty_input.html'%}
+                                </div>
+                                <div class="col-6">
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    <button type="submit" class="btn btn-danger rounded-0 w-100"><i class="fas fa-shopping-cart"></i></button>
+                                </div>
+                            </div>
+                    </form>
                 </div>
             </div>
-            <div class="col-sm-12 d-md-none">
-                <h5 class="fw-bold">Regiunea</h5>
-                <hr class="my-0">
-                <p>{{wine.region}}</p>
-                <h5 class="fw-bold">Struguri</h5>
-                <hr class="my-0">
-                <p>{{wine.grape}}</p>
-                <h5 class="fw-bold">Procesul de obtinere</h5>
-                <hr class="my-0">
-                <p>{{wine.vinification}}</p>
-                <!-- imaginea cu vinul-->
-            </div>
-            <div class="col-sm-12 col-lg-4 ">
-                <!--detalii despre vin-->
-                <h5 class="fw-bold">Gustul</h5>
-                <hr class="my-0">
-                <p>{{wine.palate}}</p>
-                <h5 class="fw-bold">Maturare</h5>
-                <hr class="my-0">
-                <p>{{ wine.aging }}</p>
-                <h5 class="fw-bold">Descrierea culorii</h5>
-                <hr class="my-0">
-                <p>{{ wine.color_details}}</p>
-                <h5 class="fw-bold">Temperatura de servire</h5>
-                <hr class="my-0">
-                <p>{{ wine.serving }}</p>
-                <h5 class="fw-bold">Impachetarea</h5>
-                <hr class="my-0">
-                <p>{{ wine.boxing }}</p>
-                <h5 class="fw-bold">Ratingul Producatorului</h5>
-                <hr class="my-0">
-                <p>{{ wine.rating }} <i class="fas fa-star fa-sm"></i></p>
-                <h5 class="fw-bold">Prima zi pe piata</h5>
-                <hr class="my-0">
-                <p>{{ wine.first_time_listed }}</p>
-            </div>
+        </div>
+        <div class="col-sm-12 d-md-none">
+            <h5 class="fw-bold">Regiunea</h5>
+            <hr class="my-0">
+            <p>{{wine.region}}</p>
+            <h5 class="fw-bold">Struguri</h5>
+            <hr class="my-0">
+            <p>{{wine.grape}}</p>
+            <h5 class="fw-bold">Procesul de obtinere</h5>
+            <hr class="my-0">
+            <p>{{wine.vinification}}</p>
+            <!-- imaginea cu vinul-->
+        </div>
+        <div class="col-sm-12 col-lg-4 ">
+            <!--detalii despre vin-->
+            <h5 class="fw-bold">Gustul</h5>
+            <hr class="my-0">
+            <p>{{wine.palate}}</p>
+            <h5 class="fw-bold">Maturare</h5>
+            <hr class="my-0">
+            <p>{{ wine.aging }}</p>
+            <h5 class="fw-bold">Descrierea culorii</h5>
+            <hr class="my-0">
+            <p>{{ wine.color_details}}</p>
+            <h5 class="fw-bold">Temperatura de servire</h5>
+            <hr class="my-0">
+            <p>{{ wine.serving }}</p>
+            <h5 class="fw-bold">Impachetarea</h5>
+            <hr class="my-0">
+            <p>{{ wine.boxing }}</p>
+            <h5 class="fw-bold">Ratingul Producatorului</h5>
+            <hr class="my-0">
+            <p>{{ wine.rating }} <i class="fas fa-star fa-sm"></i></p>
+            <h5 class="fw-bold">Prima zi pe piata</h5>
+            <hr class="my-0">
+            <p>{{ wine.first_time_listed }}</p>
         </div>
     </div>
+</div>
 {% endblock %}
 {% block postload_js %}
 <script type="text/javascript">
-    function handleEnableDisable(){
-            var qty_input = $('.qty_input');
-            var currentInput = parseInt(qty_input.val());
-            var qtyAvailable = parseInt(qty_input.data('qty-available'));
-            var minusDisabled = currentInput < 2 ;
-            var plusDisabled = currentInput >= qtyAvailable; 
-            qty_input.prev('.input-group-preppend').find('.decrement-qty').prop('disabled', minusDisabled);
-            qty_input.next('.input-group-append').find('.increment-qty').prop('disabled', plusDisabled);
-        }
+    function handleEnableDisable() {
+        var qty_input = $('.qty_input');
+        var currentInput = parseInt(qty_input.val());
+        var qtyAvailable = parseInt(qty_input.data('qty-available'));
+        var minusDisabled = currentInput < 2;
+        var plusDisabled = currentInput >= qtyAvailable;
+        qty_input.prev('.input-group-preppend').find('.decrement-qty').prop('disabled', minusDisabled);
+        qty_input.next('.input-group-append').find('.increment-qty').prop('disabled', plusDisabled);
+    }
     // sets the quantity at input and max value
-    function maxQtyAvaibleSetter()
-    {  
+    function maxQtyAvaibleSetter() {
         var selectedOption = $('#size_select option:selected');
         var qty = selectedOption.data('quantity_available');
         var price = selectedOption.data('price_size');
@@ -127,35 +128,35 @@
         qty_input.data('qty-available', qty);
         qty_input.attr('max', qty);
     }
-    function priceHandler(){
+    function priceHandler() {
         var selectedOption = $('#size_select option:selected');
         var price = selectedOption.data('price_size');
 
         $('#price_slot').text(`${price} RON`);
     }
-    $('.decrement-qty').click(function(e){
+    $('.decrement-qty').click(function (e) {
         e.preventDefault();
         var Input = $('.qty_input');
         var currentValue = parseInt($(Input).val());
         $(Input).val(currentValue - 1);
         handleEnableDisable();
     })
-    $('.increment-qty').click(function(e){
+    $('.increment-qty').click(function (e) {
         e.preventDefault();
         var Input = $('.qty_input');
         var currentValue = parseInt($(Input).val());
         $(Input).val(currentValue + 1);
         handleEnableDisable();
     })
-        maxQtyAvaibleSetter();
-        priceHandler();
-        handleEnableDisable();
+    maxQtyAvaibleSetter();
+    priceHandler();
+    handleEnableDisable();
     // on change of size, updates the qty available for wine
-    $('#size_select').change(function(event){
+    $('#size_select').change(function (event) {
         priceHandler();
         maxQtyAvaibleSetter(); // update the qty-available on input
         handleEnableDisable(); // enable disable buttons accordingly
-        
+
     });
-    </script>
+</script>
 {% endblock %}
