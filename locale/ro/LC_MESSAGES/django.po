@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-26 15:44+0100\n"
+"POT-Creation-Date: 2022-08-13 12:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,173 +19,211 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: .\bag\templates\bag\bag.html:6
+#: .\bag\templates\bag\bag.html:7
 msgid "Cosul tau de cumparaturi"
 msgstr ""
 
-#: .\bag\templates\bag\bag.html:8
+#: .\bag\templates\bag\bag.html:9
 msgid "Cosul de cumparaturi este gol."
 msgstr ""
 
-#: .\bag\templates\bag\bag.html:8 .\bag\templates\bag\bag.html:65
+#: .\bag\templates\bag\bag.html:9 .\bag\templates\bag\bag.html:66
 msgid "Catre Vinuri"
 msgstr "Vinuri"
 
-#: .\bag\templates\bag\bag.html:44
+#: .\profiles\templates\profiles\profiles.html:23
+#: .\bag\templates\bag\bag.html:45
 msgid "Update"
-msgstr ""
+msgstr "Actuatlizeaza"
 
-#: .\bag\templates\bag\bag.html:48
-#: .\checkout\templates\checkout\checkout.html:64
+#: .\bag\templates\bag\bag.html:49
+#: .\checkout\templates\checkout\checkout.html:65
 msgid "Price"
 msgstr ""
 
-#: .\bag\templates\bag\bag.html:68
+#: .\bag\templates\bag\bag.html:69
 msgid "CHECKOUT"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout.html:18
+
+
+#: .\checkout\templates\checkout\checkout.html:19
 msgid "Save this delivery information to my profile"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout.html:22
 #: .\checkout\templates\checkout\checkout.html:23
-#: .\checkout\templates\checkout\checkout.html:29
 msgid "Create an account"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout.html:38
+#: .\checkout\templates\checkout\checkout.html:24
+msgid "to save this information"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout.html:30
+msgid "Payment"
+msgstr "Plata"
+
+#: .\checkout\templates\checkout\checkout.html:39
 msgid "Trimite comanda de"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout.html:86
+#: .\checkout\templates\checkout\checkout.html:87
 msgid "VINURI"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout.html:91
+#: .\checkout\templates\checkout\checkout.html:92
 msgid "Editeaza"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout_success.html:9
-#: .\checkout\templates\checkout\checkout_success.html:11
+#: .\checkout\templates\checkout\checkout_success.html:8
+msgid "Checkout realizat cu success!"
+msgstr ""
+
+#: .\checkout\templates\checkout\checkout_success.html:10
+#: .\checkout\templates\checkout\checkout_success.html:12
 msgid "Comanda"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout_success.html:9
+#: .\checkout\templates\checkout\checkout_success.html:10
 msgid ""
 "a fost plasata cu success si un email cu mai multe detalii a fost trimis pe "
 "adresa"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout_success.html:10
-#: .\security\templates\security\requirements.html:20
+#: .\checkout\templates\checkout\checkout_success.html:11
+#: .\security\templates\security\requirements.html:21
 msgid "Multumim!"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout_success.html:14
+#: .\checkout\templates\checkout\checkout_success.html:15
 msgid "Nume"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout_success.html:17
+#: .\checkout\templates\checkout\checkout_success.html:18
 msgid "Dimensiune"
 msgstr ""
 
-#: .\checkout\templates\checkout\checkout_success.html:20
+#: .\checkout\templates\checkout\checkout_success.html:21
 msgid "Cantitate"
 msgstr ""
 
-#: .\offers\templates\offers\offer_details.html:10
+#: .\contact\templates\contact\contact.html:9
+msgid "Numar de telefon"
+msgstr ""
+
+#: .\home\templates\home\home.html:19
+msgid "Find More"
+msgstr ""
+
+#: .\home\templates\home\home.html:31
+msgid "Desavarsire in fiecare strop"
+msgstr ""
+
+#: .\home\templates\home\home.html:39
+msgid "Cele mai vandute"
+msgstr ""
+
+#: .\home\templates\home\home.html:45
+msgid "Cele mai noi"
+msgstr ""
+
+#: .\home\templates\home\home.html:51
+msgid "Cel mai mare rating"
+msgstr ""
+
+#: .\offers\templates\offers\offer_details.html:11
 msgid "Detalii Oferta"
 msgstr ""
 
-#: .\offers\templates\offers\offers.html:10
+#: .\offers\templates\offers\offers.html:11
 msgid "Oferte"
 msgstr ""
 
-#: .\offers\templates\offers\offers.html:16
+#: .\offers\templates\offers\offers.html:17
 msgid "Oferte in curs"
 msgstr "Oferte si Promotii"
 
-#: .\offers\templates\offers\offers.html:36
+#: .\offers\templates\offers\offers.html:37
 msgid "Nici o oferta disponibila mometan, stai aproape!"
 msgstr ""
 
-#: .\offers\templates\offers\offers.html:43
+#: .\offers\templates\offers\offers.html:44
 msgid "Oferte care au avut loc"
 msgstr ""
 
-#: .\offers\templates\offers\offers.html:55
+#: .\offers\templates\offers\offers.html:56
 msgid "Afla mai multe"
 msgstr ""
 
-#: .\profiles\templates\profiles\profiles.html:10
+#: .\profiles\templates\profiles\profiles.html:11
 msgid "My Profile"
-msgstr ""
+msgstr "Profiul Meu"
 
-#: .\profiles\templates\profiles\profiles.html:18
+#: .\profiles\templates\profiles\profiles.html:19
 msgid "Profile Details"
-msgstr ""
+msgstr "Detalii Profil"
 
-#: .\profiles\templates\profiles\profiles.html:26
+
+#: .\profiles\templates\profiles\profiles.html:27
 msgid "Orders history"
-msgstr ""
-
-#: .\profiles\templates\profiles\profiles.html:31
-msgid "Order Number"
-msgstr ""
+msgstr "Istoric Comenzi"
 
 #: .\profiles\templates\profiles\profiles.html:32
-msgid "Date"
-msgstr ""
+msgid "Order Number"
+msgstr "Numar de ordine"
 
 #: .\profiles\templates\profiles\profiles.html:33
-msgid "Order Total"
-msgstr ""
+msgid "Date"
+msgstr "Data"
 
-#: .\security\templates\security\access_denied.html:16
+#: .\profiles\templates\profiles\profiles.html:34
+msgid "Order Total"
+msgstr "Total comanda"
+
+#: .\security\templates\security\access_denied.html:17
 msgid ""
 "Ne pare rau dar nu poti vizita website-ul deoarece nu inteplinesti cel putin "
 "una din cerintele mentionate anterior."
 msgstr ""
 
-#: .\security\templates\security\access_denied.html:17
+#: .\security\templates\security\access_denied.html:18
 msgid "Te reasteptam cu drag"
 msgstr ""
 
-#: .\security\templates\security\access_denied.html:19
+#: .\security\templates\security\access_denied.html:20
 msgid "Catre cerinte"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:16
+#: .\security\templates\security\requirements.html:17
 msgid ""
 "Pentru a putea naviga acest website trebuie sa indeplinesti urmatoarele:"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:17
+#: .\security\templates\security\requirements.html:18
 msgid "Sa ai cel putin 18 ani impliniti"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:18
+#: .\security\templates\security\requirements.html:19
 msgid ""
 "Sa ne acorzi dreptul de a prelucra si colecta datele tale cu caracter "
 "personal ( nume, adresa etc ... ) in vederea efectuarii comenzii, conform"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:19
+#: .\security\templates\security\requirements.html:20
 msgid ""
 "Sa ne permiti a colecta cookies temporar pentru a face disponibile functiile "
 "website-ului"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:23
+#: .\security\templates\security\requirements.html:24
 msgid "Nu indeplinesc"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:28
+#: .\security\templates\security\requirements.html:29
 msgid "Indeplinesc"
 msgstr ""
 
-#: .\security\templates\security\requirements.html:32
+#: .\security\templates\security\requirements.html:33
 msgid "toate cerintele"
 msgstr ""
 
@@ -264,7 +302,8 @@ msgstr "Salurari de la %(site_name)s!"
 msgid ""
 "Thank you for using %(site_name)s!\n"
 "%(site_domain)s"
-msgstr "Multumim ca ati ales %(site_name)s!\n"
+msgstr ""
+"Multumim ca ati ales %(site_name)s!\n"
 "%(site_domain)s"
 
 #: .\templates\allauth\account\email\email_confirmation_message.txt:5
@@ -274,8 +313,10 @@ msgid ""
 "mail address to register an account on %(site_domain)s.\n"
 "\n"
 "To confirm this is correct, go to %(activate_url)s"
-msgstr "Ati primit acest mesaj deoarece utilizatorul %(user_display) a oferit"
-"aceasta adresa de email pentru a se inregistra pe website-ul %(site_domain)s.\n"
+msgstr ""
+"Ati primit acest mesaj deoarece utilizatorul %(user_display) a oferitaceasta "
+"adresa de email pentru a se inregistra pe website-ul %(site_domain)s.\n"
+"\n"
 "Pentru a confirma, merge pe link-ul urmator %(activate_url)"
 
 #: .\templates\allauth\account\email\email_confirmation_subject.txt:3
@@ -288,9 +329,10 @@ msgid ""
 "password for your user account.\n"
 "It can be safely ignored if you did not request a password reset. Click the "
 "link below to reset your password."
-msgstr "Ati primit aceast email deoarece cineva a comandat o resetare de parola \n"
-"Puteti ignora acest mesaj daca nu ati fost dumeavoastra cel in cauza. Mergeti pe"
-"link-ul urmator pentru a reseta parola"
+msgstr ""
+"Ati primit aceast email deoarece cineva a comandat o resetare de parola \n"
+"Puteti ignora acest mesaj daca nu ati fost dumeavoastra cel in cauza. "
+"Mergeti pelink-ul urmator pentru a reseta parola"
 
 #: .\templates\allauth\account\email\password_reset_key_message.txt:9
 #, python-format
@@ -325,7 +367,9 @@ msgstr "Confirmati adresa de email"
 msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
-msgstr "Va rugam sa confirmati ca <a href=\"mailto:%(email)s\">%(email)s</a> este adresa pentru userul %(user_display)."
+msgstr ""
+"Va rugam sa confirmati ca <a href=\"mailto:%(email)s\">%(email)s</a> este "
+"adresa pentru userul %(user_display)."
 
 #: .\templates\allauth\account\email_confirm.html:20
 msgid "Confirm"
@@ -336,8 +380,9 @@ msgstr "Confirma"
 msgid ""
 "This e-mail confirmation link expired or is invalid. Please <a href="
 "\"%(email_url)s\">issue a new e-mail confirmation request</a>."
-msgstr "Acest email de confirmare a expirat sau este invalid."
-"Va rugam <a href=\"%(email_url)s\">creeati o noua cerere de confirmare a emailului aici</a>."
+msgstr ""
+"Acest email de confirmare a expirat sau este invalid.Va rugam <a href="
+"\"%(email_url)s\">creeati o noua cerere de confirmare a emailului aici</a>."
 
 #: .\templates\allauth\account\login.html:6
 #: .\templates\allauth\account\login.html:9
@@ -353,17 +398,23 @@ msgid ""
 "        of your existing third party accounts. Or, <a href=\"%(signup_url)s"
 "\">sign up</a>\n"
 "        for a <strong>%(site_name)s</strong> account and sign in below:"
-msgstr "Va rugam sa va logati cu unul dintre \n"
-" exitenele conturi externe. Sau <a href=\"%(signup_url)s\">Inregistrati-va</a>\n"
+msgstr ""
+"Va rugam sa va logati cu unul dintre \n"
+" exitenele conturi externe. Sau <a href=\"%(signup_url)s\">Inregistrati-va</"
+"a>\n"
 " pentru un cont <strong>%(site_name)s</strong> si semnati mai jos:"
 
 #: .\templates\allauth\account\login.html:22
-#, python-format
+#, fuzzy, python-format
+#| msgid ""
+#| "If you have not created an account yet, then please        <a href="
+#| "\"%(signup_url)s\">sign up</a> first."
 msgid ""
-"If you have not created an account yet, then please"
+"If you have not created an account yet, then please\n"
 "        <a href=\"%(signup_url)s\">sign up</a> first."
-msgstr "Daca nu v-ati creat un cont inca, va rugam"
-"<a href=\"%(signup_url)s\">inregitrati-va</a> pentru inceput."
+msgstr ""
+"Daca nu v-ati creat un cont inca, va rugam<a href=\"%(signup_url)s"
+"\">inregitrati-va</a> pentru inceput."
 
 #: .\templates\allauth\account\login.html:45
 #: .\templates\allauth\account\password_change.html:14
@@ -446,8 +497,9 @@ msgstr "Reseteaza Parola"
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll send you "
 "an e-mail allowing you to reset it."
-msgstr "Ai uitat parola. Introduceti adresa dumneavoastra de email mai jos, si va vom trimite un email,"
-"care va ofera posibilitatea de a crea una noua."
+msgstr ""
+"Ai uitat parola. Introduceti adresa dumneavoastra de email mai jos, si va "
+"vom trimite un email,care va ofera posibilitatea de a crea una noua."
 
 #: .\templates\allauth\account\password_reset.html:20
 msgid "Reset My Password"
@@ -461,8 +513,10 @@ msgstr "Va rugam sa ne contactati intampinati probleme in resetarea parolei."
 msgid ""
 "We have sent you an e-mail. If you have not received it please check your "
 "spam folder. Otherwise contact us if you do not receive it in a few minutes."
-msgstr "Tocmai v-am trimis un email. Daca nu l-ati primit inca va rugam sa verificati si sectiunea de spam al email-ului dumeanvoastra."
-"Daca totusi emailul nu a ajuns, va incurajam sa ne contactati in cateva minute."
+msgstr ""
+"Tocmai v-am trimis un email. Daca nu l-ati primit inca va rugam sa "
+"verificati si sectiunea de spam al email-ului dumeanvoastra.Daca totusi "
+"emailul nu a ajuns, va incurajam sa ne contactati in cateva minute."
 
 #: .\templates\allauth\account\password_reset_from_key.html:7
 msgid "Bad Token"
@@ -474,8 +528,9 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
 "a>."
-msgstr "Link-ul de resetare a parolei a fost invalid."
-"Va rugam cereti un nou formulat de resetare a parolei <a href=\"%(passwd_reset_url)s\">aici</a>."
+msgstr ""
+"Link-ul de resetare a parolei a fost invalid.Va rugam cereti un nou formulat "
+"de resetare a parolei <a href=\"%(passwd_reset_url)s\">aici</a>."
 
 #: .\templates\allauth\account\password_reset_from_key.html:16
 msgid "change password"
@@ -507,7 +562,9 @@ msgstr ""
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
-msgstr "Esti deja inregistrat? Atunci concteaza-te apasand <a href=\"%(login_url)s\">aici</a>."
+msgstr ""
+"Esti deja inregistrat? Atunci concteaza-te apasand <a href=\"%(login_url)s"
+"\">aici</a>."
 
 #: .\templates\allauth\account\signup_closed.html:5
 #: .\templates\allauth\account\signup_closed.html:8
@@ -540,9 +597,11 @@ msgid ""
 "finalize the signup process. If you do not see the verification e-mail in "
 "your main inbox, check your spam folder. Please contact us if you do not "
 "receive the verification e-mail within a few minutes."
-msgstr "V-am trimis un email pentru verificare. Urmati link-ul pentru a finaliza procesul de inregistrare."
-"Daca nu gasiti email in Inbox atunci verificati si in folder-ul de spam sau mai asteptati cateva minute pana ajunge."
-"Altfel va incurajam sa luati legatura cu noi."
+msgstr ""
+"V-am trimis un email pentru verificare. Urmati link-ul pentru a finaliza "
+"procesul de inregistrare.Daca nu gasiti email in Inbox atunci verificati si "
+"in folder-ul de spam sau mai asteptati cateva minute pana ajunge.Altfel va "
+"incurajam sa luati legatura cu noi."
 
 #: .\templates\allauth\account\verified_email_required.html:13
 msgid ""
@@ -575,7 +634,9 @@ msgstr ""
 #: .\templates\allauth\socialaccount\authentication_error.html:10
 msgid ""
 "An error occurred while attempting to login via your social network account."
-msgstr "Am intampinat o eroare in incercarea de a va conecta prin contul dumeanvoastra extern."
+msgstr ""
+"Am intampinat o eroare in incercarea de a va conecta prin contul "
+"dumeanvoastra extern."
 
 #: .\templates\allauth\socialaccount\connections.html:5
 #: .\templates\allauth\socialaccount\connections.html:8
@@ -615,7 +676,8 @@ msgstr "Conectativa cu %(provider)."
 #: .\templates\allauth\socialaccount\login.html:14
 #, python-format
 msgid "You are about to sign in using a third party account from %(provider)s."
-msgstr "Sunteti pe cale de a va conecta folosind un cont extern de la %(provider)"
+msgstr ""
+"Sunteti pe cale de a va conecta folosind un cont extern de la %(provider)"
 
 #: .\templates\allauth\socialaccount\login.html:19
 msgid "Continue"
@@ -652,8 +714,10 @@ msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "    %(site_name)s. As a final step, please complete the following form:"
 msgstr ""
-"Sunteti pe cale sa folositi contul de %(provider_name) pentru a va conecta la %(site_name).\n"
+"Sunteti pe cale sa folositi contul de %(provider_name) pentru a va conecta "
+"la %(site_name).\n"
 "Va rugam ca un ultim pas va completati fomularul urmator:"
+
 #: .\templates\base.html:48
 msgid "Contul Meu"
 msgstr ""
@@ -666,7 +730,7 @@ msgstr ""
 msgid "Inregistreaza-te"
 msgstr ""
 
-#: .\templates\base.html:98
+#: .\templates\base.html:98 .\wines\templates\wines\wines.html:10
 msgid "Vinuri"
 msgstr "Vinuri"
 
@@ -694,45 +758,113 @@ msgstr ""
 msgid "Warning!"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:2
+#: .\wines\templates\wines\includes\filters_desktop.html:3
 msgid "Ordoneaza dupa "
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:8
-#: .\wines\templates\wines\includes\filters_desktop.html:21
-#: .\wines\templates\wines\includes\filters_desktop.html:34
+#: .\wines\templates\wines\includes\filters_desktop.html:9
+#: .\wines\templates\wines\includes\filters_desktop.html:22
+#: .\wines\templates\wines\includes\filters_desktop.html:35
+#: .\wines\templates\wines\includes\mobile_filters.html:16
+#: .\wines\templates\wines\includes\mobile_filters.html:29
+#: .\wines\templates\wines\includes\mobile_filters.html:42
 msgid "Oricare"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:13
+#: .\wines\templates\wines\includes\filters_desktop.html:14
+#: .\wines\templates\wines\includes\mobile_filters.html:21
 msgid "Culoare"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:26
-msgid "Regiunea "
+#: .\wines\templates\wines\includes\filters_desktop.html:27
+#: .\wines\templates\wines\includes\mobile_filters.html:34
+#: .\wines\templates\wines\includes\wine_card.html:22
+#: .\wines\templates\wines\wine_details.html:17
+#: .\wines\templates\wines\wine_details.html:73
+msgid "Regiunea"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:41
+#: .\wines\templates\wines\includes\filters_desktop.html:42
+#: .\wines\templates\wines\includes\mobile_filters.html:49
+#: .\wines\templates\wines\wine_details.html:20
+#: .\wines\templates\wines\wine_details.html:76
 msgid "Struguri"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:50
-#: .\wines\templates\wines\includes\filters_desktop.html:62
-msgid "Ascendent "
-msgstr ""
-
 #: .\wines\templates\wines\includes\filters_desktop.html:51
+#: .\wines\templates\wines\includes\filters_desktop.html:63
+#: .\wines\templates\wines\includes\mobile_filters.html:58
+#: .\wines\templates\wines\includes\mobile_filters.html:70
+#, fuzzy
+#| msgid "Descendent"
+msgid "Ascendent"
+msgstr "Descendent"
+
+#: .\wines\templates\wines\includes\filters_desktop.html:52
+#: .\wines\templates\wines\includes\filters_desktop.html:64
+#: .\wines\templates\wines\includes\mobile_filters.html:59
+#: .\wines\templates\wines\includes\mobile_filters.html:71
 msgid "Descendent"
 msgstr "Descendent"
 
-#: .\wines\templates\wines\includes\filters_desktop.html:53
+#: .\wines\templates\wines\includes\filters_desktop.html:54
+#: .\wines\templates\wines\includes\mobile_filters.html:61
 msgid "Pret"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:61
+#: .\wines\templates\wines\includes\filters_desktop.html:62
+#: .\wines\templates\wines\includes\mobile_filters.html:57
+#: .\wines\templates\wines\includes\mobile_filters.html:69
 msgid "Aleatoriu"
 msgstr ""
 
-#: .\wines\templates\wines\includes\filters_desktop.html:63
-msgid "Descendent "
+#: .\wines\templates\wines\includes\mobile_filters.html:7
+msgid "Filtre"
 msgstr ""
+
+#: .\wines\templates\wines\includes\mobile_filters.html:73
+msgid "Rating"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:11
+msgid "Detalii despre vin"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:23
+#: .\wines\templates\wines\wine_details.html:79
+msgid "Procesul de obtinere"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:86
+msgid "Gustul"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:89
+msgid "Maturare"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:92
+msgid "Descrierea culorii"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:95
+msgid "Temperatura de servire"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:98
+msgid "Impachetarea"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:101
+msgid "Ratingul Producatorului"
+msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:104
+msgid "Prima zi pe piata"
+msgstr ""
+
+#: .\wines\templates\wines\wines.html:12
+#, fuzzy
+#| msgid "Warning:"
+msgid "Warning"
+msgstr "Atentionare"

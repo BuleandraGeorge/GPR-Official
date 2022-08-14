@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-27 15:16+0100\n"
+"POT-Creation-Date: 2022-08-14 11:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,6 +31,7 @@ msgid "Catre Vinuri"
 msgstr "To Wines"
 
 #: .\bag\templates\bag\bag.html:45
+#: .\profiles\templates\profiles\profiles.html:23
 msgid "Update"
 msgstr ""
 
@@ -42,6 +43,31 @@ msgstr ""
 #: .\bag\templates\bag\bag.html:69
 msgid "CHECKOUT"
 msgstr ""
+
+#: .\checkout\forms.py:15
+#: .\checkout\templates\checkout\checkout_success.html:15
+msgid "Nume"
+msgstr "Name"
+
+#: .\checkout\forms.py:16
+msgid "Telefon"
+msgstr "Mobile"
+
+#: .\checkout\forms.py:17
+msgid "Adresa"
+msgstr "Address"
+
+#: .\checkout\forms.py:18
+msgid "Adresa linia 2"
+msgstr "Address line 2"
+
+#: .\checkout\forms.py:19
+msgid "Judet"
+msgstr "County"
+
+#: .\checkout\forms.py:20
+msgid "Tara"
+msgstr "Country"
 
 #: .\checkout\templates\checkout\checkout.html:19
 msgid "Save this delivery information to my profile"
@@ -91,10 +117,6 @@ msgstr "was send successfully and an email was send to "
 msgid "Multumim!"
 msgstr "Thank you!"
 
-#: .\checkout\templates\checkout\checkout_success.html:15
-msgid "Nume"
-msgstr "Name"
-
 #: .\checkout\templates\checkout\checkout_success.html:18
 msgid "Dimensiune"
 msgstr "Size"
@@ -117,7 +139,7 @@ msgstr "Perfection in every dropplet"
 
 #: .\home\templates\home\home.html:39
 msgid "Cele mai vandute"
-msgstr "BEST SOLD"
+msgstr "MOST SOLD"
 
 #: .\home\templates\home\home.html:45
 msgid "Cele mai noi"
@@ -179,7 +201,9 @@ msgstr ""
 msgid ""
 "Ne pare rau dar nu poti vizita website-ul deoarece nu inteplinesti cel putin "
 "una din cerintele mentionate anterior."
-msgstr "We are sorry, you cannot visit the website because you don't meet one of the requirements."
+msgstr ""
+"We are sorry, you cannot visit the website because you don't meet one of the "
+"requirements."
 
 #: .\security\templates\security\access_denied.html:18
 msgid "Te reasteptam cu drag"
@@ -202,13 +226,16 @@ msgstr "To be 18 years old or more."
 msgid ""
 "Sa ne acorzi dreptul de a prelucra si colecta datele tale cu caracter "
 "personal ( nume, adresa etc ... ) in vederea efectuarii comenzii, conform"
-msgstr "To allow us to proccess your data in order to be able to send you the order, as stated in "
+msgstr ""
+"To allow us to proccess your data in order to be able to send you the order, "
+"as stated in "
 
 #: .\security\templates\security\requirements.html:20
 msgid ""
 "Sa ne permiti a colecta cookies temporar pentru a face disponibile functiile "
 "website-ului"
-msgstr "To allow us to collect cookies to make possible the functions of the website"
+msgstr ""
+"To allow us to collect cookies to make possible the functions of the website"
 
 #: .\security\templates\security\requirements.html:24
 msgid "Nu indeplinesc"
@@ -733,11 +760,15 @@ msgstr "Color"
 #: .\wines\templates\wines\includes\filters_desktop.html:27
 #: .\wines\templates\wines\includes\mobile_filters.html:34
 #: .\wines\templates\wines\includes\wine_card.html:22
+#: .\wines\templates\wines\wine_details.html:17
+#: .\wines\templates\wines\wine_details.html:73
 msgid "Regiunea"
 msgstr "Region"
 
 #: .\wines\templates\wines\includes\filters_desktop.html:42
 #: .\wines\templates\wines\includes\mobile_filters.html:49
+#: .\wines\templates\wines\wine_details.html:20
+#: .\wines\templates\wines\wine_details.html:76
 msgid "Struguri"
 msgstr "Grapes"
 
@@ -773,6 +804,43 @@ msgstr "Filters"
 #: .\wines\templates\wines\includes\mobile_filters.html:73
 msgid "Rating"
 msgstr ""
+
+#: .\wines\templates\wines\wine_details.html:11
+msgid "Detalii despre vin"
+msgstr "Details"
+
+#: .\wines\templates\wines\wine_details.html:23
+#: .\wines\templates\wines\wine_details.html:79
+msgid "Procesul de obtinere"
+msgstr "Vinification"
+
+#: .\wines\templates\wines\wine_details.html:86
+msgid "Gustul"
+msgstr "Palate"
+
+#: .\wines\templates\wines\wine_details.html:89
+msgid "Maturare"
+msgstr "Maturation"
+
+#: .\wines\templates\wines\wine_details.html:92
+msgid "Descrierea culorii"
+msgstr "Color"
+
+#: .\wines\templates\wines\wine_details.html:95
+msgid "Temperatura de servire"
+msgstr "Serving Temperature"
+
+#: .\wines\templates\wines\wine_details.html:98
+msgid "Impachetarea"
+msgstr "Boxing"
+
+#: .\wines\templates\wines\wine_details.html:101
+msgid "Ratingul Producatorului"
+msgstr "Producer's Rating"
+
+#: .\wines\templates\wines\wine_details.html:104
+msgid "Prima zi pe piata"
+msgstr "First time posted"
 
 #: .\wines\templates\wines\wines.html:12
 msgid "Warning"
