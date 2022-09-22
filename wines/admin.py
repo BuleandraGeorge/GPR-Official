@@ -1,13 +1,19 @@
 from django.contrib import admin
 
-from .models import wine, color, grape, region, size, size_details
+from .models import wine, color, grape, region, size, size_details, translation
 
 
 class wineQuantityAvailableDetailsAdmin(admin.TabularInline):
     model = size_details
 
+class wineTranslations(admin.TabularInline):
+    model = translation
+
 class wineAdmin(admin.ModelAdmin):
-    inlines = (wineQuantityAvailableDetailsAdmin,)
+    inlines = [
+        wineQuantityAvailableDetailsAdmin,
+        wineTranslations
+    ]
     list_display = (
         'name',
         'color',

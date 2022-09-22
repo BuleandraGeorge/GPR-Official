@@ -26,20 +26,23 @@
         <nav class="navbar navbar-expand-lg d-none d-lg-block p-0">
             <div class="container-fluid">
                 <a class="navbar-brand text-dark pt-3 brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
-                <form action="{% url 'set_language' %}" method="post" id="language-selector">
-                    {% csrf_token %}
-                    <select name="language" id="language-selector">
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                            {{ language.code }}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </form>
+                            
                 <ul class="navbar-nav font-header">
+                    <li class="nav-item my-auto">
+                        <form action="{% url 'set_language' %}" method="post" id="language-selector">
+                            {% csrf_token %}
+                            <select name="language" id="language-selector" class="text-danger border-danger">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                    {{ language.code }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </li>
                     <li class="nav-item dropdown mx-4">
                         <a class="nav-link text-light dropdown bg-danger" href="#" id="user-options" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="text-center">
@@ -83,7 +86,20 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light menu p-0 ">
             <div class="container-fluid">
                 <!-- Brand -->
-                <a class="navbar-brand text-dark d-lg-none m-0 brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
+                <a class="navbar-brand text-dark d-lg-none brand" href="{% url 'home' %}">Grupo Pierola Romania</a>
+                <form action="{% url 'set_language' %}" method="post" id="language-selector" class="fs-5">
+                    {% csrf_token %}
+                    <select name="language" id="language-selector" class="text-danger border-danger">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                            {{ language.code }}
+                            </option>
+                    {% endfor %}
+                    </select>
+                </form>
                 <!-- Menu Button-->
                 <button class="navbar-toggler p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

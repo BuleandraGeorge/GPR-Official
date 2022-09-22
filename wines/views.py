@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q, Min
 from .models import wine, color, region, grape, size_details, size
 from decorators import security
-
+from django.utils.translation import get_language, get_language_info
 
 @security
 def wines_view(request):
@@ -62,14 +62,21 @@ def wines_view(request):
     return render(request, template, context)
 
 
+
 @security
 def wine_details(request, wine_id):
     current_wine = get_object_or_404(wine, pk=wine_id)
     size_detailss = size_details.objects.all()
-
+    current_language = get_language()[:2]
+    translation = current_wine.translation_set.filter(language=current_language)
+    if len(translation)>0:
+        wine_details = translation[0]
+    else:
+        wine_details=current_wine.translation_set.all()[0]
     template = "wines/wine_details.html"
     context = {
         "wine": current_wine,
+        "wine_details":wine_details,
         "wine_sizes": size_detailss,
     }
     return render(request, template, context)

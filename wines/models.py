@@ -1,6 +1,6 @@
 from datetime import date
 from django.db import models
-
+from django.conf.global_settings import LANGUAGES
 class color(models.Model):
     name = models.CharField(max_length=256, null=True, blank=True)
 
@@ -49,12 +49,6 @@ class wine(models.Model):
     color = models.ForeignKey('color', null=False, blank=False, on_delete=models.PROTECT) 
     grape = models.ForeignKey('grape', null=False, blank=False, on_delete=models.PROTECT) 
     region = models.ForeignKey('region', null=False, blank=False, on_delete=models.PROTECT)  
-    vinification = models.TextField(null=True, blank=True) 
-    aging = models.TextField(null=True, blank=True)
-    color_details = models.TextField(null=True, blank=True)
-    palate = models.TextField(null=True, blank=True)
-    serving = models.TextField(null=True, blank=True)
-    boxing = models.TextField(null=True, blank=True)
     rating = models.DecimalField(max_digits=2, decimal_places=1, null=True, blank=True)
     first_time_listed = models.DateField(default=date.today) 
     image_url = models.URLField(blank=True, null=True)
@@ -62,3 +56,13 @@ class wine(models.Model):
 
     def __str__(self):
         return self.name
+
+class translation(models.Model):
+    language = models.CharField(max_length=7, choices=LANGUAGES )
+    vinification = models.TextField(null=True, blank=True) 
+    aging = models.TextField(null=True, blank=True)
+    color_details = models.TextField(null=True, blank=True)
+    palate = models.TextField(null=True, blank=True)
+    serving = models.TextField(null=True, blank=True)
+    boxing = models.TextField(null=True, blank=True)
+    wine = models.ForeignKey('wine', null=True, on_delete=models.CASCADE)
