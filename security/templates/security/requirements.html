@@ -13,6 +13,27 @@
 </head>
 <body>
     <h1 class="mt-3 text-center"><a class="brand text-dark text-decoration-none  " href="{% url 'home' %}">Grupo Pierola Romania</a></h1>
+    <div class="d-flex justify-content-center">
+        <div>
+            Language:
+        </div>
+        <div>
+            <form action="{% url 'set_language' %}" method="post" id="language-selector">
+                {% csrf_token %}
+                <select name="language" id="language-selector">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                        {{ language.code }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+    </div>
+    
     <div class="container pt-5">
         <h5 class="text-center mb-5">{% trans "Pentru a putea naviga acest website trebuie sa indeplinesti urmatoarele:" %}</h5>
         <h6 class="text-center">{% trans "Sa ai cel putin 18 ani impliniti" %}</h6>
@@ -34,4 +55,10 @@
     </div>
 
 </body>
-</html>
+<script type="text/javascript">
+    document.getElementById('language-selector').addEventListener('change', (e) => {
+        console.log('working good');
+        document.getElementById('language-selector').submit()
+    })
+</script>
+</html >

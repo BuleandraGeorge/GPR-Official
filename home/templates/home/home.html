@@ -7,7 +7,7 @@
 {% block content %}
 {% if offers %}
     {% for offer in offers %}
-<div class="jumbotron jumbotron-fluid mb-5 hero-img" style="background: url({{offer.image.url}}); ">
+<div class="jumbotron jumbotron-fluid mb-5 hero-img" style="background: url({{offer.image_url}}); ">
     <div class="container pt-5 " style="color:{{offer.text_color}}">
         <h1 class="display-4 pt-5">
             {{offer.title}}
