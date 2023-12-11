@@ -8,11 +8,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = False
+dev_key = ''
+if 'DEVELOPMENT' in os.environ:
+    DEBUG = True
+    from django.core.management.utils import get_random_secret_key
+    dev_key = get_random_secret_key()
+
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY', dev_key)
 
 ALLOWED_HOSTS = ['grupo-pierola-ro-official.herokuapp.com', 'localhost',"127.0.0.1"]
 
@@ -98,10 +106,17 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
+    } 
+    
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,7 +143,7 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-SITE_ID = 1
+SITE_ID = 2
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE':['email'],
