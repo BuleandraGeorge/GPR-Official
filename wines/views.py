@@ -47,9 +47,16 @@ def wines_view(request):
         query = request.GET['q']
         print(query)
         if query:
-            queries = Q(vinification__icontains=query) | Q(aging__icontains=query) | Q(name__icontains=query) | Q(grape__name__icontains=query) | Q(region__name__icontains=query) | Q(color__name__icontains=query) | Q(color_details__icontains=query)
-            print(queries)
-            wines = wine.objects.filter(queries)
+            current_language = get_language()[:2]
+            print(current_language)
+            wine_queries = Q(name__icontains=query) | Q(grape__name__icontains=query) | Q(region__name__icontains=query) | Q(color__name__icontains=query) 
+            translation_queries = Q(translation__language=current_language) & (
+                    Q(translation__vinification__icontains=query) | 
+                    Q(translation__aging__icontains=query) | 
+                    Q(translation__palate__icontains=query) | 
+                    Q(translation__color_details__icontains=query)
+            )
+            wines = wine.objects.filter( wine_queries | translation_queries).distinct()
     context = {
         'wines': wines,
         'categories': categories,
