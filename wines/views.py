@@ -16,6 +16,7 @@ def wines_view(request):
         value = request.GET['color']
         wines = wines.filter(color__name=value)
         categories.append(value)
+        print(categories)
 
     if "region" in request.GET:
         value = request.GET['region']

@@ -1,5 +1,5 @@
 {% load i18n %}
-<div class="col-sm-12  mb-2" id="filter">
+<div class="col-12  mb-2 d-lg-none" id="filter">
     <div class="accordion " id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -15,7 +15,7 @@
                                 <select class="form-select text-danger" id="color" aria-label="Floating label select example">
                                     <option value="reset">{% trans "Oricare"%}</option>
                                     {% for color in colors %}
-                                    <option value="{{color}}" {% if color in categories %}selected{% endif %}>{{color}}</option>
+                                    <option value="{{color.name}}" {% if color.name in categories %}selected{% endif %}>{{color.name}}</option>
                                     {% endfor %}
                                 </select>
                                 <label for="color">{% trans "Culoare"%}</label>
