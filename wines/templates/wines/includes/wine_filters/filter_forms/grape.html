@@ -1,0 +1,12 @@
+{% load i18n %}
+<div class="form-floating text-danger">
+    <select class="form-select text-danger grape" name="grape">
+        <option value="reset">{% trans "Oricare"%}</option>
+        {% for grape in grapes %}
+        <option value="{{grape.name}}" {% if grape.name in categories %}selected{% endif %}>
+            {{grape.name}}
+        </option>
+        {% endfor %}
+    </select>
+    <label>{% trans "Struguri"%}</label>
+</div>

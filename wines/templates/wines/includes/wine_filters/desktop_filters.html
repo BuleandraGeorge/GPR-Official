@@ -1,0 +1,23 @@
+{% load i18n %}
+<div class="col-12 pb-2 wine-filter-menu rounded d-none d-lg-block filter">
+    <h4 class="text-center my-2">{% trans "Ordoneaza dupa "%}</h4>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col">
+                {% include 'wines/includes/wine_filters/filter_forms/color.html' %}
+            </div>
+            <div class="col">
+                {% include 'wines/includes/wine_filters/filter_forms/region.html' %}
+            </div>
+            <div class="col">
+                {% include 'wines/includes/wine_filters/filter_forms/grape.html' %}
+            </div>
+            <div class="col">
+                {% include 'wines/includes/wine_filters/filter_forms/price.html' %}
+            </div>
+            <div class="col">
+                {% include 'wines/includes/wine_filters/filter_forms/rating.html' %}
+            </div>
+        </div>
+     </div>
+</div>

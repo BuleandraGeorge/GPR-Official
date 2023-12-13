@@ -1,0 +1,9 @@
+{% load i18n %}
+<div class="form-floating text-danger">
+    <select class="form-select text-danger rating" name="rating">
+        <option value="reset" selected>{% trans "Aleatoriu"%}</option>
+        <option value="rating_asc" {% if 'rating_asc' in categories %}selected{% endif %}>{% trans "Ascendent"%}</option>
+        <option value="rating_desc" {% if 'rating_desc' in categories %}selected{% endif %}>{% trans "Descendent"%}</option>
+    </select>
+    <label >{% trans "Rating"%}</label>
+</div>

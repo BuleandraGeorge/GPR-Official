@@ -9,8 +9,8 @@
 <div class="container-fluid wine-list" id="winelist">
     <h1 class="text-center">{% trans "Vinuri"%}</h1>
     <div class="row">
-        {% include 'wines/includes/desktop_filters.html' %}
-        {% include 'wines/includes/mobile_filters.html' %}
+        {% include 'wines/includes/wine_filters/desktop_filters.html' %}
+        {% include 'wines/includes/wine_filters/mobile_filters.html' %}
     </div>
 
 
@@ -29,9 +29,10 @@
 {% block postload_js %}
 {{block.super}}
 <script type="text/javascript">
-    $("#filter").change(function (event) {
-        var selector = event.target.id;
-        var selectedVal = $(document.getElementById(selector)).val();
+    var filters = $('.filter').change(function (event) {
+        var selector = event.target.name;
+        var selectedVal = $(event.target).val();
+        console.log(selectedVal);
         var currentUrl = new URL(window.location);
         if (selectedVal != 'reset') {
             if (selector == 'price') {

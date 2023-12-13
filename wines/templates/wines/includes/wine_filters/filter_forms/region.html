@@ -1,0 +1,10 @@
+{% load i18n %}
+<div class="form-floating text-danger">
+    <select class="form-select text-danger region" name="region">
+        <option value="reset">{% trans "Oricare"%}</option>
+        {% for region in regions%}
+        <option value="{{region.name}}" {% if region.name in categories %}selected{% endif %}>{{region.name}}</option>
+        {% endfor %}
+    </select>
+    <label>{% trans "Regiunea"%}</label>
+</div>

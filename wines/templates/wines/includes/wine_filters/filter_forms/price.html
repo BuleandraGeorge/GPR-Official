@@ -1,0 +1,9 @@
+{% load i18n %}
+<div class="form-floating text-danger">
+    <select class="form-select text-danger price" name="price">
+        <option value="reset">Aleatoriu</option>
+        <option value="price_asc" {% if 'price_asc' in categories %}selected{% endif %}>{% trans "Ascendent"%}</option>
+        <option value="price_desc" {% if 'price_desc' in categories %}selected{% endif %}>{% trans "Descendent" %}</option>
+    </select>
+    <label>{% trans "Pret"%}</label>
+</div>

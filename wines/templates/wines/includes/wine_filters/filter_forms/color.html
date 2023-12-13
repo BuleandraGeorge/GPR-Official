@@ -1,0 +1,10 @@
+{% load i18n %}
+<div class="form-floating text-danger">
+    <select class="form-select text-danger color" name="color">
+        <option value="reset">{% trans "Oricare"%}</option>
+        {% for color in colors %}
+        <option value="{{color.name}}" {% if color.name in categories %}selected{% endif %}>{{color.name}}</option>
+        {% endfor %}
+    </select>
+    <label>{% trans "Culoare"%}</label>
+</div>

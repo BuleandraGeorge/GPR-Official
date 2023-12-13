@@ -1,0 +1,41 @@
+{% load i18n %}
+<div class="col-12  mb-2 d-lg-none filter">
+    <div class="accordion " id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed border-0 bg-danger rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    {% trans "Filtre"%}
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            {% include 'wines/includes/wine_filters/filter_forms/color.html' %}
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            {% include 'wines/includes/wine_filters/filter_forms/region.html' %}
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            {% include 'wines/includes/wine_filters/filter_forms/grape.html' %}
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            {% include 'wines/includes/wine_filters/filter_forms/price.html' %}
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-12">
+                            {% include 'wines/includes/wine_filters/filter_forms/rating.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
