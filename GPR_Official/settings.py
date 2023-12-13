@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'storages',
 
+
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
