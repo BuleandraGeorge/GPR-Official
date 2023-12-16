@@ -16,7 +16,6 @@ def wines_view(request):
         value = request.GET['color']
         wines = wines.filter(color__name=value)
         categories.append(value)
-        print(categories)
 
     if "region" in request.GET:
         value = request.GET['region']
@@ -49,7 +48,6 @@ def wines_view(request):
         print(query)
         if query:
             current_language = get_language()[:2]
-            print(current_language)
             wine_queries = Q(name__icontains=query) | Q(grape__name__icontains=query) | Q(region__name__icontains=query) | Q(color__name__icontains=query) 
             translation_queries = Q(translation__language=current_language) & (
                     Q(translation__vinification__icontains=query) | 

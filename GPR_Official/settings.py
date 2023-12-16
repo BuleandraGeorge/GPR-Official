@@ -18,11 +18,10 @@ if 'DEVELOPMENT' in os.environ:
     from django.core.management.utils import get_random_secret_key
     dev_key = get_random_secret_key()
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', dev_key)
 
-ALLOWED_HOSTS = ['grupo-pierola-ro-official.herokuapp.com', 'localhost',"127.0.0.1"]
+ALLOWED_HOSTS = ['grupo-pierola-ro-official.herokuapp.com', 'localhost','127.0.0.1']
 
 
 # Application definition
@@ -151,6 +150,12 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS':{
             'access_type':'online'
         }
+    },
+    'apple': {
+        'SCOPE':['email'],
+        'AUTH_PARAMS':{
+            'access_type':'online'
+        }
     }
 }
 ACCOUNT_AUTHENTICATION_METHOD = "email"
@@ -180,7 +185,11 @@ USE_L10N = True
 
 USE_TZ = True
 #EMAIL SETTINGS
-if 'DEVELOPMENT' in os.environ:
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
+DEFAULT_PHONE = "07242342342"
+
+if not 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
@@ -189,15 +198,12 @@ if 'DEVELOPMENT' in os.environ:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
     DEFAULT_PHONE = "07242424242"
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
-    DEFAULT_PHONE = "07242342342"
+
     
 
 
 
-if "DEVELOPMENT" in os.environ:
+if not "DEVELOPMENT" in os.environ:
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
     MEDIA_URL = '/media/'
@@ -225,7 +231,6 @@ else:
     # Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-   
 
 
 
