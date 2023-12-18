@@ -189,7 +189,7 @@ USE_TZ = True
 #EMAIL SETTINGS
 
 
-if 'DEVELOPMENT' in os.environ or 'USE_DEV_EMAIL':
+if 'DEVELOPMENT' in os.environ or 'USE_DEV_EMAIL' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
     DEFAULT_PHONE = "07242342342"
@@ -207,7 +207,7 @@ print("emails running")
 
 
 
-if "DEVELOPMENT" in os.environ "USE_DEV_STATIC" in os.environ:
+if "DEVELOPMENT" in os.environ or "USE_DEV_STATIC" in os.environ:
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
     MEDIA_URL = '/media/'
