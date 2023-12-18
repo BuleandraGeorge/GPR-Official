@@ -21,11 +21,9 @@ if 'DEVELOPMENT' in os.environ or "USE_DEV_KEY" in os.environ:
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', dev_key)
 
-print("secret key approved")
 
 ALLOWED_HOSTS = ['grupo-pierola-ro-official.herokuapp.com', 'localhost','127.0.0.1']
 
-print("host approved")
 # Application definition
 
 INSTALLED_APPS = [
@@ -65,7 +63,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,7 +115,6 @@ if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     } 
-print("database running")    
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -203,16 +199,14 @@ else:
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
     DEFAULT_PHONE = "07242424242"
 
-print("emails running") 
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-
-if "DEVELOPMENT" in os.environ or "USE_DEV_STATIC" in os.environ:
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-else:
+if "USE_AWS" in os.environ:
     # Cache control
     AWS_S3_OBJECT_PARAMETERS = {
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
@@ -236,11 +230,7 @@ else:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-print("AWS running") 
-
 ### STRIPE ####
 STRIPE_PK = os.environ["STRIPE_PK"]
 STRIPE_SK = os.environ["STRIPE_SK"]
 WEBHOOK_SK = os.environ["WEBHOOK_SK"]
-
-print("STRIPE running") 
