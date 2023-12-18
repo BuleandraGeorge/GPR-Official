@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 dev_key = ''
-if 'DEVELOPMENT' in os.environ:
+if 'DEVELOPMENT' in os.environ or "USE_DEV_KEY" in os.environ:
     DEBUG = True
     from django.core.management.utils import get_random_secret_key
     dev_key = get_random_secret_key()
@@ -187,11 +187,13 @@ USE_L10N = True
 
 USE_TZ = True
 #EMAIL SETTINGS
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
-DEFAULT_PHONE = "07242342342"
 
-if not 'DEVELOPMENT' in os.environ:
+
+if 'DEVELOPMENT' in os.environ or 'USE_DEV_EMAIL':
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'grupo_pierola_romania@example.com'
+    DEFAULT_PHONE = "07242342342"
+else
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
@@ -205,7 +207,7 @@ print("emails running")
 
 
 
-if "DEVELOPMENT" in os.environ:
+if "DEVELOPMENT" in os.environ "USE_DEV_STATIC" in os.environ:
     STATIC_URL = '/static/'
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
     MEDIA_URL = '/media/'
