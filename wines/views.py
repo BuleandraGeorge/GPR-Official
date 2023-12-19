@@ -29,7 +29,7 @@ def wines_view(request):
     ### Ordered by price, needs updates acc new wine model
     if "price" in request.GET:
         value = request.GET['price']
-        wines = wine.objects.annotate(lowest_price=Min('size_details__price'))
+        wines = wines.annotate(lowest_price=Min('size_details__price'))
         if value == "price_desc":
             wines = wines.order_by("-lowest_price")
         else:
