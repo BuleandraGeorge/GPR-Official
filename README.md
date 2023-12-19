@@ -76,7 +76,7 @@
 <h2> Database Design & Implementation </h2>
 
 <p>The database is described by the Entity Relationship Diagram </p>
-![ERD](readMePictures/Grupo Pierola Romania Database ERD.png)
+<img src="readMePictures/Grupo Pierola Romania Database ERD.png" alt="ERD Image"> )
 
 
 
